@@ -1,4 +1,12 @@
-# monorepo
+# Mosquito Social Monorepo
+
+This repo will contain several artefacts of the Mosquito Social project.
+
+- The Discovery Instance (DI)
+- The Managing Instance (MI)
+- The Documentation Hub
+
+Other applications might be added later.
 
 ## AI Agent Workflow (for Engineers)
 
