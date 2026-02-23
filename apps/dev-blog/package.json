@@ -1,0 +1,23 @@
+{
+  "name": "dev-blog",
+  "type": "module",
+  "scripts": {
+    "dev": "vinxi dev --host --port 3331",
+    "build": "vinxi build",
+    "start": "vinxi start"
+  },
+  "dependencies": {
+    "@solidjs/start": "^1.1.0",
+    "mosquito-design-system": "workspace:*",
+    "solid-js": "^1.9.5",
+    "vinxi": "^0.5.7"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@tailwindcss/vite": "^4.2.1",
+    "tailwindcss": "^4.2.1"
+  }
+}
