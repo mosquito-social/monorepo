@@ -1,8 +1,8 @@
 {
-	"name": "@demo/app",
-	"version": "1.0.0",
-	"private": true,
-	"scripts": {
-		"start": "bun run index.ts"
-	}
+  "name": "@demo/app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "bun run index.ts"
+  }
 }
