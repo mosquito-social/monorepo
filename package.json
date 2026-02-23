@@ -1,19 +1,19 @@
 {
-	"name": "monorepo",
-	"version": "1.0.0",
-	"private": true,
-	"workspaces": ["apps/*", "packages/*"],
-	"scripts": {
-		"check:ts": "tsc --noEmit",
-		"check:format": "biome check .",
-		"check:lint": "oxlint",
-		"check:all": "bun run check:ts && bun run check:format && bun run check:lint"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^1.5.3",
-		"@types/node": "^20.0.0",
-		"bun-types": "^1.3.9",
-		"oxlint": "^0.15.0",
-		"typescript": "^5.0.0"
-	}
+  "name": "monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "check:ts": "tsc --noEmit",
+    "check:format": "biome check .",
+    "check:lint": "oxlint",
+    "check:all": "bun run check:ts && bun run check:format && bun run check:lint"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.5.3",
+    "@types/node": "^20.0.0",
+    "bun-types": "^1.3.9",
+    "oxlint": "^0.15.0",
+    "typescript": "^5.0.0"
+  }
 }
