@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "exports": {
-    "./theme.css": "./theme.css"
+    "./theme.css": "./theme.css",
+    "./fouc.js": "./fouc.js",
+    "./ThemeToggle": "./ThemeToggle.tsx"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.9.5"
   }
 }
