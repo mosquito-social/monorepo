@@ -12,9 +12,9 @@ export function ThemeToggle() {
   const updateTheme = (newTheme: string) => {
     setTheme(newTheme);
     document.cookie = `colorScheme=${newTheme}; path=/; max-age=31536000`;
-    
+
     document.documentElement.classList.remove('dark', 'light');
-    
+
     if (newTheme === 'dark') {
       document.documentElement.classList.add('dark');
     } else if (newTheme === 'light') {
@@ -23,8 +23,8 @@ export function ThemeToggle() {
   };
 
   return (
-    <select 
-      value={theme()} 
+    <select
+      value={theme()}
       onInput={(e) => updateTheme((e.target as HTMLSelectElement).value)}
       class="bg-cb-10 text-cf-10 border border-cb-30 rounded px-2 py-1 outline-none text-sm"
     >

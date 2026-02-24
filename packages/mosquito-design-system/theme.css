@@ -7,7 +7,7 @@
   --color-cf-10: light-dark(oklch(15% 0.02 10), oklch(98% 0.01 10));
   --color-cf-20: light-dark(oklch(30% 0.03 10), oklch(90% 0.02 10));
   --color-cf-30: light-dark(oklch(40% 0.04 10), oklch(80% 0.03 10));
-  --color-cp-main: light-dark(oklch(60% 0.20 10), oklch(65% 0.20 10));
+  --color-cp-main: light-dark(oklch(60% 0.2 10), oklch(65% 0.2 10));
   --color-cs-main: light-dark(oklch(60% 0.18 170), oklch(65% 0.18 170));
 }
 
