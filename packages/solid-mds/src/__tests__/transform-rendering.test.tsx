@@ -4,11 +4,19 @@ import { JSX } from "solid-js";
 import { parse } from "hast-mds";
 import { transform, ComponentMap, CustomBlockProps, StandardComponentProps } from "../index";
 
+import { Component } from "solid-js";
+
 /**
  * Helper to render a JSX.Element or component function and return its innerHTML
  */
-function renderToHTML(element: JSX.Element | (() => JSX.Element)): string {
-  const { container } = render(typeof element === "function" ? element : () => element);
+function renderToHTML(element: JSX.Element | Component<any>): string {
+  const { container } = render(() => {
+    if (typeof element === "function") {
+      const Comp = element as Component<any>;
+      return <Comp />;
+    }
+    return element as JSX.Element;
+  });
   return container.innerHTML;
 }
 
