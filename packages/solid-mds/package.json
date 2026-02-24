@@ -22,11 +22,7 @@
       "default": "./dist/index.jsx"
     }
   },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
+  "files": ["dist", "README.md", "LICENSE"],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
@@ -38,6 +34,7 @@
   "devDependencies": {
     "@solidjs/testing-library": "^0.8.0",
     "@types/hast": "^3.0.4",
+    "esbuild-plugin-solid": "^0.6.0",
     "hast-mds": "workspace:*",
     "jsdom": "^26.0.0",
     "tsup": "^8.3.5",
@@ -47,8 +44,7 @@
     "vitest": "^3.0.0"
   },
   "peerDependencies": {
-    "solid-js": "^1.9.0",
-    "hast-mds": "^0.1.0"
+    "solid-js": "^1.9.0"
   },
   "typesVersions": {}
 }
