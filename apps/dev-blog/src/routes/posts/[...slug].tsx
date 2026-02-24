@@ -4,8 +4,21 @@ import { transform } from "solid-mds";
 import { HttpStatusCode } from "@solidjs/start";
 import { Title } from "@solidjs/meta";
 
+import { isServer } from "solid-js/web";
+import { getRequestEvent } from "solid-js/web";
+
 const fetchPost = async (slug: string) => {
-  const res = await fetch(`/api/posts/${slug}`);
+  let url = `/api/posts/${slug}`;
+  if (isServer) {
+    const event = getRequestEvent();
+    if (event && event.request) {
+      const parsedUrl = new URL(event.request.url);
+      url = `${parsedUrl.origin}${url}`;
+    } else {
+      url = `http://localhost:${process.env.PORT || 3331}${url}`;
+    }
+  }
+  const res = await fetch(url);
   if (!res.ok) throw new Error("Not Found");
   return res.json();
 };
