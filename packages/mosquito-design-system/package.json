@@ -4,7 +4,10 @@
   "type": "module",
   "exports": {
     "./theme.css": "./theme.css",
-    "./fouc.js": "./fouc.js",
+    "./fouc.js": {
+      "types": "./fouc.d.ts",
+      "default": "./fouc.js"
+    },
     "./ThemeToggle": "./ThemeToggle.tsx"
   },
   "peerDependencies": {
