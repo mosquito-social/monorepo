@@ -1,20 +1,20 @@
-import { unified, type Processor } from "unified";
-import remarkParse from "remark-parse";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
-import remarkRehype from "remark-rehype";
-import rehypeKatex from "rehype-katex";
-import { parse as parseYaml } from "yaml";
-import type { Root } from "hast";
-import { remarkCustomBlocks } from "./remark-custom-blocks";
+import type { Root } from 'hast';
+import rehypeKatex from 'rehype-katex';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import { type Processor, unified } from 'unified';
+import { parse as parseYaml } from 'yaml';
+import { remarkCustomBlocks } from './remark-custom-blocks';
 import type {
+  CustomComponents,
+  GlobalMetaBase,
+  HastBody,
   HastParseResult,
   HastStep,
-  HastBody,
   StepLocalBase,
-  GlobalMetaBase,
-  CustomComponents,
-} from "./types";
+} from './types';
 
 // Re-export all types
 export type {
@@ -24,7 +24,7 @@ export type {
   StepLocalBase,
   GlobalMetaBase,
   CustomComponents,
-} from "./types";
+} from './types';
 
 /**
  * Parse local metadata from step content.
@@ -47,7 +47,7 @@ function parseLocalMeta(
   }
 
   // Remove all metadata blocks from body
-  body = content.replace(metaPattern, "").trim();
+  body = content.replace(metaPattern, '').trim();
 
   // Only match new syntax: ```md @/name ... ```
   const localMdPattern = /```md @\/(\w+)\s*\n([\s\S]*?)```\s*\n?/g;
@@ -58,20 +58,20 @@ function parseLocalMeta(
     const mdContent = match[2].trim();
     // Concatenate if multiple blocks with same name
     if (localMdBlocks[name]) {
-      localMdBlocks[name] += "\n\n" + mdContent;
+      localMdBlocks[name] += '\n\n' + mdContent;
     } else {
       localMdBlocks[name] = mdContent;
     }
   }
 
   // Remove all local md blocks from body
-  body = body.replace(localMdPattern, "").trim();
+  body = body.replace(localMdPattern, '').trim();
 
   // Convert all local md blocks to HastBody
   for (const [name, mdContent] of Object.entries(localMdBlocks)) {
     const mdast = processor.parse(mdContent);
     const hastTree = processor.runSync(mdast) as Root;
-    local[name] = { type: "hast", node: hastTree } as HastBody;
+    local[name] = { type: 'hast', node: hastTree } as HastBody;
   }
 
   return { local, body };
@@ -97,7 +97,7 @@ function parseGlobalMeta(
   }
 
   // Remove global data blocks from input
-  let cleanedInput = input.replace(globalDataPattern, "");
+  let cleanedInput = input.replace(globalDataPattern, '');
 
   // Only match new syntax: ```md @@/name ... ```
   const globalMdPattern = /```md @@\/(\w+)\s*\n([\s\S]*?)```\s*\n?/g;
@@ -108,20 +108,20 @@ function parseGlobalMeta(
     const mdContent = match[2].trim();
     // Concatenate if multiple blocks with same name
     if (globalMdBlocks[name]) {
-      globalMdBlocks[name] += "\n\n" + mdContent;
+      globalMdBlocks[name] += '\n\n' + mdContent;
     } else {
       globalMdBlocks[name] = mdContent;
     }
   }
 
   // Remove global md blocks from input
-  cleanedInput = cleanedInput.replace(globalMdPattern, "").trim();
+  cleanedInput = cleanedInput.replace(globalMdPattern, '').trim();
 
   // Convert all global md blocks to HastBody
   for (const [name, mdContent] of Object.entries(globalMdBlocks)) {
     const mdast = processor.parse(mdContent);
     const hastTree = processor.runSync(mdast) as Root;
-    global[name] = { type: "hast", node: hastTree } as HastBody;
+    global[name] = { type: 'hast', node: hastTree } as HastBody;
   }
 
   return {
@@ -138,9 +138,9 @@ function isInsideCodeBlock(input: string, position: number): boolean {
   const beforeText = input.slice(0, position);
   const fencePattern = /^```/gm;
   let fenceCount = 0;
-  let match: RegExpExecArray | null;
+  let _match: RegExpExecArray | null;
 
-  while ((match = fencePattern.exec(beforeText)) !== null) {
+  while ((_match = fencePattern.exec(beforeText)) !== null) {
     fenceCount++;
   }
 
@@ -209,7 +209,7 @@ export function parse<TGlobal = GlobalMetaBase, TLocal = StepLocalBase>(
     if (!isInsideCodeBlock(cleanedInput, match.index)) {
       const id = match[1].trim();
       // Calculate line number for error messages
-      const lineNumber = cleanedInput.slice(0, match.index).split("\n").length;
+      const lineNumber = cleanedInput.slice(0, match.index).split('\n').length;
       validateStepId(id, lineNumber);
       matches.push({ id, index: match.index });
     }
@@ -225,17 +225,17 @@ export function parse<TGlobal = GlobalMetaBase, TLocal = StepLocalBase>(
     const mdast = processor.parse(markdown);
     const hastTree = processor.runSync(mdast) as Root;
 
-    steps["default"] = {
-      id: "default",
+    steps['default'] = {
+      id: 'default',
       local: local as TLocal,
-      body: { type: "hast", node: hastTree },
+      body: { type: 'hast', node: hastTree },
       prev: null,
       next: null,
       current: 1,
     };
 
     return {
-      first: "default",
+      first: 'default',
       steps,
       count: 1,
       global: global as TGlobal | null,
@@ -259,7 +259,7 @@ export function parse<TGlobal = GlobalMetaBase, TLocal = StepLocalBase>(
     steps[current.id] = {
       id: current.id,
       local: local as TLocal,
-      body: { type: "hast", node: hastTree },
+      body: { type: 'hast', node: hastTree },
       prev: prevMatch ? prevMatch.id : null,
       next: nextMatch ? nextMatch.id : null,
       current: i + 1,

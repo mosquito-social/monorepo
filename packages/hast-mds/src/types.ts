@@ -1,4 +1,4 @@
-import type { Root as HastRoot } from "hast";
+import type { Root as HastRoot } from 'hast';
 
 /**
  * Base interface for step-local metadata.
@@ -21,7 +21,7 @@ export interface GlobalMetaBase {
  * Used for markdown blocks in metadata and step bodies.
  */
 export interface HastBody {
-  type: "hast";
+  type: 'hast';
   node: HastRoot;
 }
 

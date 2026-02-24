@@ -1,7 +1,7 @@
-import { APIEvent } from '@solidjs/start/server';
-import { parse } from 'hast-mds';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { APIEvent } from '@solidjs/start/server';
+import { parse } from 'hast-mds';
 
 export async function GET({ params }: APIEvent) {
   const slug = params.slug;
@@ -11,7 +11,7 @@ export async function GET({ params }: APIEvent) {
     const content = await fs.readFile(filePath, 'utf-8');
     const ast = parse(content);
     return Response.json(ast);
-  } catch (e) {
+  } catch {
     return new Response('Not found', { status: 404 });
   }
 }

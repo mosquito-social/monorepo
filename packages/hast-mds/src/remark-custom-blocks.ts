@@ -1,8 +1,8 @@
-import type { Root, Code, Parent, RootContent } from "mdast";
-import type { Processor } from "unified";
-import { visit } from "unist-util-visit";
-import { parse as parseYaml } from "yaml";
-import type { CustomComponents } from "./types";
+import type { Code, Parent, Root, RootContent } from 'mdast';
+import type { Processor } from 'unified';
+import { visit } from 'unist-util-visit';
+import { parse as parseYaml } from 'yaml';
+import type { CustomComponents } from './types';
 
 export interface RemarkCustomBlocksOptions {
   /** Set of component names that are available */
@@ -34,7 +34,7 @@ export function remarkCustomBlocks(options: RemarkCustomBlocksOptions) {
   const { components, processor } = options;
 
   return (tree: Root) => {
-    visit(tree, "code", (node: Code, index, parent: Parent | undefined) => {
+    visit(tree, 'code', (node: Code, index, parent: Parent | undefined) => {
       if (!parent || index === undefined) return;
 
       const lang = node.lang;
@@ -48,9 +48,9 @@ export function remarkCustomBlocks(options: RemarkCustomBlocksOptions) {
 
       // Support explicit syntax: "yaml componentName" or "md componentName/path"
       // remark-parse splits the info string: lang = "yaml", meta = "componentName"
-      if ((lang === "yaml" || lang === "md") && meta) {
-        isDataBlock = lang === "yaml";
-        const segments = meta.split("/");
+      if ((lang === 'yaml' || lang === 'md') && meta) {
+        isDataBlock = lang === 'yaml';
+        const segments = meta.split('/');
         componentName = segments[0];
         payload = segments.slice(1);
 
@@ -66,7 +66,7 @@ export function remarkCustomBlocks(options: RemarkCustomBlocksOptions) {
         const data = parseYaml(raw) as Record<string, unknown>;
 
         const customNode = {
-          type: "customBlock",
+          type: 'customBlock',
           data: {
             hName: componentName,
             hProperties: {
@@ -87,7 +87,7 @@ export function remarkCustomBlocks(options: RemarkCustomBlocksOptions) {
 
       // Create a custom element that will be converted to HAST
       const customNode = {
-        type: "customBlock",
+        type: 'customBlock',
         data: {
           hName: componentName,
           hProperties: {

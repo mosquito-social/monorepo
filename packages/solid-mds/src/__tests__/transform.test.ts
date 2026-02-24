@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
 import { parse } from 'hast-mds';
+import { describe, expect, it } from 'vitest';
 import { transform } from '../index';
 
 describe('transform() - Suite 1: Basic Transformation', () => {

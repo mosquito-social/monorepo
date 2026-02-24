@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": []
+    "ignore": [".vinxi", ".output", "dist"]
   },
   "formatter": {
     "enabled": true,

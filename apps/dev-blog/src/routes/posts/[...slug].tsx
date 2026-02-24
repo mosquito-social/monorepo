@@ -1,11 +1,11 @@
-import { createResource } from "solid-js";
-import { useParams, A } from "@solidjs/router";
-import { transform } from "solid-mds";
-import { HttpStatusCode } from "@solidjs/start";
-import { Title } from "@solidjs/meta";
+import { Title } from '@solidjs/meta';
+import { A, useParams } from '@solidjs/router';
+import { HttpStatusCode } from '@solidjs/start';
+import { createResource } from 'solid-js';
+import { transform } from 'solid-mds';
 
-import { isServer } from "solid-js/web";
-import { getRequestEvent } from "solid-js/web";
+import { isServer } from 'solid-js/web';
+import { getRequestEvent } from 'solid-js/web';
 
 const fetchPost = async (slug: string) => {
   let url = `/api/posts/${slug}`;
@@ -19,7 +19,7 @@ const fetchPost = async (slug: string) => {
     }
   }
   const res = await fetch(url);
-  if (!res.ok) throw new Error("Not Found");
+  if (!res.ok) throw new Error('Not Found');
   return res.json();
 };
 

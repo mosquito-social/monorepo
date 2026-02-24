@@ -11,7 +11,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "jsxImportSource": "solid-js"
+    "jsxImportSource": "solid-js",
+    "paths": {
+      "hast-mds": ["./packages/hast-mds/src/index.ts"],
+      "solid-mds": ["./packages/solid-mds/src/index.tsx"],
+      "mosquito-design-system": ["./packages/mosquito-design-system/index.ts"]
+    }
   },
   "include": ["apps/**/*", "packages/**/*"],
   "exclude": ["node_modules"]
