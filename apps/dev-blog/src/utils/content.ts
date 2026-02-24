@@ -1,3 +1,4 @@
+/// <reference types="vinxi/types/client" />
 import { parse } from 'hast-mds';
 
 export interface Metadata {
@@ -34,8 +35,8 @@ export function getAllContent(): {
     // Handle both { default: '...' } and just '...' just in case Vite version differs
     if (typeof content === 'string') {
       rawString = content;
-    } else if (content && typeof content.default === 'string') {
-      rawString = content.default;
+    } else if (content && typeof (content as any).default === 'string') {
+      rawString = (content as any).default;
     }
 
     const parsed = parse(rawString);
