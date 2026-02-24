@@ -1,4 +1,4 @@
-import { ThemeToggle } from "mosquito-design-system/ThemeToggle";
+import { ThemeToggle } from 'mosquito-design-system/ThemeToggle';
 
 export default function DesignSystem() {
   const colors = [
@@ -25,7 +25,9 @@ export default function DesignSystem() {
         <h2 class="text-2xl font-semibold mb-6">Colors</h2>
         <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
           {colors.map((c) => (
-            <div class={`p-6 rounded shadow-md flex flex-col items-center justify-center border border-cb-30 aspect-square ${c.class}`}>
+            <div
+              class={`p-6 rounded shadow-md flex flex-col items-center justify-center border border-cb-30 aspect-square ${c.class}`}
+            >
               <span class="font-mono">{c.name}</span>
             </div>
           ))}
