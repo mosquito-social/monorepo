@@ -1,4 +1,4 @@
-import { Component } from "solid-js";
+import { Component } from 'solid-js';
 
 /**
  * Base interface for step-local metadata.
@@ -37,10 +37,7 @@ export interface Step<TLocal = StepLocalBase> {
 /**
  * Result of transforming an MDS document to Solid components.
  */
-export interface ParseResult<
-  TGlobal = GlobalMetaBase,
-  TLocal = StepLocalBase,
-> {
+export interface ParseResult<TGlobal = GlobalMetaBase, TLocal = StepLocalBase> {
   /** ID of the first step, or null if no steps */
   first: string | null;
   /** Map of step IDs to step objects */

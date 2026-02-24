@@ -1,16 +1,16 @@
-import type { HastParseResult, HastBody, HastStep } from "hast-mds";
-import { hastToSolidComponent, ComponentMap } from "./hast-to-solid";
-import type { Step, ParseResult, StepLocalBase, GlobalMetaBase } from "./types";
+import type { HastBody, HastParseResult, HastStep } from 'hast-mds';
+import { ComponentMap, hastToSolidComponent } from './hast-to-solid';
+import type { GlobalMetaBase, ParseResult, Step, StepLocalBase } from './types';
 
 // Re-export types from hast-to-solid
 export type {
   ComponentMap,
   CustomBlockProps,
   StandardComponentProps,
-} from "./hast-to-solid";
+} from './hast-to-solid';
 
 // Re-export types from types.ts
-export type { Step, ParseResult, StepLocalBase, GlobalMetaBase } from "./types";
+export type { Step, ParseResult, StepLocalBase, GlobalMetaBase } from './types';
 
 // Re-export hast-mds types for convenience
 export type {
@@ -18,18 +18,18 @@ export type {
   HastStep,
   HastBody,
   CustomComponents,
-} from "hast-mds";
+} from 'hast-mds';
 
 /**
  * Type guard to check if a value is a HastBody
  */
 function isHastBody(value: unknown): value is HastBody {
   return (
-    typeof value === "object" &&
+    typeof value === 'object' &&
     value !== null &&
-    "type" in value &&
-    (value as HastBody).type === "hast" &&
-    "node" in value
+    'type' in value &&
+    (value as HastBody).type === 'hast' &&
+    'node' in value
   );
 }
 

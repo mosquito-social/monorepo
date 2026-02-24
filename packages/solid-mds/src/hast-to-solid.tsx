@@ -1,5 +1,5 @@
-import { JSX, Component, children as resolveChildren } from "solid-js";
-import type { Root, Element, Text, RootContent } from "hast";
+import type { Element, Root, RootContent, Text } from 'hast';
+import { Component, JSX } from 'solid-js';
 
 /**
  * Props for custom block components (code blocks with name/sub/path syntax)
@@ -24,21 +24,23 @@ export interface StandardComponentProps {
 }
 
 export type ComponentMap = {
-  [tagName: string]: Component<CustomBlockProps> | Component<StandardComponentProps>;
+  [tagName: string]:
+    | Component<CustomBlockProps>
+    | Component<StandardComponentProps>;
 };
 
 function convertProperties(
-  properties: Record<string, unknown> | undefined
+  properties: Record<string, unknown> | undefined,
 ): Record<string, unknown> {
   if (!properties) return {};
 
   const result: Record<string, unknown> = {};
 
   for (const [key, value] of Object.entries(properties)) {
-    if (key === "className") {
+    if (key === 'className') {
       result.class = value;
-    } else if (key === "class") {
-      result.class = Array.isArray(value) ? value.join(" ") : value;
+    } else if (key === 'class') {
+      result.class = Array.isArray(value) ? value.join(' ') : value;
     } else {
       result[key] = value;
     }
@@ -50,138 +52,138 @@ function convertProperties(
 function renderElement(
   tagName: string,
   props: Record<string, unknown>,
-  children: JSX.Element
+  children: JSX.Element,
 ): JSX.Element {
   switch (tagName) {
-    case "p":
+    case 'p':
       return <p {...props}>{children}</p>;
-    case "h1":
+    case 'h1':
       return <h1 {...props}>{children}</h1>;
-    case "h2":
+    case 'h2':
       return <h2 {...props}>{children}</h2>;
-    case "h3":
+    case 'h3':
       return <h3 {...props}>{children}</h3>;
-    case "h4":
+    case 'h4':
       return <h4 {...props}>{children}</h4>;
-    case "h5":
+    case 'h5':
       return <h5 {...props}>{children}</h5>;
-    case "h6":
+    case 'h6':
       return <h6 {...props}>{children}</h6>;
-    case "div":
+    case 'div':
       return <div {...props}>{children}</div>;
-    case "span":
+    case 'span':
       return <span {...props}>{children}</span>;
-    case "a":
+    case 'a':
       return <a {...props}>{children}</a>;
-    case "strong":
+    case 'strong':
       return <strong {...props}>{children}</strong>;
-    case "b":
+    case 'b':
       return <b {...props}>{children}</b>;
-    case "em":
+    case 'em':
       return <em {...props}>{children}</em>;
-    case "i":
+    case 'i':
       return <i {...props}>{children}</i>;
-    case "code":
+    case 'code':
       return <code {...props}>{children}</code>;
-    case "pre":
+    case 'pre':
       return <pre {...props}>{children}</pre>;
-    case "blockquote":
+    case 'blockquote':
       return <blockquote {...props}>{children}</blockquote>;
-    case "ul":
+    case 'ul':
       return <ul {...props}>{children}</ul>;
-    case "ol":
+    case 'ol':
       return <ol {...props}>{children}</ol>;
-    case "li":
+    case 'li':
       return <li {...props}>{children}</li>;
-    case "hr":
+    case 'hr':
       return <hr {...props} />;
-    case "br":
+    case 'br':
       return <br {...props} />;
-    case "img":
+    case 'img':
       return <img {...props} />;
-    case "table":
+    case 'table':
       return <table {...props}>{children}</table>;
-    case "thead":
+    case 'thead':
       return <thead {...props}>{children}</thead>;
-    case "tbody":
+    case 'tbody':
       return <tbody {...props}>{children}</tbody>;
-    case "tr":
+    case 'tr':
       return <tr {...props}>{children}</tr>;
-    case "th":
+    case 'th':
       return <th {...props}>{children}</th>;
-    case "td":
+    case 'td':
       return <td {...props}>{children}</td>;
-    case "del":
+    case 'del':
       return <del {...props}>{children}</del>;
-    case "sup":
+    case 'sup':
       return <sup {...props}>{children}</sup>;
-    case "sub":
+    case 'sub':
       return <sub {...props}>{children}</sub>;
     // GFM elements
-    case "input":
+    case 'input':
       return <input {...props} />;
-    case "section":
+    case 'section':
       return <section {...props}>{children}</section>;
     // KaTeX math elements
-    case "math":
+    case 'math':
       return <math {...props}>{children}</math>;
-    case "semantics":
+    case 'semantics':
       return <semantics {...props}>{children}</semantics>;
-    case "mrow":
+    case 'mrow':
       return <mrow {...props}>{children}</mrow>;
-    case "mi":
+    case 'mi':
       return <mi {...props}>{children}</mi>;
-    case "mo":
+    case 'mo':
       return <mo {...props}>{children}</mo>;
-    case "mn":
+    case 'mn':
       return <mn {...props}>{children}</mn>;
-    case "mfrac":
+    case 'mfrac':
       return <mfrac {...props}>{children}</mfrac>;
-    case "msup":
+    case 'msup':
       return <msup {...props}>{children}</msup>;
-    case "msub":
+    case 'msub':
       return <msub {...props}>{children}</msub>;
-    case "msubsup":
+    case 'msubsup':
       return <msubsup {...props}>{children}</msubsup>;
-    case "msqrt":
+    case 'msqrt':
       return <msqrt {...props}>{children}</msqrt>;
-    case "mroot":
+    case 'mroot':
       return <mroot {...props}>{children}</mroot>;
-    case "munder":
+    case 'munder':
       return <munder {...props}>{children}</munder>;
-    case "mover":
+    case 'mover':
       return <mover {...props}>{children}</mover>;
-    case "munderover":
+    case 'munderover':
       return <munderover {...props}>{children}</munderover>;
-    case "mtable":
+    case 'mtable':
       return <mtable {...props}>{children}</mtable>;
-    case "mtr":
+    case 'mtr':
       return <mtr {...props}>{children}</mtr>;
-    case "mtd":
+    case 'mtd':
       return <mtd {...props}>{children}</mtd>;
-    case "mtext":
+    case 'mtext':
       return <mtext {...props}>{children}</mtext>;
-    case "mspace":
+    case 'mspace':
       return <mspace {...props}>{children}</mspace>;
-    case "annotation":
+    case 'annotation':
       return <annotation {...props}>{children}</annotation>;
-    case "svg":
+    case 'svg':
       return <svg {...props}>{children}</svg>;
-    case "path":
+    case 'path':
       return <path {...props} />;
-    case "line":
+    case 'line':
       return <line {...props} />;
-    case "rect":
+    case 'rect':
       return <rect {...props} />;
-    case "circle":
+    case 'circle':
       return <circle {...props} />;
-    case "g":
+    case 'g':
       return <g {...props}>{children}</g>;
-    case "defs":
+    case 'defs':
       return <defs {...props}>{children}</defs>;
-    case "clipPath":
+    case 'clipPath':
       return <clipPath {...props}>{children}</clipPath>;
-    case "use":
+    case 'use':
       return <use {...props} />;
     default:
       return <div {...props}>{children}</div>;
@@ -190,13 +192,13 @@ function renderElement(
 
 function renderNode(
   node: RootContent,
-  components: ComponentMap
+  components: ComponentMap,
 ): JSX.Element | string | null {
-  if (node.type === "text") {
+  if (node.type === 'text') {
     return (node as Text).value;
   }
 
-  if (node.type === "element") {
+  if (node.type === 'element') {
     const element = node as Element;
     const tagName = element.tagName;
     const rawProps = convertProperties(element.properties);
@@ -209,14 +211,17 @@ function renderNode(
 
     if (CustomComponent) {
       // Check if this is a custom block component (has payload and raw props)
-      if (typeof rawProps.payload === "string" && typeof rawProps.raw === "string") {
+      if (
+        typeof rawProps.payload === 'string' &&
+        typeof rawProps.raw === 'string'
+      ) {
         // Deserialize payload from JSON string
         const customBlockProps: CustomBlockProps = {
           payload: JSON.parse(rawProps.payload as string),
           raw: rawProps.raw as string,
         };
         // Add data if present (for componentName| syntax)
-        if (typeof rawProps.data === "string") {
+        if (typeof rawProps.data === 'string') {
           customBlockProps.data = JSON.parse(rawProps.data as string);
         }
         const Comp = CustomComponent as Component<CustomBlockProps>;
@@ -234,9 +239,11 @@ function renderNode(
 
 export function hastToSolidJsx(
   hastTree: Root,
-  components: ComponentMap = {}
+  components: ComponentMap = {},
 ): JSX.Element {
-  const elements = hastTree.children.map((node) => renderNode(node, components));
+  const elements = hastTree.children.map((node) =>
+    renderNode(node, components),
+  );
   return <>{elements}</>;
 }
 
@@ -250,14 +257,16 @@ export function hastToSolidJsx(
  */
 export function hastToSolidComponent(
   hastTree: Root,
-  components: ComponentMap = {}
+  components: ComponentMap = {},
 ): () => JSX.Element {
   // Store the tree data, not pre-rendered elements
   const treeData = hastTree;
   const componentMap = components;
 
   return function HastBody() {
-    const elements = treeData.children.map((node) => renderNode(node, componentMap));
+    const elements = treeData.children.map((node) =>
+      renderNode(node, componentMap),
+    );
     return <>{elements}</>;
   };
 }
