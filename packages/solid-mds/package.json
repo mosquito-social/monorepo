@@ -1,0 +1,54 @@
+{
+  "name": "solid-mds",
+  "version": "0.4.0",
+  "description": "A SolidJS library for transforming MDS (Markdown Steps) HAST to Solid components",
+  "license": "MIT",
+  "author": "Matthias Reis",
+  "keywords": [
+    "solid",
+    "solidjs",
+    "markdown",
+    "hast",
+    "slides",
+    "presentation"
+  ],
+  "type": "module",
+  "main": "./dist/index.jsx",
+  "module": "./dist/index.jsx",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.jsx"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "pnpm run build",
+    "release": "bash ../../scripts/release.sh"
+  },
+  "devDependencies": {
+    "@solidjs/testing-library": "^0.8.0",
+    "@types/hast": "^3.0.4",
+    "hast-mds": "workspace:*",
+    "jsdom": "^26.0.0",
+    "tsup": "^8.3.5",
+    "tsup-preset-solid": "^2.2.0",
+    "typescript": "^5.7.3",
+    "vite-plugin-solid": "^2.10.0",
+    "vitest": "^3.0.0"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.9.0",
+    "hast-mds": "^0.1.0"
+  },
+  "typesVersions": {}
+}
