@@ -1,3 +1,26 @@
 @theme {
-  --color-mosquito: tomato;
+  --color-cb-0: light-dark(oklch(100% 0 0), oklch(0% 0 0));
+  --color-cf-0: light-dark(oklch(0% 0 0), oklch(100% 0 0));
+  --color-cb-10: light-dark(oklch(98% 0.01 10), oklch(12% 0.02 10));
+  --color-cb-20: light-dark(oklch(96% 0.015 10), oklch(16% 0.03 10));
+  --color-cb-30: light-dark(oklch(92% 0.02 10), oklch(20% 0.04 10));
+  --color-cf-10: light-dark(oklch(15% 0.02 10), oklch(98% 0.01 10));
+  --color-cf-20: light-dark(oklch(30% 0.03 10), oklch(90% 0.02 10));
+  --color-cf-30: light-dark(oklch(40% 0.04 10), oklch(80% 0.03 10));
+  --color-cp-main: light-dark(oklch(60% 0.20 10), oklch(65% 0.20 10));
+  --color-cs-main: light-dark(oklch(60% 0.18 170), oklch(65% 0.18 170));
+}
+
+@layer base {
+  :root {
+    color-scheme: light dark;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  .light {
+    color-scheme: light;
+  }
 }
