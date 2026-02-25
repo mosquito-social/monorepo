@@ -1,14 +1,31 @@
 @theme {
+  /* Background colors  */
   --color-cb-0: light-dark(oklch(100% 0 0), oklch(0% 0 0));
+  --color-cb-10: light-dark(oklch(98% 0.01 10), oklch(12% 0.01 10));
+  --color-cb-20: light-dark(oklch(96% 0.015 10), oklch(18% 0.008 10));
+  --color-cb-30: light-dark(oklch(92% 0.02 10), oklch(24% 0.007 10));
+
+  /* Foreground colors */
   --color-cf-0: light-dark(oklch(0% 0 0), oklch(100% 0 0));
-  --color-cb-10: light-dark(oklch(98% 0.01 10), oklch(12% 0.02 10));
-  --color-cb-20: light-dark(oklch(96% 0.015 10), oklch(16% 0.03 10));
-  --color-cb-30: light-dark(oklch(92% 0.02 10), oklch(20% 0.04 10));
-  --color-cf-10: light-dark(oklch(15% 0.02 10), oklch(98% 0.01 10));
-  --color-cf-20: light-dark(oklch(30% 0.03 10), oklch(90% 0.02 10));
-  --color-cf-30: light-dark(oklch(40% 0.04 10), oklch(80% 0.03 10));
+  --color-cf-10: light-dark(oklch(40% 0.005 10), oklch(80% 0.005 10));
+  --color-cf-20: light-dark(oklch(55% 0.006 10), oklch(65% 0.006 10));
+  --color-cf-30: light-dark(oklch(70% 0.007 10), oklch(50% 0.007 10));
+
+  /* Line colors */
+  --color-cl-10: light-dark(oklch(70% 0.015 10), oklch(40% 0.015 10));
+  --color-cl-20: light-dark(oklch(80% 0.015 10), oklch(30% 0.015 10));
+  --color-cl-30: light-dark(oklch(90% 0.015 10), oklch(20% 0.015 10));
+
+  /* Primary colors */
   --color-cp-main: light-dark(oklch(60% 0.2 10), oklch(65% 0.2 10));
+
+  /* Secondary colors */
   --color-cs-main: light-dark(oklch(60% 0.18 170), oklch(65% 0.18 170));
+
+  --font-mos: "Caprasimo", cursive;
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-sans: "IBM Plex Sans", sans-serif;
+  --font-serif: "IBM Plex Serif", serif;
 }
 
 @layer base {
@@ -22,5 +39,11 @@
 
   .light {
     color-scheme: light;
+  }
+
+  .mos-effect {
+    text-shadow: 0.05em 0 0.025em var(--color-cp-main), -0.05em 0 0.025em
+      var(--color-cs-main), 0 0.05em 0.025em var(--color-cp-main), 0 -0.05em
+      0.025em var(--color-cs-main);
   }
 }

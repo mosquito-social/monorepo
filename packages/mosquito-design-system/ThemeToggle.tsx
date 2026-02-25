@@ -1,12 +1,54 @@
 import { createSignal, onMount } from 'solid-js';
 
+const SunIcon = (props: { class?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class={props.class}
+  >
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2v2" />
+    <path d="M12 20v2" />
+    <path d="m4.93 4.93 1.41 1.41" />
+    <path d="m17.66 17.66 1.41 1.41" />
+    <path d="M2 12h2" />
+    <path d="M20 12h2" />
+    <path d="m6.34 17.66-1.41 1.41" />
+    <path d="m19.07 4.93-1.41 1.41" />
+  </svg>
+);
+
+const MoonIcon = (props: { class?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class={props.class}
+  >
+    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+  </svg>
+);
+
 export function ThemeToggle() {
-  const [theme, setTheme] = createSignal('system');
+  const [theme, setTheme] = createSignal('light');
 
   onMount(() => {
     const match = document.cookie.match(/(?:^|; )colorScheme=([^;]+)/);
-    const cookieTheme = match ? match[1] : 'system';
-    setTheme(cookieTheme);
+    const cookieTheme = match ? match[1] : 'light';
+    setTheme(cookieTheme === 'system' ? 'light' : cookieTheme);
   });
 
   const updateTheme = (newTheme: string) => {
@@ -22,15 +64,26 @@ export function ThemeToggle() {
     }
   };
 
+  const toggleTheme = () => {
+    updateTheme(theme() === 'light' ? 'dark' : 'light');
+  };
+
   return (
-    <select
-      value={theme()}
-      onInput={(e) => updateTheme((e.target as HTMLSelectElement).value)}
-      class="bg-cb-10 text-cf-10 border border-cb-30 rounded px-2 py-1 outline-none text-sm"
+    <button
+      onClick={toggleTheme}
+      class="flex items-center gap-3 bg-cb-0 p-1 border border-cl-20 rounded-full p-1 outline-none text-sm transition-colors cursor-pointer group"
+      title="Toggle Theme"
     >
-      <option value="system">System</option>
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-    </select>
+      <div
+        class={`p-1 rounded-full ${theme() === 'light' ? 'dark text-cf-0 bg-cp-main' : 'text-cf-30'}`}
+      >
+        <SunIcon />
+      </div>
+      <div
+        class={`p-1 rounded-full ${theme() === 'light' ? 'text-cf-30' : 'dark text-cf-0 bg-cp-main'}`}
+      >
+        <MoonIcon />
+      </div>
+    </button>
   );
 }
