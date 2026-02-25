@@ -11,9 +11,10 @@
     "@solidjs/router": "^0.15.4",
     "@solidjs/start": "^1.1.0",
     "hast-mds": "workspace:*",
-    "solid-mds": "workspace:*",
     "mosquito-design-system": "workspace:*",
+    "octokit": "^5.0.5",
     "solid-js": "^1.9.5",
+    "solid-mds": "workspace:*",
     "vinxi": "^0.5.7"
   },
   "engines": {
