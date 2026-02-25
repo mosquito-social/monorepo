@@ -14,13 +14,13 @@ export function IssueTreeNode(props: { node: IssueNode }) {
   };
   
   return (
-    <div class="ml-4 pl-4 py-2 relative border-l border-gray-200">
+    <div class="ml-4 pl-4 py-2 relative border-l border-cl-10">
       <div class="flex items-center space-x-3 mb-2">
         <Show when={hasChildren()}>
           <button 
             type="button" 
             onClick={() => setIsOpen(!isOpen())}
-            class="w-5 h-5 flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-600 rounded text-xs transition-colors cursor-pointer"
+            class="w-5 h-5 flex items-center justify-center bg-cb-30 hover:bg-cb-10 text-cf-20 rounded text-xs transition-colors cursor-pointer"
           >
             {isOpen() ? "▼" : "▶"}
           </button>
@@ -28,20 +28,20 @@ export function IssueTreeNode(props: { node: IssueNode }) {
         <Show when={!hasChildren()}>
           <span class="w-5" />
         </Show>
-        <span class="text-gray-500 font-mono text-sm">#{props.node.number}</span>
-        <a href={props.node.url} target="_blank" class="font-medium text-blue-600 hover:text-blue-800 hover:underline">
+        <span class="text-cf-10 font-mono text-sm">#{props.node.number}</span>
+        <a href={props.node.url} target="_blank" class="font-bold text-cf-30 hover:text-cp-main transition-colors hover:underline">
           {props.node.title}
         </a>
-        <span class={`text-xs px-2 py-0.5 rounded font-medium ${props.node.isDone ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
+        <span class={`text-xs px-2 py-0.5 rounded font-bold ${props.node.isDone ? 'bg-cb-30 text-cf-20' : 'bg-cp-main text-cb-10'}`}>
           {props.node.isDone ? "Done" : "Open"}
         </span>
         <Show when={hasChildren()}>
-          <div class="flex items-center space-x-2 text-sm text-gray-500 ml-4">
+          <div class="flex items-center space-x-2 text-sm text-cf-10 ml-4 font-mono">
             <span>({props.node.notDoneCount}/{props.node.totalCount} open)</span>
-            <div class="w-24 h-2 bg-gray-200 rounded-full overflow-hidden flex">
-              <div class="h-full bg-blue-500 transition-all duration-300" style={{ width: `${percentage()}%` }}></div>
+            <div class="w-24 h-2 bg-cb-30 rounded-full overflow-hidden flex">
+              <div class="h-full bg-cs-main transition-all duration-300" style={{ width: `${percentage()}%` }}></div>
             </div>
-            <span class="text-xs text-gray-400">{percentage()}%</span>
+            <span class="text-xs text-cf-10">{percentage()}%</span>
           </div>
         </Show>
       </div>
