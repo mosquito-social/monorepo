@@ -78,6 +78,17 @@ export async function fetchIssuesTree(forceRefresh = false): Promise<IssueNode[]
   for (const issue of issues) {
     if (issue.pull_request) continue;
 
+    // Support new GitHub Sub-issues feature
+    const parentUrl = (issue as any).parent_issue_url;
+    if (typeof parentUrl === "string") {
+      const parts = parentUrl.split("/");
+      const parentNum = parseInt(parts[parts.length - 1], 10);
+      if (!isNaN(parentNum) && issueNodes.has(parentNum)) {
+        childToParent.set(issue.number, parentNum);
+      }
+    }
+
+    // Support legacy markdown task lists
     const tracked = getTrackedIssues(issue.body);
     for (const childNum of tracked) {
       if (issueNodes.has(childNum)) {
