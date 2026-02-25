@@ -27,19 +27,19 @@ export default function IssuesPage() {
   });
 
   return (
-    <div class="p-8 max-w-5xl mx-auto min-h-screen">
-      <div class="flex items-center justify-between mb-8 pb-4 border-b">
+    <div class="py-4">
+      <div class="flex items-center justify-between mb-8 pb-4 border-b border-cl-10">
         <div>
-          <h1 class="text-3xl font-bold tracking-tight text-gray-900">GitHub Issues</h1>
-          <p class="text-gray-500 mt-2">Hierarchical view of repository tasks and progress.</p>
+          <h1 class="text-3xl font-bold font-mos tracking-tight text-cf-30 mos-effect">GitHub Issues</h1>
+          <p class="text-cf-10 mt-2 font-mono">Hierarchical view of repository tasks and progress.</p>
         </div>
         <button
           onClick={() => fetchIssues(true)}
           disabled={loading()}
-          class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 transition-colors shadow-sm cursor-pointer font-medium flex items-center"
+          class="px-4 py-2 bg-cp-main text-cb-10 rounded hover:opacity-90 disabled:opacity-50 transition-colors cursor-pointer font-bold flex items-center"
         >
           <Show when={loading()}>
-            <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-cb-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
@@ -49,19 +49,19 @@ export default function IssuesPage() {
       </div>
       
       <Show when={error()}>
-        <div class="bg-red-50 text-red-700 p-4 rounded-md mb-6 border border-red-200">
+        <div class="bg-cb-30 text-cp-main p-4 rounded mb-6 border border-cl-20 font-mono">
           <strong>Error:</strong> {error()}
         </div>
       </Show>
       
-      <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden">
+      <div class="bg-cb-20 rounded border border-cl-10 p-6 overflow-hidden">
         <Show when={loading() && issues().length === 0}>
-          <div class="flex flex-col items-center justify-center p-12 text-gray-400">
-            <svg class="animate-spin h-8 w-8 text-blue-500 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <div class="flex flex-col items-center justify-center p-12 text-cf-10">
+            <svg class="animate-spin h-8 w-8 text-cp-main mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            <p>Loading issues tree...</p>
+            <p class="font-mono">Loading issues tree...</p>
           </div>
         </Show>
         
@@ -71,7 +71,7 @@ export default function IssuesPage() {
               {(issue) => <IssueTreeNode node={issue} />}
             </For>
             <Show when={issues().length === 0 && !loading()}>
-              <div class="text-gray-500 text-center py-12 bg-gray-50 rounded-lg">
+              <div class="text-cf-10 font-mono text-center py-12 bg-cb-10 rounded">
                 <p>No issues found in the repository.</p>
               </div>
             </Show>
