@@ -1,34 +1,14 @@
-/// <reference types="vinxi/types/client" />
 import { parse } from 'hast-mds';
+import { ContentEntry, Metadata } from '../types';
 
-export interface Metadata {
-  title?: string;
-  description?: string;
-  date?: string;
-  author?: string;
-  parent?: string | null;
-  weight?: number;
-  [key: string]: any;
-}
+export function getAllContent(): Record<string, ContentEntry> {
+  const ret: Record<string, ContentEntry> = {};
 
-export interface ContentEntry {
-  path: string;
-  metadata: Metadata;
-  raw: string;
-}
-
-export function getAllContent(): {
-  blog: ContentEntry[];
-  docs: ContentEntry[];
-} {
   // Vite exposes raw file content with { query: '?raw', import: 'default', eager: true }
   const files = import.meta.glob<{ default: string }>('../../content/**/*.md', {
     query: '?raw',
     eager: true,
   });
-
-  const blog: ContentEntry[] = [];
-  const docs: ContentEntry[] = [];
 
   for (const [filepath, content] of Object.entries(files)) {
     let rawString = '';
@@ -39,37 +19,31 @@ export function getAllContent(): {
       rawString = (content as any).default;
     }
 
-    const parsed = parse(rawString);
-    console.log(parsed);
-    const metadata = (parsed.global || {}) as Metadata;
+    const parsed = parse<{
+      title: string;
+      description?: string;
+      date?: string;
+      author?: string;
+    }>(rawString);
 
     // Normalize path. filepath looks like '../../content/blog/first-post.md'
     const routePath = filepath
-      .replace('../../content', '/posts')
+      .replace('../../content', '')
       .replace(/\.md$/, ''); // e.g. /blog/first-post
 
-    const entry = { path: routePath, metadata, raw: rawString };
-
-    if (filepath.includes('/content/blog/')) {
-      blog.push(entry);
-    } else if (filepath.includes('/content/documentation/')) {
-      docs.push(entry);
-    }
+    ret[routePath] = parsed;
   }
 
-  // Sort blog by date descending
-  blog.sort((a, b) => {
-    const dateA = a.metadata.date || '';
-    const dateB = b.metadata.date || '';
-    return dateB.localeCompare(dateA);
-  });
+  return ret;
+}
 
-  // Sort docs by weight
-  docs.sort((a, b) => {
-    const wA = typeof a.metadata.weight === 'number' ? a.metadata.weight : 999;
-    const wB = typeof b.metadata.weight === 'number' ? b.metadata.weight : 999;
-    return wA - wB;
-  });
-
-  return { blog, docs };
+/**
+ * Get all global metadata from the content files for creating overviews
+ * @returns An object with the metadata for each content file.
+ */
+export function getAllMetadata(): Record<string, Metadata> {
+  const content = getAllContent();
+  return Object.fromEntries(
+    Object.entries(content).map(([path, entry]) => [path, entry.global ?? {}]),
+  );
 }

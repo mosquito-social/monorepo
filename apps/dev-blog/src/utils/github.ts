@@ -1,11 +1,11 @@
-import { Octokit } from "octokit";
+import { Octokit } from 'octokit';
 
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
 });
 
-const OWNER = "mosquito-social";
-const REPO = "monorepo";
+const OWNER = 'mosquito-social';
+const REPO = 'monorepo';
 
 export type IssueNode = {
   number: number;
@@ -44,7 +44,9 @@ function computeCountsAndProgress(node: IssueNode) {
   }
 }
 
-export async function fetchIssuesTree(forceRefresh = false): Promise<IssueNode[]> {
+export async function fetchIssuesTree(
+  forceRefresh = false,
+): Promise<IssueNode[]> {
   if (cachedTree && !forceRefresh) {
     return cachedTree;
   }
@@ -52,7 +54,7 @@ export async function fetchIssuesTree(forceRefresh = false): Promise<IssueNode[]
   const issues = await octokit.paginate(octokit.rest.issues.listForRepo, {
     owner: OWNER,
     repo: REPO,
-    state: "all",
+    state: 'all',
     per_page: 100,
   });
 
@@ -66,7 +68,7 @@ export async function fetchIssuesTree(forceRefresh = false): Promise<IssueNode[]
       number: issue.number,
       title: issue.title,
       url: issue.html_url,
-      isDone: issue.state === "closed",
+      isDone: issue.state === 'closed',
       totalCount: 0,
       notDoneCount: 0,
       children: [],
@@ -80,8 +82,8 @@ export async function fetchIssuesTree(forceRefresh = false): Promise<IssueNode[]
 
     // Support new GitHub Sub-issues feature
     const parentUrl = (issue as any).parent_issue_url;
-    if (typeof parentUrl === "string") {
-      const parts = parentUrl.split("/");
+    if (typeof parentUrl === 'string') {
+      const parts = parentUrl.split('/');
       const parentNum = parseInt(parts[parts.length - 1], 10);
       if (!isNaN(parentNum) && issueNodes.has(parentNum)) {
         childToParent.set(issue.number, parentNum);

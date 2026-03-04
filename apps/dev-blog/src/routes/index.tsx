@@ -1,59 +1,74 @@
-import { cache, createAsync } from '@solidjs/router';
-import { For, Suspense } from 'solid-js';
-import { getAllContent } from '../utils/content';
-
-const getBlogContent = cache(async () => {
-  'use server';
-  return getAllContent().blog;
-}, 'blog-content');
+import { Meta, Title } from '@solidjs/meta';
+import { A, createAsync } from '@solidjs/router';
+import { For, Show } from 'solid-js';
+import { transform } from 'solid-mds';
+import { Metadata } from '../types';
+import { getDoc, getMetadata } from '../utils/queries';
 
 export default function Index() {
-  const blogEntries = createAsync(() => getBlogContent());
+  const page = createAsync(() => getDoc('home'));
+  const metadata = createAsync(() => getMetadata());
 
   return (
     <div class="space-y-8">
       <div>
-        <h1 class="font-mos mos-effect text-6xl text-cb-0 mb-3">Dev Blog</h1>
-        <p class="text-lg mb-8">
-          Latest updates from the <span class="font-mos">mosquito.social</span>{' '}
-          engineering team.
-        </p>
+        <h1 class="font-mos mos-effect text-6xl text-cb-0 mb-3">
+          Mosquito.social Devs
+        </h1>
+        <p class="text-lg mb-8">Latest updates from the engineering team.</p>
       </div>
 
-      <div class="space-y-6">
-        <Suspense
-          fallback={
-            <div class="animate-pulse h-24 bg-zinc-200 dark:bg-zinc-800 rounded-xl w-full" />
-          }
-        >
-          <For each={blogEntries()}>
-            {(entry) => (
-              <article class="p-6 border border-cb-30 rounded-xl hover:border-cp-main transition-colors group bg-cb-20">
-                <a href={entry.path} class="block text-inherit no-underline">
-                  <header class="mb-2">
-                    <h2 class="text-2xl font-mos group-hover:text-cp-main transition-colors">
-                      {entry.metadata?.title || 'Untitled Post'}
-                    </h2>
-                    <div class="text-sm text-cf-40 mt-2 flex items-center gap-2">
-                      {entry.metadata?.date && (
-                        <time>{entry.metadata.date}</time>
-                      )}
-                      {entry.metadata?.author && (
-                        <>
-                          <span>•</span>
-                          <span>{entry.metadata.author}</span>
-                        </>
-                      )}
-                    </div>
-                  </header>
-                  <p class="text-cf-30 line-clamp-2 leading-relaxed">
-                    {entry.metadata?.description || 'No description provided.'}
-                  </p>
-                </a>
-              </article>
-            )}
-          </For>
-        </Suspense>
+      <div class="flex">
+        <div class="grow">
+          <Show
+            when={page()}
+            fallback={
+              <div class="">
+                <h1>Documentation Page Not Found</h1>
+                <p>The requested documentation page could not be found.</p>
+              </div>
+            }
+          >
+            {(p) => {
+              const parsed = transform<Metadata, {}>(p());
+              const MarkdownBody = parsed.steps.default.Body;
+
+              return (
+                <div>
+                  <Title>Development Portal | mosquito.social</Title>
+                  <Meta name="description" content={''} />
+                  <MarkdownBody />
+                </div>
+              );
+            }}
+          </Show>
+        </div>
+        <aside class="w-xs">
+          <h2 class="text-xl font-bold mb-3">
+            <A href="/blog">Latest Blog Posts</A>
+          </h2>
+          <Show when={metadata()} fallback={<div></div>}>
+            {(meta) => {
+              const allBlogs = Object.entries(meta()).filter(([key]) =>
+                key.startsWith('/blog'),
+              );
+              return (
+                <For each={allBlogs}>
+                  {([path, meta]: [string, Metadata]) => (
+                    <A
+                      href={path}
+                      class="block border border-cl-10 p-3 bg-cb-20 rounded-lg mb-3"
+                    >
+                      <h3 class="font-bold mb-2">{meta.title}</h3>
+                      <p class="text-sm">{meta.description}</p>
+                      <p class="text-sm text-right text-cf-20">{meta.date}</p>
+                    </A>
+                  )}
+                </For>
+              );
+            }}
+          </Show>
+        </aside>
       </div>
     </div>
   );

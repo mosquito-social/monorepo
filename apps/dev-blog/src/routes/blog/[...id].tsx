@@ -7,7 +7,7 @@ import { getDoc } from '../../utils/queries';
 
 export default function DocDetail() {
   const params = useParams();
-  const doc = createAsync(() => getDoc(`docs/${params.id || ''}`));
+  const doc = createAsync(() => getDoc(`blog/${params.id || ''}`));
 
   return (
     <Suspense fallback={<div class="">Loading...</div>}>
@@ -28,8 +28,7 @@ export default function DocDetail() {
           return (
             <div class="">
               <Title>
-                {result.global?.title ?? 'Documentation'} | Docs |
-                mosquito.social
+                {result.global?.title ?? ''} | Blog | mosquito.social
               </Title>
               <Meta
                 name="description"
