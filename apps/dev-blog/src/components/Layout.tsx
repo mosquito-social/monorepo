@@ -7,8 +7,9 @@ export function Layout(props: { children: JSX.Element }) {
     <div class="min-h-screen bg-cb-10 font-sans">
       <header class="sticky top-0 z-10 border-b border-cl-10 p-3 flex justify-between items-center px-4 bg-cb-20">
         <div>
-          <A class="font-mos text-2xl text-cf-30" href="/">
-            dev.<span class="mos-effect text-cb-30">mosquito</span>.social
+          <A class="font-mos text-2xl text-cf-10" href="/">
+            <span class="text-cf-30/80">dev.</span>
+            <span class="mos-effect text-cb-30">mosquito</span>.social
           </A>
         </div>
         <div class="flex gap-4 items-center">

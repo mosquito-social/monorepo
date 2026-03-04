@@ -20,13 +20,11 @@ export default function DesignSystem() {
   const secondaryColors = [{ name: 'cs-main', class: 'bg-cs-main text-cb-0' }];
 
   return (
-    <div class="min-h-screen bg-cb-10 text-cf-10 p-8">
+    <div class="min-h-screen bg-cb-10 text-cf-10">
       <h1 class="text-6xl font-mos mos-effect text-cb-0 mb-8">Design System</h1>
 
       <section>
-        <h2 class="text-4xl font-bold uppercase mb-6">
-          Tailwind Tokens for Colors
-        </h2>
+        <h2 class="text-4xl font-bold uppercase mb-6">Tailwind Color Tokens</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           {bgColors.map((c) => (
             <div
@@ -84,32 +82,32 @@ export default function DesignSystem() {
       </section>
       <section>
         <h2 class="text-4xl font-bold uppercase mb-6 mt-8">
-          Tailwind Tokens for Fonts
+          Tailwind Font Tokens
         </h2>
         <div class="border border-cl-20 p-4 rounded-xl mb-4">
           <p class="font-mos text-4xl">Caprasimo</p>
-          <p class="font-mono">text-mos</p>
+          <p class="font-mono">font-mos</p>
           <p class="text-cf-30 text-xs">Mosquito signature Font</p>
         </div>
         <div class="border border-cl-20 p-4 rounded-xl mb-4">
           <p class="font-sans text-4xl">
             IBM Plex Sans <strong>Bold</strong> <em>Italic</em>
           </p>
-          <p class="font-mono">text-sans</p>
+          <p class="font-mono">font-sans</p>
           <p class="text-cf-30 text-xs">Go-To sans serif font</p>
         </div>
         <div class="border border-cl-20 p-4 rounded-xl mb-4">
           <p class="font-serif text-4xl">
             IBM Plex Serif <strong>Bold</strong> <em>Italic</em>
           </p>
-          <p class="font-mono">text-serif</p>
+          <p class="font-mono">font-serif</p>
           <p class="text-cf-30 text-xs">Typeface for long form text</p>
         </div>
         <div class="border border-cl-20 p-4 rounded-xl mb-4">
           <p class="font-mono text-4xl">
             IBM Plex Mono <strong>Bold</strong> <em>Italic</em>
           </p>
-          <p class="font-mono">text-mono</p>
+          <p class="font-mono">font-mono</p>
           <p class="text-cf-30 text-xs">Typeface for code</p>
         </div>
       </section>
