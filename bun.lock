@@ -88,7 +88,11 @@
     "packages/mosquito-design-system": {
       "name": "mosquito-design-system",
       "version": "1.0.0",
+      "devDependencies": {
+        "@solidjs/router": "^0.15.4",
+      },
       "peerDependencies": {
+        "@solidjs/router": "^0.15.4",
         "solid-js": "^1.9.5",
       },
     },

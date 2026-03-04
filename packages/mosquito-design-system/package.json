@@ -2,7 +2,8 @@
   "name": "mosquito-design-system",
   "version": "1.0.0",
   "peerDependencies": {
-    "solid-js": "^1.9.5"
+    "solid-js": "^1.9.5",
+    "@solidjs/router": "^0.15.4"
   },
   "exports": {
     "./theme.css": "./theme.css",
@@ -10,7 +11,11 @@
       "types": "./fouc.d.ts",
       "default": "./fouc.js"
     },
-    "./ThemeToggle": "./ThemeToggle.tsx"
+    "./ThemeToggle": "./ThemeToggle.tsx",
+    "./canonical": "./canonical.tsx"
+  },
+  "devDependencies": {
+    "@solidjs/router": "^0.15.4"
   },
   "type": "module"
 }
