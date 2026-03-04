@@ -1,6 +1,6 @@
 import { A } from '@solidjs/router';
 import { ThemeToggle } from 'mosquito-design-system/ThemeToggle';
-import { JSX, createSignal, onMount } from 'solid-js';
+import { JSX } from 'solid-js';
 
 export function Layout(props: { children: JSX.Element }) {
   return (
