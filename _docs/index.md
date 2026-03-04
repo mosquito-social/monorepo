@@ -23,3 +23,7 @@ The following scripts are available in the root `package.json` to ease daily dev
 - `bun run check:format`: Verifies formatting using Biome.
 - `bun run check:lint`: Analyzes code dynamically for issues using Oxlint.
 - `bun run check:all`: Runs TS check, Format check, and Lint check continuously.
+
+## Conventions
+
+- **File Naming**: ALL files have to follow the alpha-numeric-kebab-case pattern. They have no capital letters and words are separated with a `-`.
