@@ -1,5 +1,6 @@
 import { Meta, Title } from '@solidjs/meta';
 import { createAsync, useParams } from '@solidjs/router';
+import { canonicalComponents } from 'mosquito-design-system/canonical';
 import { Show, Suspense } from 'solid-js';
 import { transform } from 'solid-mds';
 import { Metadata } from '../../types';
@@ -22,7 +23,7 @@ export default function DocDetail() {
       >
         {(d) => {
           // Parse and transform the raw markdown
-          const result = transform<Metadata, {}>(d());
+          const result = transform<Metadata, {}>(d(), canonicalComponents);
           const MarkdownBody = result.steps.default.Body;
 
           return (

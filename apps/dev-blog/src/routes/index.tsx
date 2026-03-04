@@ -1,5 +1,6 @@
 import { Meta, Title } from '@solidjs/meta';
 import { A, createAsync } from '@solidjs/router';
+import { canonicalComponents } from 'mosquito-design-system/canonical';
 import { For, Show } from 'solid-js';
 import { transform } from 'solid-mds';
 import { Metadata } from '../types';
@@ -30,7 +31,7 @@ export default function Index() {
             }
           >
             {(p) => {
-              const parsed = transform<Metadata, {}>(p());
+              const parsed = transform<Metadata, {}>(p(), canonicalComponents);
               const MarkdownBody = parsed.steps.default.Body;
 
               return (
