@@ -4,6 +4,8 @@
   "private": true,
   "workspaces": ["apps/*", "packages/*"],
   "scripts": {
+    "devblog:build": "cd apps/dev-blog && bun run build",
+    "devblog:start": "cd apps/dev-blog && bun run start",
     "check:ts": "tsc --noEmit",
     "check:format": "biome check .",
     "check:lint": "oxlint",
