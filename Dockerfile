@@ -14,6 +14,10 @@ COPY . .
 # Install dependencies for the whole monorepo
 RUN bun install --frozen-lockfile
 
+# Build workspace dependencies (these need to be built before the app can be compiled)
+RUN cd packages/hast-mds && bun run build
+RUN cd packages/solid-mds && bun run build
+
 # -------------------------------------------------------------------
 # 2. Build the specific application
 # -------------------------------------------------------------------
