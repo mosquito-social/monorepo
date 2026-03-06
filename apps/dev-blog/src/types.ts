@@ -5,6 +5,7 @@ export interface Metadata {
   description?: string;
   date?: string;
   author?: string;
+  subtitle?: string;
 }
 
 export type ContentEntry = HastParseResult<Metadata, {}>;

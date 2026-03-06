@@ -27,7 +27,7 @@ export default function DocDetail() {
           const MarkdownBody = result.steps.default.Body;
 
           return (
-            <div class="">
+            <div class="max-w-2xl mx-auto">
               <Title>
                 {result.global?.title ?? ''} | Blog | mosquito.social
               </Title>
@@ -35,9 +35,10 @@ export default function DocDetail() {
                 name="description"
                 content={result.global?.description ?? ''}
               />
-              <h1 class="font-mos mos-effect text-6xl text-cb-0 mb-8">
+              <h1 class="font-mos mos-effect text-6xl text-cb-0 mb-4">
                 {result.global?.title ?? 'Documentation'}
               </h1>
+              <p class="text-cf-20 text-xl mb-8">{result.global?.subtitle}</p>
               <MarkdownBody />
             </div>
           );
