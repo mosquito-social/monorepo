@@ -61,7 +61,9 @@ export default function Index() {
                       class="block border border-cl-10 p-3 bg-cb-20 rounded-lg mb-3"
                     >
                       <h3 class="font-bold mb-2">{meta.title}</h3>
-                      <p class="text-sm">{meta.description}</p>
+                      <Show when={meta.subtitle}>
+                        <h3 class="mb-2 text-sm">{meta.subtitle}</h3>
+                      </Show>
                       <p class="text-sm text-right text-cf-20">{meta.date}</p>
                     </A>
                   )}
