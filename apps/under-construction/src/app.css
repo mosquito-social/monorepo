@@ -2,8 +2,3 @@
 @import "mosquito-design-system/theme.css";
 
 @source "../../../packages/mosquito-design-system";
-
-@theme {
-  --font-sans: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-}
