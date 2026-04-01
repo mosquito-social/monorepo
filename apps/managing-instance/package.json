@@ -2,7 +2,7 @@
   "name": "managing-instance",
   "type": "module",
   "scripts": {
-    "dev": "vinxi dev --host --port 3333",
+    "dev": "vinxi dev --host --port 3803",
     "build": "vinxi build",
     "start": "vinxi start"
   },

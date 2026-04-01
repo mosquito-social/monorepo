@@ -1,8 +1,8 @@
-import img from '../under-construction.jpg';
+import img from "../under-construction.jpg";
 
 export default function Home() {
   return (
-    <main class="flex min-h-screen flex-col items-center justify-center p-3 font-sans">
+    <main class="flex min-h-screen flex-col items-center justify-center p-3 font-sans dark bg-cb-20">
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-2xl">
         <div class="">
           <img src={img} alt="Under Construction" class="w-full h-auto" />
@@ -14,7 +14,7 @@ export default function Home() {
           <h2 class="text-2xl mb-8">We're building something new</h2>
           <p class="text-lg text-cf-20 ">
             Our platform is currently under construction. Please check back
-            later or checkout our development progress at{' '}
+            later or checkout our development progress at{" "}
             <a
               href="https://dev.mosquito.social"
               class="text-cp-main underline underline-offset-4 hover:text-cs-main"

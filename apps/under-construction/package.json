@@ -2,7 +2,7 @@
   "name": "under-construction",
   "type": "module",
   "scripts": {
-    "dev": "vinxi dev",
+    "dev": "vinxi dev --host --port 3804",
     "build": "vinxi build",
     "start": "vinxi start"
   },

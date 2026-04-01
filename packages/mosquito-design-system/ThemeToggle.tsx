@@ -48,7 +48,7 @@ export function ThemeToggle() {
   onMount(() => {
     const match = document.cookie.match(/(?:^|; )colorScheme=([^;]+)/);
     const cookieTheme = match ? match[1] : 'light';
-    setTheme(cookieTheme === 'system' ? 'light' : cookieTheme);
+    updateTheme(cookieTheme === 'system' ? 'light' : cookieTheme);
   });
 
   const updateTheme = (newTheme: string) => {
