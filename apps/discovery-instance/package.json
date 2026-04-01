@@ -2,7 +2,7 @@
   "name": "discovery-instance",
   "type": "module",
   "scripts": {
-    "dev": "vinxi dev --host --port 3332",
+    "dev": "vinxi dev --host --port 3802",
     "build": "vinxi build",
     "start": "vinxi start"
   },

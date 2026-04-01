@@ -2,7 +2,7 @@
   "name": "dev-blog",
   "type": "module",
   "scripts": {
-    "dev": "vinxi dev --host --port 3331",
+    "dev": "vinxi dev --host --port 3801",
     "build": "vinxi build",
     "start": "vinxi start"
   },

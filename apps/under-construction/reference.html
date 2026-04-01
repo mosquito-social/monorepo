@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mosquito.social — Mood Boards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=Ysabeau:ital,wght@0,400;0,900;1,400&family=DM+Sans:wght@400;500&family=Source+Sans+3:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #1a1a1a;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ─── BOARD SHELL ─── */
+.board {
+  width: 1200px;
+  height: 800px;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+}
+
+/* ─── LOGO SVG color ─── */
+.logo-mark svg path { fill: currentColor; }
+
+/* ══════════════════════════════════════════
+   VARIANT I — DEEP ROSE
+═══════════════════════════════════════════ */
+
+/* I-A  Light */
+.ia {
+  background: #FAF6F6;
+  color: #1F0C0C;
+  font-family: 'DM Sans', sans-serif;
+  grid-template-columns: 420px 1fr;
+  grid-template-rows: 1fr;
+}
+
+/* I-B  Dark */
+.ib {
+  background: #1F0C0C;
+  color: #FAF6F6;
+  font-family: 'DM Sans', sans-serif;
+  grid-template-columns: 420px 1fr;
+  grid-template-rows: 1fr;
+}
+
+.rose-accent-l  { color: #C42A2A; }
+.rose-accent-d  { color: #E86060; }
+.rose-surf2-l   { background: #EDE4E4; }
+.rose-surf2-d   { background: #381818; }
+.rose-btn-l     { background: #C42A2A; color: #fff; }
+.rose-btn-d     { background: #E86060; color: #1F0C0C; }
+.rose-tag-l     { background: #EDE4E4; color: #C42A2A; }
+.rose-tag-d     { background: #381818; color: #E86060; }
+.rose-nav-l     { background: #C42A2A; color: #fff; }
+.rose-nav-d     { background: #E86060; color: #1F0C0C; }
+
+/* ══════════════════════════════════════════
+   VARIANT II — CHEMICAL CYAN
+═══════════════════════════════════════════ */
+
+.iia {
+  background: #F2F9F9;
+  color: #061818;
+  font-family: 'Source Sans 3', sans-serif;
+  grid-template-columns: 420px 1fr;
+}
+
+.iib {
+  background: #061818;
+  color: #F2F9F9;
+  font-family: 'Source Sans 3', sans-serif;
+  grid-template-columns: 420px 1fr;
+}
+
+.cyan-accent-l  { color: #00A89E; }
+.cyan-accent-d  { color: #00DDD1; }
+.cyan-surf2-l   { background: #D8EEEC; }
+.cyan-surf2-d   { background: #0E2B2A; }
+.cyan-btn-l     { background: #00A89E; color: #fff; }
+.cyan-btn-d     { background: #00DDD1; color: #061818; }
+.cyan-tag-l     { background: #D8EEEC; color: #007A72; }
+.cyan-tag-d     { background: #0E2B2A; color: #00DDD1; }
+.cyan-nav-l     { background: #00A89E; color: #fff; }
+.cyan-nav-d     { background: #00DDD1; color: #061818; }
+
+/* ─── LEFT PANEL ─── */
+.left {
+  padding: 48px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid rgba(128,128,128,.12);
+  position: relative;
+}
+
+.logo-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-mark { width: 32px; height: 32px; flex-shrink: 0; }
+.logo-mark svg { width: 32px; height: 32px; display: block; }
+
+.logo-name {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -.01em;
+  line-height: 1;
+}
+
+.hero-block { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 0 24px; }
+
+.hero-eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: .45;
+  margin-bottom: 16px;
+}
+
+.hero-headline {
+  font-size: 64px;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.hero-headline-b {
+  font-size: 64px;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  font-weight: 700;
+  font-optical-sizing: auto;
+  margin-bottom: 20px;
+}
+
+.hero-sub {
+  font-size: 15px;
+  line-height: 1.65;
+  opacity: .6;
+  max-width: 300px;
+}
+
+.cta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.btn-primary {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: .01em;
+}
+
+.btn-ghost {
+  font-size: 13px;
+  font-weight: 400;
+  opacity: .5;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 4px;
+}
+
+.palette-strip {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.swatch-label {
+  font-size: 10px;
+  opacity: .35;
+  letter-spacing: .04em;
+  margin-left: 4px;
+}
+
+/* ─── RIGHT PANEL ─── */
+.right {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.cell {
+  padding: 28px 28px;
+  border-left: 1px solid rgba(128,128,128,.1);
+  border-bottom: 1px solid rgba(128,128,128,.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.cell:nth-child(2), .cell:nth-child(4) { border-right: none; }
+.cell:nth-child(3), .cell:nth-child(4) { border-bottom: none; }
+
+/* TYPE SPECIMEN cell */
+.type-specimen { justify-content: flex-end; }
+
+.spec-giant {
+  font-size: 96px;
+  line-height: .9;
+  letter-spacing: -.03em;
+  font-weight: 900;
+  opacity: .08;
+  position: absolute;
+  right: -8px;
+  top: 220px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.spec-giant-b {
+  font-size: 96px;
+  line-height: .9;
+  letter-spacing: -.03em;
+  font-weight: 700;
+  font-optical-sizing: auto;
+  opacity: .08;
+  position: absolute;
+  right: -8px;
+  top: 220px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.spec-row { display: flex; flex-direction: column; gap: 4px; }
+.spec-name { font-size: 10px; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; opacity: .35; }
+.spec-sample-xl { font-size: 36px; font-weight: 900; line-height: 1.1; letter-spacing: -.015em; }
+.spec-sample-xl-b { font-size: 36px; font-weight: 700; font-optical-sizing: auto; line-height: 1.1; letter-spacing: -.015em; }
+.spec-sample-md { font-size: 18px; font-weight: 400; line-height: 1.3; }
+.spec-sample-sm { font-size: 13px; font-weight: 400; line-height: 1.5; opacity: .55; }
+
+/* EVENT CARD cell */
+.event-card-inner {
+  border-radius: 10px;
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 20px;
+  width: fit-content;
+  margin-bottom: 10px;
+}
+
+.card-title-inner {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.card-body-inner {
+  font-size: 12px;
+  line-height: 1.6;
+  opacity: .55;
+  flex: 1;
+}
+
+.card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
+.avatars { display: flex; }
+.av {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  font-size: 8px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid transparent;
+}
+.av+.av { margin-left: -7px; }
+
+.btn-sm {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 13px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+/* NAV / UI FRAGMENTS cell */
+.nav-strip {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 8px;
+}
+
+.nav-pill {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.nav-pill.inactive { opacity: .35; background: none; }
+
+.live-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(128,128,128,.1);
+}
+
+.live-item:last-of-type { border-bottom: none; }
+
+.dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.live-name { font-size: 13px; font-weight: 500; flex: 1; }
+.live-count { font-size: 11px; opacity: .4; }
+
+/* COLOR PALETTE cell */
+.pal-cell { justify-content: space-between; }
+
+.big-swatch {
+  flex: 1;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px 12px;
+  min-height: 0;
+}
+
+.swatch-info { display: flex; flex-direction: column; gap: 2px; }
+.swatch-hex { font-size: 10px; font-weight: 600; letter-spacing: .04em; }
+.swatch-role { font-size: 9px; letter-spacing: .06em; text-transform: uppercase; opacity: .7; }
+.on-dark-text .swatch-hex, .on-dark-text .swatch-role { color: rgba(255,255,255,.85); }
+.on-light-text .swatch-hex, .on-light-text .swatch-role { color: rgba(0,0,0,.5); }
+
+.swatch-row {
+  display: flex;
+  gap: 6px;
+  height: 64px;
+}
+
+.swatch-row2 {
+  display: flex;
+  gap: 6px;
+  height: 80px;
+}
+
+/* ─── BOARD LABELS ─── */
+.board-id {
+  position: absolute;
+  bottom: 18px;
+  right: 24px;
+  font-family: system-ui, sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  opacity: .25;
+}
+
+/* section dividers between boards */
+.section-title {
+  font-family: system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: -16px;
+}
+</style>
+</head>
+<body>
+
+<div class="section-title">Variant I — Ysabeau & Deep Rose</div>
+
+<!-- ════════════ BOARD I-A: ROSE LIGHT ════════════ -->
+<div class="board ia" style="font-family:'DM Sans',sans-serif">
+
+  <div class="spec-giant" style="font-family:'Ysabeau',sans-serif;right:420px">Aa</div>
+
+  <!-- LEFT -->
+  <div class="left">
+    <div class="logo-row">
+      <div class="logo-mark" style="color:#1F0C0C">
+        <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#c1)"><path d="M81.6607 0.0285006C10.2149 -1.90476 -0.0771741 95.0282 73.6513 134.261C116.49 157.057 99.504 175.88 126.934 256H128.066C155.496 175.88 138.51 157.057 181.348 134.261C268.73 87.7627 238.093 -39.7839 127.501 12.269C110.222 4.13573 94.8913 0.386511 81.6607 0.0285006ZM84.8094 14.2251C88.5913 14.1759 92.3654 14.5833 96.05 15.4384C95.455 15.7341 94.865 16.0398 94.2803 16.3553C80.3662 23.8625 69.9992 36.599 65.4599 51.7627C60.9206 66.9264 62.5808 83.2753 70.0754 97.2129C72.1257 101.025 74.5842 104.603 77.4074 107.882C70.3703 106.666 63.7015 103.863 57.9053 99.6848C52.1092 95.5066 47.3376 90.0627 43.9513 83.7651C38.029 72.75 36.7174 59.8296 40.3051 47.8459C43.8928 35.8622 52.0858 25.7969 63.082 19.8639C69.765 16.2578 77.2191 14.3232 84.8094 14.2251ZM171.542 15.252C179.132 15.3501 186.586 17.2847 193.269 20.8908C204.266 26.8238 212.459 36.8892 216.046 48.8728C219.634 60.8565 218.323 73.777 212.4 84.792C209.014 91.0897 204.242 96.5335 198.446 100.712C192.65 104.89 185.981 107.693 178.944 108.909C181.767 105.63 184.226 102.052 186.276 98.2398C193.771 84.3022 195.431 67.9533 190.892 52.7896C186.352 37.6259 175.985 24.8894 162.071 17.3822C161.486 17.0667 160.896 16.761 160.302 16.4653C163.986 15.6102 167.76 15.2028 171.542 15.252Z" fill="currentColor"/></g><defs><clipPath id="c1"><rect width="209" height="256" fill="white" transform="translate(23)"/></clipPath></defs></svg>
+      </div>
+      <div class="logo-name" style="font-family:'Ysabeau',sans-serif;font-weight:400">mosquito.social</div>
+    </div>
+
+    <div class="hero-block">
+      <div class="hero-eyebrow">Federated communities</div>
+      <div class="hero-headline" style="font-family:'Ysabeau',sans-serif">Find your people.</div>
+      <div class="hero-sub">Communities built on openness. Events that actually happen. A network that belongs to no one — and everyone.</div>
+      <div class="cta-row">
+        <button class="btn-primary rose-btn-l">Explore communities</button>
+        <button class="btn-ghost" style="color:#1F0C0C">How it works →</button>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;opacity:.3;margin-bottom:2px">Typography</div>
+      <div style="font-family:'Ysabeau',sans-serif;font-size:13px;font-weight:900;letter-spacing:.04em">YSABEAU 900 — Display</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:400;opacity:.55">DM Sans 400 — Body & UI</div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+
+    <!-- Type specimen -->
+    <div class="cell type-specimen" style="position:relative">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;opacity:.3;margin-bottom:4px">Type scale</div>
+      <div class="spec-row" style="margin-bottom:8px">
+        <div class="spec-name">Display / 900</div>
+        <div class="spec-sample-xl" style="font-family:'Ysabeau',sans-serif">Community</div>
+      </div>
+      <div class="spec-row" style="margin-bottom:8px">
+        <div class="spec-name">Headline / 400</div>
+        <div class="spec-sample-md" style="font-family:'Ysabeau',sans-serif">Screen Printing Workshop</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-name">Body / DM Sans</div>
+        <div class="spec-sample-sm" style="font-family:'DM Sans',sans-serif">Open to all skill levels. Materials provided. Bring a garment, tote bag, or anything you'd like to print on. Limited spots available.</div>
+      </div>
+    </div>
+
+    <!-- Event card -->
+    <div class="cell">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;opacity:.3;margin-bottom:0">Card component</div>
+      <div class="event-card-inner rose-surf2-l">
+        <div>
+          <div class="card-tag-pill rose-tag-l">Workshop · Sat 14 Jun</div>
+          <div class="card-title-inner" style="font-family:'Ysabeau',sans-serif">Introduction to Screen Printing</div>
+          <div class="card-body-inner" style="font-family:'DM Sans',sans-serif">Open to all levels. Materials included. Bring something you want to print on.</div>
+        </div>
+        <div class="card-foot">
+          <div class="avatars">
+            <div class="av rose-btn-l">MR</div>
+            <div class="av rose-btn-l" style="border-color:#FAF6F6">JK</div>
+            <div class="av" style="background:#EDE4E4;color:#C42A2A;border-color:#FAF6F6">+8</div>
+          </div>
+          <button class="btn-sm rose-btn-l" style="font-family:'DM Sans',sans-serif">Join event</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nav + live -->
+    <div class="cell">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;opacity:.3;margin-bottom:4px">Navigation & live states</div>
+      <div class="nav-strip">
+        <div class="nav-pill rose-nav-l" style="font-family:'DM Sans',sans-serif">Discover</div>
+        <div class="nav-pill inactive" style="font-family:'DM Sans',sans-serif">Communities</div>
+        <div class="nav-pill inactive" style="font-family:'DM Sans',sans-serif">Events</div>
+      </div>
+      <div style="margin-top:8px">
+        <div class="live-item">
+          <div class="dot" style="background:#C42A2A"></div>
+          <div class="live-name" style="font-family:'DM Sans',sans-serif">Hamburg Sketchers</div>
+          <div class="live-count">12 online</div>
+        </div>
+        <div class="live-item">
+          <div class="dot" style="background:#C42A2A"></div>
+          <div class="live-name" style="font-family:'DM Sans',sans-serif">Flea Market Collective</div>
+          <div class="live-count">34 online</div>
+        </div>
+        <div class="live-item" style="opacity:.35">
+          <div class="dot" style="background:#888"></div>
+          <div class="live-name" style="font-family:'DM Sans',sans-serif">Photography Walkers</div>
+          <div class="live-count">offline</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Palette -->
+    <div class="cell pal-cell">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;opacity:.3;margin-bottom:4px">Colour — Deep Rose · Light</div>
+      <div class="swatch-row2">
+        <div class="big-swatch on-dark-text" style="background:#C42A2A">
+          <div class="swatch-info"><div class="swatch-hex">#C42A2A</div><div class="swatch-role">Accent</div></div>
+        </div>
+        <div class="big-swatch on-light-text" style="background:#FAF6F6;border:1px solid rgba(0,0,0,.08)">
+          <div class="swatch-info"><div class="swatch-hex">#FAF6F6</div><div class="swatch-role">Surface 1</div></div>
+        </div>
+        <div class="big-swatch on-light-text" style="background:#EDE4E4">
+          <div class="swatch-info"><div class="swatch-hex">#EDE4E4</div><div class="swatch-role">Surface 2</div></div>
+        </div>
+        <div class="big-swatch on-dark-text" style="background:#1F0C0C">
+          <div class="swatch-info"><div class="swatch-hex">#1F0C0C</div><div class="swatch-role">Dark 1</div></div>
+        </div>
+        <div class="big-swatch on-dark-text" style="background:#381818">
+          <div class="swatch-info"><div class="swatch-hex">#381818</div><div class="swatch-role">Dark 2</div></div>
+        </div>
+      </div>
+      <div style="font-size:10px;opacity:.3;margin-top:8px;font-family:'DM Sans',sans-serif">oklch(50% 0.24 H10) — neutrals share H10 across all stops</div>
+    </div>
+
+  </div>
+  <div class="board-id">I-A · Ysabeau + Deep Rose · Light</div>
+</div>
+
+
+<!-- ════════════ BOARD I-B: ROSE DARK ════════════ -->
+<div class="board ib" style="font-family:'DM Sans',sans-serif">
+
+  <!-- LEFT -->
+  <div class="left">
+    <div class="logo-row">
+      <div class="logo-mark" style="color:#FAF6F6">
+        <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#c2)"><path d="M81.6607 0.0285006C10.2149 -1.90476 -0.0771741 95.0282 73.6513 134.261C116.49 157.057 99.504 175.88 126.934 256H128.066C155.496 175.88 138.51 157.057 181.348 134.261C268.73 87.7627 238.093 -39.7839 127.501 12.269C110.222 4.13573 94.8913 0.386511 81.6607 0.0285006ZM84.8094 14.2251C88.5913 14.1759 92.3654 14.5833 96.05 15.4384C95.455 15.7341 94.865 16.0398 94.2803 16.3553C80.3662 23.8625 69.9992 36.599 65.4599 51.7627C60.9206 66.9264 62.5808 83.2753 70.0754 97.2129C72.1257 101.025 74.5842 104.603 77.4074 107.882C70.3703 106.666 63.7015 103.863 57.9053 99.6848C52.1092 95.5066 47.3376 90.0627 43.9513 83.7651C38.029 72.75 36.7174 59.8296 40.3051 47.8459C43.8928 35.8622 52.0858 25.7969 63.082 19.8639C69.765 16.2578 77.2191 14.3232 84.8094 14.2251ZM171.542 15.252C179.132 15.3501 186.586 17.2847 193.269 20.8908C204.266 26.8238 212.459 36.8892 216.046 48.8728C219.634 60.8565 218.323 73.777 212.4 84.792C209.014 91.0897 204.242 96.5335 198.446 100.712C192.65 104.89 185.981 107.693 178.944 108.909C181.767 105.63 184.226 102.052 186.276 98.2398C193.771 84.3022 195.431 67.9533 190.892 52.7896C186.352 37.6259 175.985 24.8894 162.071 17.3822C161.486 17.0667 160.896 16.761 160.302 16.4653C163.986 15.6102 167.76 15.2028 171.542 15.252Z" fill="currentColor"/></g><defs><clipPath id="c2"><rect width="209" height="256" fill="white" transform="translate(23)"/></clipPath></defs></svg>
+      </div>
+      <div class="logo-name" style="font-family:'Ysabeau',sans-serif;font-weight:400">mosquito.social</div>
+    </div>
+
+    <div class="hero-block">
+      <div class="hero-eyebrow">Federated communities</div>
+      <div class="hero-headline" style="font-family:'Ysabeau',sans-serif">Find your people.</div>
+      <div class="hero-sub">Communities built on openness. Events that actually happen. A network that belongs to no one — and everyone.</div>
+      <div class="cta-row">
+        <button class="btn-primary rose-btn-d">Explore communities</button>
+        <button class="btn-ghost" style="color:#FAF6F6">How it works →</button>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;opacity:.3;margin-bottom:2px">Typography</div>
+      <div style="font-family:'Ysabeau',sans-serif;font-size:13px;font-weight:900;letter-spacing:.04em;color:#E86060">YSABEAU 900 — Display</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:400;opacity:.45">DM Sans 400 — Body & UI</div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+
+    <div class="cell type-specimen">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;opacity:.3;margin-bottom:4px">Type scale</div>
+      <div class="spec-row" style="margin-bottom:8px">
+        <div class="spec-name">Display / 900</div>
+        <div class="spec-sample-xl" style="font-family:'Ysabeau',sans-serif;color:#E86060">Community</div>
+      </div>
+      <div class="spec-row" style="margin-bottom:8px">
+        <div class="spec-name">Headline / 400</div>
+        <div class="spec-sample-md" style="font-family:'Ysabeau',sans-serif">Screen Printing Workshop</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-name">Body / DM Sans</div>
+        <div class="spec-sample-sm" style="font-family:'DM Sans',sans-serif">Open to all skill levels. Materials provided. Bring a garment, tote bag, or anything you'd like to print on. Limited spots available.</div>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;opacity:.3;margin-bottom:0">Card component</div>
+      <div class="event-card-inner rose-surf2-d">
+        <div>
+          <div class="card-tag-pill rose-tag-d">Workshop · Sat 14 Jun</div>
+          <div class="card-title-inner" style="font-family:'Ysabeau',sans-serif">Introduction to Screen Printing</div>
+          <div class="card-body-inner" style="font-family:'DM Sans',sans-serif;color:#FAF6F6">Open to all levels. Materials included. Bring something you want to print on.</div>
+        </div>
+        <div class="card-foot">
+          <div class="avatars">
+            <div class="av rose-btn-d">MR</div>
+            <div class="av rose-btn-d" style="border-color:#1F0C0C">JK</div>
+            <div class="av" style="background:#381818;color:#E86060;border-color:#1F0C0C">+8</div>
+          </div>
+          <button class="btn-sm rose-btn-d" style="font-family:'DM Sans',sans-serif">Join event</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;opacity:.3;margin-bottom:4px">Navigation & live states</div>
+      <div class="nav-strip">
+        <div class="nav-pill rose-nav-d" style="font-family:'DM Sans',sans-serif">Discover</div>
+        <div class="nav-pill inactive" style="font-family:'DM Sans',sans-serif;color:#FAF6F6">Communities</div>
+        <div class="nav-pill inactive" style="font-family:'DM Sans',sans-serif;color:#FAF6F6">Events</div>
+      </div>
+      <div style="margin-top:8px">
+        <div class="live-item">
+          <div class="dot" style="background:#E86060"></div>
+          <div class="live-name" style="font-family:'DM Sans',sans-serif">Hamburg Sketchers</div>
+          <div class="live-count">12 online</div>
+        </div>
+        <div class="live-item">
+          <div class="dot" style="background:#E86060"></div>
+          <div class="live-name" style="font-family:'DM Sans',sans-serif">Flea Market Collective</div>
+          <div class="live-count">34 online</div>
+        </div>
+        <div class="live-item" style="opacity:.3">
+          <div class="dot" style="background:#666"></div>
+          <div class="live-name" style="font-family:'DM Sans',sans-serif">Photography Walkers</div>
+          <div class="live-count">offline</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cell pal-cell">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;opacity:.3;margin-bottom:4px">Colour — Deep Rose · Dark</div>
+      <div class="swatch-row2">
+        <div class="big-swatch on-dark-text" style="background:#E86060">
+          <div class="swatch-info"><div class="swatch-hex">#E86060</div><div class="swatch-role">Accent DM</div></div>
+        </div>
+        <div class="big-swatch on-dark-text" style="background:#1F0C0C;border:1px solid rgba(255,255,255,.08)">
+          <div class="swatch-info"><div class="swatch-hex">#1F0C0C</div><div class="swatch-role">Surface 1</div></div>
+        </div>
+        <div class="big-swatch on-dark-text" style="background:#381818">
+          <div class="swatch-info"><div class="swatch-hex">#381818</div><div class="swatch-role">Surface 2</div></div>
+        </div>
+        <div class="big-swatch on-light-text" style="background:#FAF6F6">
+          <div class="swatch-info"><div class="swatch-hex">#FAF6F6</div><div class="swatch-role">Text</div></div>
+        </div>
+        <div class="big-swatch on-light-text" style="background:#EDE4E4">
+          <div class="swatch-info"><div class="swatch-hex">#EDE4E4</div><div class="swatch-role">Muted</div></div>
+        </div>
+      </div>
+      <div style="font-size:10px;opacity:.3;margin-top:8px;font-family:'DM Sans',sans-serif">oklch(68% 0.20 H10) — dark surfaces retain red-ink undertone</div>
+    </div>
+
+  </div>
+  <div class="board-id">I-B · Ysabeau + Deep Rose · Dark</div>
+</div>
+
+
+<div class="section-title">Variant II — Bricolage Grotesque & Chemical Cyan</div>
+
+<!-- ════════════ BOARD II-A: CYAN LIGHT ════════════ -->
+<div class="board iia" style="font-family:'Source Sans 3',sans-serif">
+
+  <div class="spec-giant-b" style="font-family:'Bricolage Grotesque',sans-serif;color:#061818;right:420px">Aa</div>
+
+  <div class="left">
+    <div class="logo-row">
+      <div class="logo-mark" style="color:#061818">
+        <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#c3)"><path d="M81.6607 0.0285006C10.2149 -1.90476 -0.0771741 95.0282 73.6513 134.261C116.49 157.057 99.504 175.88 126.934 256H128.066C155.496 175.88 138.51 157.057 181.348 134.261C268.73 87.7627 238.093 -39.7839 127.501 12.269C110.222 4.13573 94.8913 0.386511 81.6607 0.0285006ZM84.8094 14.2251C88.5913 14.1759 92.3654 14.5833 96.05 15.4384C95.455 15.7341 94.865 16.0398 94.2803 16.3553C80.3662 23.8625 69.9992 36.599 65.4599 51.7627C60.9206 66.9264 62.5808 83.2753 70.0754 97.2129C72.1257 101.025 74.5842 104.603 77.4074 107.882C70.3703 106.666 63.7015 103.863 57.9053 99.6848C52.1092 95.5066 47.3376 90.0627 43.9513 83.7651C38.029 72.75 36.7174 59.8296 40.3051 47.8459C43.8928 35.8622 52.0858 25.7969 63.082 19.8639C69.765 16.2578 77.2191 14.3232 84.8094 14.2251ZM171.542 15.252C179.132 15.3501 186.586 17.2847 193.269 20.8908C204.266 26.8238 212.459 36.8892 216.046 48.8728C219.634 60.8565 218.323 73.777 212.4 84.792C209.014 91.0897 204.242 96.5335 198.446 100.712C192.65 104.89 185.981 107.693 178.944 108.909C181.767 105.63 184.226 102.052 186.276 98.2398C193.771 84.3022 195.431 67.9533 190.892 52.7896C186.352 37.6259 175.985 24.8894 162.071 17.3822C161.486 17.0667 160.896 16.761 160.302 16.4653C163.986 15.6102 167.76 15.2028 171.542 15.252Z" fill="currentColor"/></g><defs><clipPath id="c3"><rect width="209" height="256" fill="white" transform="translate(23)"/></clipPath></defs></svg>
+      </div>
+      <div class="logo-name" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:500;font-optical-sizing:auto">mosquito.social</div>
+    </div>
+
+    <div class="hero-block">
+      <div class="hero-eyebrow">Federated communities</div>
+      <div class="hero-headline-b" style="font-family:'Bricolage Grotesque',sans-serif">Find your people.</div>
+      <div class="hero-sub">Communities built on openness. Events that actually happen. A network that belongs to no one — and everyone.</div>
+      <div class="cta-row">
+        <button class="btn-primary cyan-btn-l">Explore communities</button>
+        <button class="btn-ghost" style="color:#061818">How it works →</button>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;opacity:.3;margin-bottom:2px">Typography</div>
+      <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:700;font-optical-sizing:auto;letter-spacing:.01em">BRICOLAGE 700 — Display</div>
+      <div style="font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:400;opacity:.55">Source Sans 3 400 — Body & UI</div>
+    </div>
+  </div>
+
+  <div class="right">
+
+    <div class="cell type-specimen">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;opacity:.3;margin-bottom:4px">Type scale</div>
+      <div class="spec-row" style="margin-bottom:8px">
+        <div class="spec-name">Display / 700</div>
+        <div class="spec-sample-xl-b" style="font-family:'Bricolage Grotesque',sans-serif">Community</div>
+      </div>
+      <div class="spec-row" style="margin-bottom:8px">
+        <div class="spec-name">Headline / 500</div>
+        <div class="spec-sample-md" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:500">Screen Printing Workshop</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-name">Body / Source Sans 3</div>
+        <div class="spec-sample-sm" style="font-family:'Source Sans 3',sans-serif">Open to all skill levels. Materials provided. Bring a garment, tote bag, or anything you'd like to print on. Limited spots available.</div>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;opacity:.3;margin-bottom:0">Card component</div>
+      <div class="event-card-inner cyan-surf2-l">
+        <div>
+          <div class="card-tag-pill cyan-tag-l">Workshop · Sat 14 Jun</div>
+          <div class="card-title-inner" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600">Introduction to Screen Printing</div>
+          <div class="card-body-inner" style="font-family:'Source Sans 3',sans-serif">Open to all levels. Materials included. Bring something you want to print on.</div>
+        </div>
+        <div class="card-foot">
+          <div class="avatars">
+            <div class="av cyan-btn-l">MR</div>
+            <div class="av cyan-btn-l" style="border-color:#F2F9F9">JK</div>
+            <div class="av" style="background:#D8EEEC;color:#007A72;border-color:#F2F9F9">+8</div>
+          </div>
+          <button class="btn-sm cyan-btn-l" style="font-family:'Source Sans 3',sans-serif">Join event</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;opacity:.3;margin-bottom:4px">Navigation & live states</div>
+      <div class="nav-strip">
+        <div class="nav-pill cyan-nav-l" style="font-family:'Source Sans 3',sans-serif">Discover</div>
+        <div class="nav-pill inactive" style="font-family:'Source Sans 3',sans-serif;color:#061818">Communities</div>
+        <div class="nav-pill inactive" style="font-family:'Source Sans 3',sans-serif;color:#061818">Events</div>
+      </div>
+      <div style="margin-top:8px">
+        <div class="live-item">
+          <div class="dot" style="background:#00A89E"></div>
+          <div class="live-name" style="font-family:'Source Sans 3',sans-serif">Hamburg Sketchers</div>
+          <div class="live-count">12 online</div>
+        </div>
+        <div class="live-item">
+          <div class="dot" style="background:#00A89E"></div>
+          <div class="live-name" style="font-family:'Source Sans 3',sans-serif">Flea Market Collective</div>
+          <div class="live-count">34 online</div>
+        </div>
+        <div class="live-item" style="opacity:.35">
+          <div class="dot" style="background:#888"></div>
+          <div class="live-name" style="font-family:'Source Sans 3',sans-serif">Photography Walkers</div>
+          <div class="live-count">offline</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cell pal-cell">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;opacity:.3;margin-bottom:4px">Colour — Chemical Cyan · Light</div>
+      <div class="swatch-row2">
+        <div class="big-swatch on-dark-text" style="background:#00A89E">
+          <div class="swatch-info"><div class="swatch-hex">#00A89E</div><div class="swatch-role">Accent</div></div>
+        </div>
+        <div class="big-swatch on-light-text" style="background:#F2F9F9;border:1px solid rgba(0,0,0,.08)">
+          <div class="swatch-info"><div class="swatch-hex">#F2F9F9</div><div class="swatch-role">Surface 1</div></div>
+        </div>
+        <div class="big-swatch on-light-text" style="background:#D8EEEC">
+          <div class="swatch-info"><div class="swatch-hex">#D8EEEC</div><div class="swatch-role">Surface 2</div></div>
+        </div>
+        <div class="big-swatch on-dark-text" style="background:#061818">
+          <div class="swatch-info"><div class="swatch-hex">#061818</div><div class="swatch-role">Dark 1</div></div>
+        </div>
+        <div class="big-swatch on-dark-text" style="background:#0E2B2A">
+          <div class="swatch-info"><div class="swatch-hex">#0E2B2A</div><div class="swatch-role">Dark 2</div></div>
+        </div>
+      </div>
+      <div style="font-size:10px;opacity:.3;margin-top:8px;font-family:'Source Sans 3',sans-serif">oklch(60% 0.26 H192) — neutrals share H192 cool-water undertone</div>
+    </div>
+
+  </div>
+  <div class="board-id">II-A · Bricolage + Chemical Cyan · Light</div>
+</div>
+
+
+<!-- ════════════ BOARD II-B: CYAN DARK ════════════ -->
+<div class="board iib" style="font-family:'Source Sans 3',sans-serif">
+
+  <div class="left">
+    <div class="logo-row">
+      <div class="logo-mark" style="color:#F2F9F9">
+        <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#c4)"><path d="M81.6607 0.0285006C10.2149 -1.90476 -0.0771741 95.0282 73.6513 134.261C116.49 157.057 99.504 175.88 126.934 256H128.066C155.496 175.88 138.51 157.057 181.348 134.261C268.73 87.7627 238.093 -39.7839 127.501 12.269C110.222 4.13573 94.8913 0.386511 81.6607 0.0285006ZM84.8094 14.2251C88.5913 14.1759 92.3654 14.5833 96.05 15.4384C95.455 15.7341 94.865 16.0398 94.2803 16.3553C80.3662 23.8625 69.9992 36.599 65.4599 51.7627C60.9206 66.9264 62.5808 83.2753 70.0754 97.2129C72.1257 101.025 74.5842 104.603 77.4074 107.882C70.3703 106.666 63.7015 103.863 57.9053 99.6848C52.1092 95.5066 47.3376 90.0627 43.9513 83.7651C38.029 72.75 36.7174 59.8296 40.3051 47.8459C43.8928 35.8622 52.0858 25.7969 63.082 19.8639C69.765 16.2578 77.2191 14.3232 84.8094 14.2251ZM171.542 15.252C179.132 15.3501 186.586 17.2847 193.269 20.8908C204.266 26.8238 212.459 36.8892 216.046 48.8728C219.634 60.8565 218.323 73.777 212.4 84.792C209.014 91.0897 204.242 96.5335 198.446 100.712C192.65 104.89 185.981 107.693 178.944 108.909C181.767 105.63 184.226 102.052 186.276 98.2398C193.771 84.3022 195.431 67.9533 190.892 52.7896C186.352 37.6259 175.985 24.8894 162.071 17.3822C161.486 17.0667 160.896 16.761 160.302 16.4653C163.986 15.6102 167.76 15.2028 171.542 15.252Z" fill="currentColor"/></g><defs><clipPath id="c4"><rect width="209" height="256" fill="white" transform="translate(23)"/></clipPath></defs></svg>
+      </div>
+      <div class="logo-name" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:500;font-optical-sizing:auto">mosquito.social</div>
+    </div>
+
+    <div class="hero-block">
+      <div class="hero-eyebrow">Federated communities</div>
+      <div class="hero-headline-b" style="font-family:'Bricolage Grotesque',sans-serif;color:#00DDD1">Find your people.</div>
+      <div class="hero-sub">Communities built on openness. Events that actually happen. A network that belongs to no one — and everyone.</div>
+      <div class="cta-row">
+        <button class="btn-primary cyan-btn-d">Explore communities</button>
+        <button class="btn-ghost" style="color:#F2F9F9">How it works →</button>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;opacity:.3;margin-bottom:2px">Typography</div>
+      <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:700;font-optical-sizing:auto;color:#00DDD1">BRICOLAGE 700 — Display</div>
+      <div style="font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:400;opacity:.45">Source Sans 3 400 — Body & UI</div>
+    </div>
+  </div>
+
+  <div class="right">
+
+    <div class="cell type-specimen">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;opacity:.3;margin-bottom:4px">Type scale</div>
+      <div class="spec-row" style="margin-bottom:8px">
+        <div class="spec-name">Display / 700</div>
+        <div class="spec-sample-xl-b" style="font-family:'Bricolage Grotesque',sans-serif;color:#00DDD1">Community</div>
+      </div>
+      <div class="spec-row" style="margin-bottom:8px">
+        <div class="spec-name">Headline / 500</div>
+        <div class="spec-sample-md" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:500">Screen Printing Workshop</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-name">Body / Source Sans 3</div>
+        <div class="spec-sample-sm" style="font-family:'Source Sans 3',sans-serif">Open to all skill levels. Materials provided. Bring a garment, tote bag, or anything you'd like to print on. Limited spots available.</div>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;opacity:.3;margin-bottom:0">Card component</div>
+      <div class="event-card-inner cyan-surf2-d">
+        <div>
+          <div class="card-tag-pill cyan-tag-d">Workshop · Sat 14 Jun</div>
+          <div class="card-title-inner" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600">Introduction to Screen Printing</div>
+          <div class="card-body-inner" style="font-family:'Source Sans 3',sans-serif;color:#F2F9F9">Open to all levels. Materials included. Bring something you want to print on.</div>
+        </div>
+        <div class="card-foot">
+          <div class="avatars">
+            <div class="av cyan-btn-d">MR</div>
+            <div class="av cyan-btn-d" style="border-color:#061818">JK</div>
+            <div class="av" style="background:#0E2B2A;color:#00DDD1;border-color:#061818">+8</div>
+          </div>
+          <button class="btn-sm cyan-btn-d" style="font-family:'Source Sans 3',sans-serif">Join event</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;opacity:.3;margin-bottom:4px">Navigation & live states</div>
+      <div class="nav-strip">
+        <div class="nav-pill cyan-nav-d" style="font-family:'Source Sans 3',sans-serif">Discover</div>
+        <div class="nav-pill inactive" style="font-family:'Source Sans 3',sans-serif;color:#F2F9F9">Communities</div>
+        <div class="nav-pill inactive" style="font-family:'Source Sans 3',sans-serif;color:#F2F9F9">Events</div>
+      </div>
+      <div style="margin-top:8px">
+        <div class="live-item">
+          <div class="dot" style="background:#00DDD1"></div>
+          <div class="live-name" style="font-family:'Source Sans 3',sans-serif">Hamburg Sketchers</div>
+          <div class="live-count">12 online</div>
+        </div>
+        <div class="live-item">
+          <div class="dot" style="background:#00DDD1"></div>
+          <div class="live-name" style="font-family:'Source Sans 3',sans-serif">Flea Market Collective</div>
+          <div class="live-count">34 online</div>
+        </div>
+        <div class="live-item" style="opacity:.3">
+          <div class="dot" style="background:#444"></div>
+          <div class="live-name" style="font-family:'Source Sans 3',sans-serif">Photography Walkers</div>
+          <div class="live-count">offline</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cell pal-cell">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;opacity:.3;margin-bottom:4px">Colour — Chemical Cyan · Dark</div>
+      <div class="swatch-row2">
+        <div class="big-swatch on-dark-text" style="background:#00DDD1">
+          <div class="swatch-info"><div class="swatch-hex" style="color:#061818">#00DDD1</div><div class="swatch-role" style="color:#061818">Accent DM</div></div>
+        </div>
+        <div class="big-swatch on-dark-text" style="background:#061818;border:1px solid rgba(255,255,255,.08)">
+          <div class="swatch-info"><div class="swatch-hex">#061818</div><div class="swatch-role">Surface 1</div></div>
+        </div>
+        <div class="big-swatch on-dark-text" style="background:#0E2B2A">
+          <div class="swatch-info"><div class="swatch-hex">#0E2B2A</div><div class="swatch-role">Surface 2</div></div>
+        </div>
+        <div class="big-swatch on-light-text" style="background:#F2F9F9">
+          <div class="swatch-info"><div class="swatch-hex">#F2F9F9</div><div class="swatch-role">Text</div></div>
+        </div>
+        <div class="big-swatch on-light-text" style="background:#D8EEEC">
+          <div class="swatch-info"><div class="swatch-hex">#D8EEEC</div><div class="swatch-role">Muted</div></div>
+        </div>
+      </div>
+      <div style="font-size:10px;opacity:.3;margin-top:8px;font-family:'Source Sans 3',sans-serif">oklch(76% 0.22 H192) — near-electric on dark, same hue axis throughout</div>
+    </div>
+
+  </div>
+  <div class="board-id">II-B · Bricolage + Chemical Cyan · Dark</div>
+</div>
+
+</body>
+</html>
