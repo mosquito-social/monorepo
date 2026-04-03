@@ -1,5 +1,5 @@
-import { A } from '@solidjs/router';
-import { For, Show } from 'solid-js';
+import { A } from "@solidjs/router";
+import { For, Show } from "solid-js";
 
 type NavItem = {
   title: string;
@@ -9,26 +9,30 @@ type NavItem = {
 
 const navigation: NavItem[] = [
   {
-    title: 'Introduction',
-    path: 'intro',
+    title: "Introduction",
+    path: "intro",
   },
   {
-    title: 'Design Space',
-    path: 'design-space',
+    title: "Design Space",
+    path: "design-space",
     children: [
       {
-        title: 'Design System',
-        path: 'design-system',
+        title: "Design System",
+        path: "design-system",
       },
     ],
   },
   {
-    title: 'Collab Space',
-    path: 'collab-space',
+    title: "Collab Space",
+    path: "collab-space",
     children: [
       {
-        title: 'Issues',
-        path: 'issues',
+        title: "Feature Collection",
+        path: "feature-collection",
+      },
+      {
+        title: "Issues",
+        path: "issues",
       },
     ],
   },
