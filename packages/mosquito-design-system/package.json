@@ -12,7 +12,10 @@
       "default": "./fouc.js"
     },
     "./ThemeToggle": "./ThemeToggle.tsx",
-    "./canonical": "./canonical.tsx"
+    "./canonical": "./canonical.tsx",
+    "./Button": "./Button.tsx",
+    "./Tag": "./Tag.tsx",
+    "./SectionWrapper": "./SectionWrapper.tsx"
   },
   "devDependencies": {
     "@solidjs/router": "^0.15.4"

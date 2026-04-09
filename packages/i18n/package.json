@@ -1,0 +1,17 @@
+{
+  "name": "i18n",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@solid-primitives/i18n": "^2.0.0"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.9.5"
+  },
+  "devDependencies": {
+    "solid-js": "^1.9.5"
+  }
+}
