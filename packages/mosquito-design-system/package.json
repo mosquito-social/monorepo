@@ -13,9 +13,9 @@
     },
     "./ThemeToggle": "./ThemeToggle.tsx",
     "./canonical": "./canonical.tsx",
-    "./Button": "./Button.tsx",
-    "./Tag": "./Tag.tsx",
-    "./SectionWrapper": "./SectionWrapper.tsx"
+    "./Button": "./button.tsx",
+    "./Tag": "./tag.tsx",
+    "./SectionWrapper": "./section-wrapper.tsx"
   },
   "devDependencies": {
     "@solidjs/router": "^0.15.4"
