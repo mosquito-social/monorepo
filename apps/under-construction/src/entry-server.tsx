@@ -23,7 +23,7 @@ export default createHandler(() => (
           <script innerHTML={foucSnippet} />
           {assets}
         </head>
-        <body class="bg-background text-foreground antialiased min-h-screen">
+        <body class="bg-col-bg text-col-fg font-fam-main antialiased min-h-screen">
           <div id="app">{children}</div>
           {scripts}
         </body>

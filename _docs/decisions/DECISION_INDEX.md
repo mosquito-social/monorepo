@@ -19,3 +19,4 @@ repository over time.
 - [DR-002: Setup Monorepo and Bun](DR-002-setup-monorepo-bun.md)
 - [DR-003: Toolchain with Biome and Oxlint](DR-003-toolchain-biome-oxlint.md)
 - [DR-004: Deploy under-construction](DR-004-deploy-under-construction.md)
+- [DR-005: Design System Tokens and Icons](DR-005-design-system-tokens-and-icons.md)
