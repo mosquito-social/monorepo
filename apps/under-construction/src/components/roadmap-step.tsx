@@ -1,3 +1,5 @@
+import { Tag } from "mosquito-design-system";
+
 export interface RoadmapStepProps {
   step: number;
   title: string;
@@ -13,10 +15,10 @@ export function RoadmapStep(props: RoadmapStepProps) {
       {/* Step indicator */}
       <div class="flex flex-col items-center">
         <div
-          class={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold font-fam-msq shrink-0 border-2 ${
+          class={`w-10 h-10 rounded-full flex items-center justify-center text-fs-3 font-bold font-fam-msq shrink-0 border-2 ${
             props.current
-              ? 'bg-col-accent text-col-accent-fg border-col-accent'
-              : 'bg-col-bg text-col-text-subtle border-col-border'
+              ? "bg-col-accent text-col-accent-fg border-col-accent"
+              : "bg-col-bg text-col-text-weak border-col-line"
           }`}
         >
           {props.step}
@@ -27,14 +29,12 @@ export function RoadmapStep(props: RoadmapStepProps) {
       {/* Content */}
       <div class="pb-10 flex-1">
         <div class="flex items-center gap-3 mb-1">
-          <p class="font-bold text-col-text font-fam-msq">{props.title}</p>
+          <p class="font-bold text-col-fg-soft">{props.title}</p>
           {props.current && props.currentLabel && (
-            <span class="text-xs px-2 py-0.5 rounded-full bg-col-accent text-col-accent-fg font-semibold">
-              {props.currentLabel}
-            </span>
+            <Tag>{props.currentLabel}</Tag>
           )}
         </div>
-        <p class="text-sm text-col-text-muted leading-relaxed">{props.body}</p>
+        <p class="text-fs-2 text-col-fg-weak leading-relaxed">{props.body}</p>
       </div>
     </div>
   );

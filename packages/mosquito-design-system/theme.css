@@ -11,23 +11,23 @@
 
     /* === core variables === */
     --msq-hue-primary: 192;
-    --msq-hue-adjacent-1: 182;
-    --msq-hue-adjacent-2: 198;
+    --msq-hue-adjacent-1: calc(var(--msq-hue-primary) + 10);
+    --msq-hue-adjacent-2: calc(var(--msq-hue-primary) - 10);
 
     /* === derived color palette === */ /* primary */
     --msq-col-primary-dimmed: oklch(0.4 0.3 var(--msq-hue-primary));
     --msq-col-primary: oklch(0.6 0.26 var(--msq-hue-primary));
-    --msq-col-primary-lightened: oklch(0.8 0.4 var(--msq-hue-primary));
+    --msq-col-primary-lightened: oklch(0.8 0.12 var(--msq-hue-primary));
 
     /* adjacent */
     --msq-col-adjacent-1: oklch(0.6 0.26 var(--msq-hue-adjacent-1));
     --msq-col-adjacent-2: oklch(0.6 0.26 var(--msq-hue-adjacent-2));
 
     /* shades of white */
-    --msq-col-bright-4: oklch(0.6 0.02 var(--msq-hue-primary));
-    --msq-col-bright-3: oklch(0.75 0.02 var(--msq-hue-primary));
-    --msq-col-bright-2: oklch(0.88 0.02 var(--msq-hue-primary));
-    --msq-col-bright-1: oklch(0.96 0.02 var(--msq-hue-primary));
+    --msq-col-bright-4: oklch(0.65 0.02 var(--msq-hue-primary));
+    --msq-col-bright-3: oklch(0.82 0.02 var(--msq-hue-primary));
+    --msq-col-bright-2: oklch(0.9 0.02 var(--msq-hue-primary));
+    --msq-col-bright-1: oklch(0.96 0.015 var(--msq-hue-primary));
     --msq-col-bright-0: oklch(0.98 0.01 var(--msq-hue-primary));
 
     /* shades of black */

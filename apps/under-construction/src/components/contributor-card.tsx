@@ -6,13 +6,13 @@ export interface ContributorCardProps {
 
 export function ContributorCard(props: ContributorCardProps) {
   return (
-    <div class="flex flex-col items-center gap-3 p-6 bg-col-surface rounded-2xl border border-col-border-subtle text-center">
-      <div class="w-16 h-16 rounded-full bg-col-avatar-bg text-col-avatar-fg flex items-center justify-center text-lg font-bold font-fam-msq ring-2 ring-col-avatar-ring">
+    <div class="flex flex-col items-center gap-3 p-6 bg-col-bg rounded-2xl border border-col-line text-center">
+      <div class="w-16 h-16 rounded-full bg-col-accent-weak text-col-fg flex items-center justify-center text-lg font-bold font-fam-msq ring-2 ring-col-line-strong">
         {props.initials}
       </div>
       <div>
-        <p class="font-semibold text-col-text font-fam-msq">{props.name}</p>
-        <p class="text-sm text-col-text-subtle">{props.role}</p>
+        <p class="font-black tex-col-fg-strong font-fam-msq">{props.name}</p>
+        <p class="text-sm text-col-fg-soft">{props.role}</p>
       </div>
     </div>
   );
