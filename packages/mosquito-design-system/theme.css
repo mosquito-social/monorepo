@@ -1,31 +1,121 @@
+@layer theme {
+  :root {
+    /* === font families === */
+    --msq-font: "Bricolage Grotesque", sans-serif;
+    --msq-font-main: "Source Sans 3", sans-serif;
+    --msq-font-mono: Menlo, monospace;
+
+    /* === font sizes === */
+    --msq-font-base-size: 1.125rem;
+    --msq-font-size-ratio: 1.618;
+
+    /* === core variables === */
+    --msq-hue-primary: 192;
+    --msq-hue-adjacent-1: 182;
+    --msq-hue-adjacent-2: 198;
+
+    /* === derived color palette === */ /* primary */
+    --msq-col-primary-dimmed: oklch(0.4 0.3 var(--msq-hue-primary));
+    --msq-col-primary: oklch(0.6 0.26 var(--msq-hue-primary));
+    --msq-col-primary-lightened: oklch(0.8 0.4 var(--msq-hue-primary));
+
+    /* adjacent */
+    --msq-col-adjacent-1: oklch(0.6 0.26 var(--msq-hue-adjacent-1));
+    --msq-col-adjacent-2: oklch(0.6 0.26 var(--msq-hue-adjacent-2));
+
+    /* shades of white */
+    --msq-col-bright-4: oklch(0.6 0.02 var(--msq-hue-primary));
+    --msq-col-bright-3: oklch(0.75 0.02 var(--msq-hue-primary));
+    --msq-col-bright-2: oklch(0.88 0.02 var(--msq-hue-primary));
+    --msq-col-bright-1: oklch(0.96 0.02 var(--msq-hue-primary));
+    --msq-col-bright-0: oklch(0.98 0.01 var(--msq-hue-primary));
+
+    /* shades of black */
+    --msq-col-dark-0: oklch(0.15 0.02 var(--msq-hue-primary));
+    --msq-col-dark-1: oklch(0.18 0.011 var(--msq-hue-primary));
+    --msq-col-dark-2: oklch(0.23 0.009 var(--msq-hue-primary));
+    --msq-col-dark-3: oklch(0.28 0.009 var(--msq-hue-primary));
+    --msq-col-dark-4: oklch(0.4 0.009 var(--msq-hue-primary));
+  }
+}
+
 @theme {
-  /* Background colors  */
-  --color-cb-0: light-dark(oklch(100% 0 0), oklch(0% 0 0));
-  --color-cb-10: light-dark(oklch(98% 0.01 10), oklch(12% 0.01 10));
-  --color-cb-20: light-dark(oklch(96% 0.015 10), oklch(18% 0.008 10));
-  --color-cb-30: light-dark(oklch(92% 0.02 10), oklch(24% 0.007 10));
+  /* THEME V 0.2 - after decision, without design review */
+  /* === semantic tailwind font variables === */
+  --font-fam-msq: var(--msq-font);
+  --font-fam-main: var(--msq-font-main);
+  --font-sans: var(--msq-font-main);
+  --font-fam-mono: var(--msq-font-mono);
+  --font-mono: var(--msq-font-mono);
 
-  /* Foreground colors */
-  --color-cf-0: light-dark(oklch(0% 0 0), oklch(100% 0 0));
-  --color-cf-10: light-dark(oklch(40% 0.005 10), oklch(80% 0.005 10));
-  --color-cf-20: light-dark(oklch(55% 0.006 10), oklch(65% 0.006 10));
-  --color-cf-30: light-dark(oklch(70% 0.007 10), oklch(50% 0.007 10));
+  /* === semantic tailwind font sizes === */
+  --text-fs-1: calc(
+    var(--msq-font-base-size) * pow(var(--msq-font-size-ratio), -1)
+  );
+  --text-fs-2: calc(
+    var(--msq-font-base-size) * pow(var(--msq-font-size-ratio), -0.5)
+  );
+  --text-fs-3: var(--msq-font-base-size);
+  --text-fs-4: calc(
+    var(--msq-font-base-size) * pow(var(--msq-font-size-ratio), 0.5)
+  );
+  --text-fs-5: calc(
+    var(--msq-font-base-size) * pow(var(--msq-font-size-ratio), 1)
+  );
+  --text-fs-6: calc(
+    var(--msq-font-base-size) * pow(var(--msq-font-size-ratio), 2)
+  );
+  --text-fs-7: calc(
+    var(--msq-font-base-size) * pow(var(--msq-font-size-ratio), 3)
+  );
+  --text-base: var(--text-fs-3);
 
-  /* Line colors */
-  --color-cl-10: light-dark(oklch(70% 0.015 10), oklch(40% 0.015 10));
-  --color-cl-20: light-dark(oklch(80% 0.015 10), oklch(30% 0.015 10));
-  --color-cl-30: light-dark(oklch(90% 0.015 10), oklch(20% 0.015 10));
+  /* === semantic tailwind colors === */
+  --color-col-bg: light-dark(var(--msq-col-bright-1), var(--msq-col-dark-1));
+  --color-col-bg-soft: light-dark(
+    var(--msq-col-bright-2),
+    var(--msq-col-dark-2)
+  );
+  --color-col-bg-weak: light-dark(
+    var(--msq-col-bright-3),
+    var(--msq-col-dark-3)
+  );
+  --color-col-fg: light-dark(var(--msq-col-dark-1), var(--msq-col-bright-1));
+  --color-col-fg-strong: light-dark(
+    var(--msq-col-dark-0),
+    var(--msq-col-bright-0)
+  );
+  --color-col-fg-soft: light-dark(
+    var(--msq-col-dark-2),
+    var(--msq-col-bright-2)
+  );
+  --color-col-fg-weak: light-dark(
+    var(--msq-col-dark-3),
+    var(--msq-col-bright-3)
+  );
 
-  /* Primary colors */
-  --color-cp-main: light-dark(oklch(60% 0.2 10), oklch(65% 0.2 10));
+  --color-col-line-strongest: light-dark(
+    var(--msq-col-bright-3) var(--msq-col-dark-3)
+  );
+  --color-col-line-strong: light-dark(
+    var(--msq-col-dark-4),
+    var(--msq-col-bright-4)
+  );
+  --color-col-line: light-dark(var(--msq-col-bright-4), var(--msq-col-dark-4));
+  --color-col-line-soft: light-dark(
+    var(--msq-col-bright-3),
+    var(--msq-col-dark-3)
+  );
 
-  /* Secondary colors */
-  --color-cs-main: light-dark(oklch(60% 0.18 170), oklch(65% 0.18 170));
-
-  --font-mos: "Caprasimo", cursive;
-  --font-mono: "IBM Plex Mono", monospace;
-  --font-sans: "IBM Plex Sans", sans-serif;
-  --font-serif: "IBM Plex Serif", serif;
+  --color-col-accent-weak: light-dark(
+    var(--msq-col-primary-lightened),
+    var(--msq-col-primary-dimmed)
+  );
+  --color-col-accent: var(--msq-col-primary);
+  --color-col-accent-strong: light-dark(
+    var(--msq-col-primary-dimmed),
+    var(--msq-col-primary-lightened)
+  );
 }
 
 @layer base {
@@ -39,11 +129,5 @@
 
   .light {
     color-scheme: light;
-  }
-
-  .mos-effect {
-    text-shadow: 0.05em 0 0.025em var(--color-cp-main), -0.05em 0 0.025em
-      var(--color-cs-main), 0 0.05em 0.025em var(--color-cp-main), 0 -0.05em
-      0.025em var(--color-cs-main);
   }
 }

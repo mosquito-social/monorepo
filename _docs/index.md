@@ -24,6 +24,15 @@ The following scripts are available in the root `package.json` to ease daily dev
 - `bun run check:lint`: Analyzes code dynamically for issues using Oxlint.
 - `bun run check:all`: Runs TS check, Format check, and Lint check continuously.
 
+## Design System
+
+The mosquito.social design system lives in `packages/mosquito-design-system`. See [DR-005](decisions/DR-005-design-system-tokens-and-icons.md) for the full rationale.
+
+Key rules:
+- **Icons**: Use `lucide-solid`. Do not create custom SVGs unless the library has no suitable icon.
+- **Tokens – Step 1 (core)**: ~20–30 raw variables prefixed `--msq-` (e.g. `--msq-hue-primary`). Override these to re-theme a section or page.
+- **Tokens – Step 2 (semantic)**: Tailwind CSS variables derived from Step 1. Dark mode is resolved here. Naming schema: `msq-col-{usecase}-{fg|bg}-{soft|dim}` (e.g. `msq-col-border-dimmed`, `msq-col-surface-bg-soft`).
+
 ## Conventions
 
 - **File Naming**: ALL files have to follow the alpha-numeric-kebab-case pattern. They have no capital letters and words are separated with a `-`.

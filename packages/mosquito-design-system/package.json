@@ -11,11 +11,12 @@
       "types": "./fouc.d.ts",
       "default": "./fouc.js"
     },
-    "./ThemeToggle": "./ThemeToggle.tsx",
+    ".": "./index.tsx",
     "./canonical": "./canonical.tsx",
     "./Button": "./button.tsx",
     "./Tag": "./tag.tsx",
-    "./SectionWrapper": "./section-wrapper.tsx"
+    "./SectionWrapper": "./section-wrapper.tsx",
+    "./ThemeToggle": "./theme-toggle.tsx"
   },
   "devDependencies": {
     "@solidjs/router": "^0.15.4"
