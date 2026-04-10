@@ -13,10 +13,12 @@ export function UseCaseCard(props: UseCaseCardProps) {
         aria-hidden="true"
       />
       <div class="p-6 flex flex-col gap-2">
-        <p class="text-xs font-semibold uppercase tracking-wider text-col-tag-text font-fam-msq">
+        <p class="text-fs-3 font-semibold uppercase tracking-wider text-col-tag-text font-fam-msq">
           {props.name}
         </p>
-        <p class="text-col-text-muted text-sm leading-relaxed">{props.description}</p>
+        <p class="text-col-fg-soft text-fs-3 leading-relaxed">
+          {props.description}
+        </p>
       </div>
     </div>
   );

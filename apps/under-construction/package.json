@@ -11,6 +11,7 @@
     "@solidjs/router": "^0.15.4",
     "@solidjs/start": "^1.1.0",
     "i18n": "workspace:*",
+    "lucide-solid": "^1.8.0",
     "mosquito-design-system": "workspace:*",
     "solid-js": "^1.9.5",
     "vinxi": "^0.5.7"

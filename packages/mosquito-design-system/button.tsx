@@ -10,9 +10,10 @@ export interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement>
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-col-accent text-col-bg hover:bg-col-accent-strong hover:text-col-bg-strong",
-  secondary: "border border-col-border text-col-text hover:bg-col-surface",
-  ghost: "text-col-text-muted hover:text-col-text",
+    "bg-col-accent border-2 border-col-accent text-col-bg hover:bg-col-accent-strong hover:text-col-bg-strong",
+  secondary: "border-2 border-col-border text-col-text hover:bg-col-surface",
+  ghost:
+    "text-col-fg-soft border-2 border-transparent hover:border-col-border hover:text-col-fg-strong",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
