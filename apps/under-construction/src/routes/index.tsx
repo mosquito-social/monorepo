@@ -105,7 +105,7 @@ export default function Home() {
             class="absolute right-0 top-0 w-full h-full object-cover"
           />
           {/* Gradient fade to background */}
-          <div class="absolute inset-0 bg-gradient-to-r from-col-bg via-col-bg/95 md:via-col-bg/80 to-col-bg/10" />
+          <div class="absolute inset-0 bg-linear-to-r from-col-bg via-col-bg/95 md:via-col-bg/80 to-col-bg/10" />
 
           <div class="relative z-10 max-w-6xl mx-auto px-6 py-24 w-full">
             <div class="max-w-xl flex flex-col gap-7">

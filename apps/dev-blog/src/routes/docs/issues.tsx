@@ -1,18 +1,19 @@
-import { For, Show, createSignal, onMount } from 'solid-js';
-import { IssueTreeNode } from '../../components/IssueTree';
-import type { IssueNode } from '../../utils/github';
+import { For, Show, createSignal, onMount } from "solid-js";
+import { IssueTreeNode } from "../../components/IssueTree";
+import type { IssueNode } from "../../utils/github";
+import { Heading } from "mosquito-design-system";
 
 export default function IssuesPage() {
   const [issues, setIssues] = createSignal<IssueNode[]>([]);
   const [loading, setLoading] = createSignal(true);
-  const [error, setError] = createSignal('');
+  const [error, setError] = createSignal("");
 
   const fetchIssues = async (refresh = false) => {
     setLoading(true);
-    setError('');
+    setError("");
     try {
-      const res = await fetch(`/api/issues${refresh ? '?refresh=true' : ''}`);
-      if (!res.ok) throw new Error('Failed to fetch issues');
+      const res = await fetch(`/api/issues${refresh ? "?refresh=true" : ""}`);
+      if (!res.ok) throw new Error("Failed to fetch issues");
       const data = await res.json();
       setIssues(data);
     } catch (e: any) {
@@ -29,18 +30,17 @@ export default function IssuesPage() {
   return (
     <div class="py-4">
       <div class="flex items-center justify-between mb-8 pb-4">
-        <div>
-          <h1 class="text-5xl font-bold font-mos tracking-tight text-cb-0 mos-effect">
-            GitHub Issues
-          </h1>
-          <p class="text-cf-10 mt-2">
-            Hierarchical view of repository tasks and progress.
-          </p>
-        </div>
+        <Heading
+          level={1}
+          super="GitHub"
+          sub="Hierarchical view of repository tasks and progress."
+        >
+          Issues
+        </Heading>
         <button
           onClick={() => fetchIssues(true)}
           disabled={loading()}
-          class="px-4 py-2 bg-cp-main text-cb-10 rounded hover:opacity-90 disabled:opacity-50 transition-colors cursor-pointer font-bold flex items-center"
+          class="px-4 py-2 bg-cp-main text-col-fg-strong rounded hover:opacity-90 disabled:opacity-50 transition-colors cursor-pointer font-bold flex items-center"
         >
           <Show when={loading()}>
             <svg
@@ -64,7 +64,7 @@ export default function IssuesPage() {
               ></path>
             </svg>
           </Show>
-          {loading() ? 'Refreshing...' : 'Refresh'}
+          {loading() ? "Refreshing..." : "Refresh"}
         </button>
       </div>
 

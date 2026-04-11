@@ -1,21 +1,21 @@
-import { parse } from 'hast-mds';
-import { ContentEntry, Metadata } from '../types';
+import { parse } from "hast-mds";
+import { ContentEntry, Metadata } from "../types";
 
 export function getAllContent(): Record<string, ContentEntry> {
   const ret: Record<string, ContentEntry> = {};
 
   // Vite exposes raw file content with { query: '?raw', import: 'default', eager: true }
-  const files = import.meta.glob<{ default: string }>('../../content/**/*.md', {
-    query: '?raw',
+  const files = import.meta.glob<{ default: string }>("../../content/**/*.md", {
+    query: "?raw",
     eager: true,
   });
 
   for (const [filepath, content] of Object.entries(files)) {
-    let rawString = '';
+    let rawString = "";
     // Handle both { default: '...' } and just '...' just in case Vite version differs
-    if (typeof content === 'string') {
+    if (typeof content === "string") {
       rawString = content;
-    } else if (content && typeof (content as any).default === 'string') {
+    } else if (content && typeof (content as any).default === "string") {
       rawString = (content as any).default;
     }
 
@@ -24,12 +24,12 @@ export function getAllContent(): Record<string, ContentEntry> {
       description?: string;
       date?: string;
       author?: string;
-    }>(rawString);
+    }>(rawString, new Set(["cta"]));
 
     // Normalize path. filepath looks like '../../content/blog/first-post.md'
     const routePath = filepath
-      .replace('../../content', '')
-      .replace(/\.md$/, ''); // e.g. /blog/first-post
+      .replace("../../content", "")
+      .replace(/\.md$/, ""); // e.g. /blog/first-post
 
     ret[routePath] = parsed;
   }

@@ -1,11 +1,13 @@
+import { A } from "@solidjs/router";
 import { JSX, splitProps } from "solid-js";
 
 type ButtonVariant = "primary" | "secondary" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
 
-export interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends JSX.AnchorHTMLAttributes<HTMLAnchorElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
+  href?: string;
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
@@ -33,11 +35,12 @@ export function Button(props: ButtonProps) {
   const size = () => local.size ?? "md";
 
   return (
-    <button
+    <A
+      href={props.href ?? "#"}
       {...rest}
-      class={`inline-flex items-center justify-center rounded-full font-semibold transition-colors cursor-pointer ${variantClasses[variant()]} ${sizeClasses[size()]} ${local.class ?? ""}`.trim()}
+      class={`inline-flex items-center justify-center rounded-full font-semibold transition-colors cursor-pointer ${variantClasses[variant()]} ${sizeClasses[size()]}`.trim()}
     >
       {local.children}
-    </button>
+    </A>
   );
 }

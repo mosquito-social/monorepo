@@ -116,6 +116,9 @@
     var(--msq-col-primary-dimmed),
     var(--msq-col-primary-lightened)
   );
+
+  --color-col-adjacent-1: var(--msq-col-adjacent-1);
+  --color-col-adjacent-2: var(--msq-col-adjacent-2);
 }
 
 @layer base {

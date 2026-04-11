@@ -1,114 +1,149 @@
+import { H2, Heading } from "mosquito-design-system";
+
+const ColorTile = (props: {
+  name: string;
+  class: string;
+  isLight?: boolean;
+}) => {
+  return (
+    <div
+      class={`p-4 rounded-lg shadow-md flex flex-col items-start justify-end border border-col-line-strong aspect-square ${props.class}`}
+    >
+      <span
+        class="font-fam-mono text-col-fg-strong text-fs-1 font-bold"
+        classList={{ light: props.isLight }}
+      >
+        {props.name}
+      </span>
+      <span class="text-col-fg text-fs-1" classList={{ light: props.isLight }}>
+        accent
+      </span>
+    </div>
+  );
+};
+const TypoTile = (props: { name: string; class: string }) => {
+  return (
+    <div
+      class={`p-4 rounded-lg shadow-md flex flex-col items-start justify-end border border-col-line-strong aspect-square`}
+    >
+      <span class={`font-fam-msq text-fs-7 font-black ${props.class}`}>Aa</span>
+      <span class="font-fam-mono text-col-fg-strong text-fs-1 font-bold">
+        {props.name}
+      </span>
+      <span class="text-cf-30 text-fs-1">foreground/text</span>
+    </div>
+  );
+};
+const LineTile = (props: { name: string; class: string }) => {
+  return (
+    <div
+      class={`p-4 rounded-lg shadow-md flex flex-col items-start justify-end border border-col-line-strong aspect-square`}
+    >
+      <span
+        class={`font-mos mb-4 text-8xl block w-1/2 aspect-square mx-auto border ${props.class}`}
+      ></span>
+      <span class="font-fam-mono text-col-fg-strong text-fs-1 font-bold">
+        {props.name}
+      </span>
+      <span class="text-cf-30 text-fs-1">line/border</span>
+    </div>
+  );
+};
+
 export default function DesignSystem() {
+  const accentColors = [
+    { name: "col-accent", class: "bg-col-accent text-cb-0" },
+    { name: "col-accent-weak", class: "bg-col-accent-weak text-cb-0" },
+    {
+      name: "col-accent-strong",
+      class: "bg-col-accent-strong text-cb-0",
+      isLight: true,
+    },
+  ];
+  const adjacentColors = [
+    { name: "col-adjacent-1", class: "bg-col-adjacent-1 text-cb-0" },
+    { name: "col-accent", class: "bg-col-accent text-cb-0" },
+    { name: "col-adjacent-2", class: "bg-col-adjacent-2 text-cb-0" },
+  ];
   const bgColors = [
-    { name: 'cb-0', class: 'bg-cb-0 text-cf-0' },
-    { name: 'cb-10', class: 'bg-cb-10 text-cf-10' },
-    { name: 'cb-20', class: 'bg-cb-20 text-cf-10' },
-    { name: 'cb-30', class: 'bg-cb-30 text-cf-10' },
+    { name: "col-bg", class: "bg-col-bg text-cf-0" },
+    { name: "col-bg-soft", class: "bg-col-bg-soft text-cf-10" },
+    { name: "col-bg-weak", class: "bg-col-bg-weak text-cf-10" },
   ];
   const fgColors = [
-    { name: 'cf-0', class: 'text-cf-0' },
-    { name: 'cf-10', class: 'text-cf-10' },
-    { name: 'cf-20', class: 'text-cf-20' },
-    { name: 'cf-30', class: 'text-cf-30' },
+    { name: "col-fg-strong", class: "text-col-fg-strong" },
+    { name: "col-fg", class: "text-col-fg" },
+    { name: "col-fg-soft", class: "text-col-fg-soft" },
+    { name: "col-fg-weak", class: "text-col-fg-weak" },
   ];
   const lineColors = [
-    { name: 'cl-10', class: 'border-cl-10 text-cb-0' },
-    { name: 'cl-20', class: 'border-cl-20 text-cb-10' },
-    { name: 'cl-30', class: 'border-cl-30 text-cb-10' },
+    { name: "col-line-strongest", class: "border-col-line-strongest" },
+    { name: "col-line-strong", class: "border-col-line-strong" },
+    { name: "col-line", class: "border-col-line" },
+    { name: "col-line-soft", class: "border-col-line-soft" },
   ];
-  const primaryColors = [{ name: 'cp-main', class: 'bg-cp-main text-cb-0' }];
-  const secondaryColors = [{ name: 'cs-main', class: 'bg-cs-main text-cb-0' }];
 
   return (
     <div class="min-h-screen bg-cb-10 text-cf-10">
-      <h1 class="text-6xl font-mos mos-effect text-cb-0 mb-8">Design System</h1>
+      <Heading level={1}>Design System</Heading>
 
       <section>
-        <h2 class="text-4xl font-bold uppercase mb-6">Tailwind Color Tokens</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <H2>Tailwind Color Tokens</H2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+          {accentColors.map((c) => (
+            <ColorTile {...c} />
+          ))}
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+          {adjacentColors.map((c) => (
+            <ColorTile {...c} />
+          ))}
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
           {bgColors.map((c) => (
-            <div
-              class={`p-4 rounded-lg shadow-md flex flex-col items-center justify-center border border-cl-20 aspect-square ${c.class}`}
-            >
-              <span class="font-mono">{c.name}</span>
-              <span class="text-cf-30 text-xs">background</span>
-            </div>
+            <ColorTile {...c} />
           ))}
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
           {fgColors.map((c) => (
-            <div
-              class={`p-4 rounded-lg shadow-md flex flex-col items-center justify-center border border-cl-20 aspect-square`}
-            >
-              <span class={`font-mos text-8xl ${c.class}`}>Aa</span>
-              <span class="font-mono">{c.name}</span>
-              <span class="text-cf-30 text-xs">foreground/text</span>
-            </div>
+            <TypoTile {...c} />
           ))}
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
           {lineColors.map((c) => (
-            <div
-              class={`p-4 rounded-lg shadow-md flex flex-col items-center justify-center border border-cl-20 aspect-square`}
-            >
-              <span
-                class={`font-mos text-8xl block w-1/2 aspect-square border ${c.class}`}
-              ></span>
-              <span class="font-mono">{c.name}</span>
-              <span class="text-xs">line/border</span>
-            </div>
-          ))}
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-          {primaryColors.map((c) => (
-            <div
-              class={`p-4 rounded-lg shadow-md flex flex-col items-center justify-center border border-cl-20 aspect-square ${c.class}`}
-            >
-              <span class="font-mono">{c.name}</span>
-              <span class="text-xs">primary palette</span>
-            </div>
-          ))}
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-          {secondaryColors.map((c) => (
-            <div
-              class={`p-4 rounded-lg shadow-md flex flex-col items-center justify-center border border-cl-20 aspect-square ${c.class}`}
-            >
-              <span class="font-mono">{c.name}</span>
-              <span class="text-xs">secondary palette</span>
-            </div>
+            <LineTile {...c} />
           ))}
         </div>
       </section>
       <section>
-        <h2 class="text-4xl font-bold uppercase mb-6 mt-8">
-          Tailwind Font Tokens
-        </h2>
-        <div class="border border-cl-20 p-4 rounded-xl mb-4">
-          <p class="font-mos text-4xl">Caprasimo</p>
-          <p class="font-mono">font-mos</p>
-          <p class="text-cf-30 text-xs">Mosquito signature Font</p>
-        </div>
-        <div class="border border-cl-20 p-4 rounded-xl mb-4">
-          <p class="font-sans text-4xl">
-            IBM Plex Sans <strong>Bold</strong> <em>Italic</em>
+        <H2>Tailwind Font Tokens</H2>
+
+        <div class="border border-col-line-strong p-4 rounded-xl mb-4">
+          <p class="font-fam-msq text-fs-6">Display Font</p>
+          <p class="font-fam-mono text-col-fg-strong text-fs-1 font-bold">
+            font-fam-msq
           </p>
-          <p class="font-mono">font-sans</p>
-          <p class="text-cf-30 text-xs">Go-To sans serif font</p>
-        </div>
-        <div class="border border-cl-20 p-4 rounded-xl mb-4">
-          <p class="font-serif text-4xl">
-            IBM Plex Serif <strong>Bold</strong> <em>Italic</em>
+          <p class="text-cf-30 text-fs-1">
+            Signature Typo for big headings and titles
           </p>
-          <p class="font-mono">font-serif</p>
-          <p class="text-cf-30 text-xs">Typeface for long form text</p>
         </div>
-        <div class="border border-cl-20 p-4 rounded-xl mb-4">
-          <p class="font-mono text-4xl">
-            IBM Plex Mono <strong>Bold</strong> <em>Italic</em>
+        <div class="border border-col-line-strong p-4 rounded-xl mb-4">
+          <p class="font-fam-main text-fs-6">
+            Main Font <strong>Bold</strong> <em>Italic</em>
           </p>
-          <p class="font-mono">font-mono</p>
-          <p class="text-cf-30 text-xs">Typeface for code</p>
+          <p class="font-fam-mono text-col-fg-strong text-fs-1 font-bold">
+            font-fam-main
+          </p>
+          <p class="text-cf-30 text-fs-1">Go-To sans serif font</p>
+        </div>
+        <div class="border border-col-line-strong p-4 rounded-xl mb-4">
+          <p class="font-fam-mono text-fs-6">
+            Monospaced <strong>Bold</strong> <em>Italic</em>
+          </p>
+          <p class="font-fam-mono text-col-fg-strong text-fs-1 font-bold">
+            font-fam-mono
+          </p>
+          <p class="text-cf-30 text-fs-1">Typeface for code</p>
         </div>
       </section>
     </div>

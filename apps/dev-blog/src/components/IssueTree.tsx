@@ -1,5 +1,5 @@
-import { For, Show, createSignal } from 'solid-js';
-import type { IssueNode } from '../utils/github';
+import { For, Show, createSignal } from "solid-js";
+import type { IssueNode } from "../utils/github";
 
 export function IssueTreeNode(props: { node: IssueNode }) {
   const [isOpen, setIsOpen] = createSignal(false);
@@ -21,37 +21,41 @@ export function IssueTreeNode(props: { node: IssueNode }) {
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen())}
-            class="w-5 h-5 flex items-center justify-center text-cf-10 hover:text-cp-main text-xs transition-colors cursor-pointer"
+            class="w-5 h-5 flex items-center justify-center text-col-fg-strong hover:text-col-accent-strong text-fs-1 transition-colors cursor-pointer"
           >
-            {isOpen() ? '▼' : '▶'}
+            {isOpen() ? "▼" : "▶"}
           </button>
         </Show>
         <Show when={!hasChildren()}>
           <span class="w-5" />
         </Show>
         <span
-          class={`text-xs px-2 rounded uppercase ${props.node.isDone ? 'text-cf-30' : 'text-cp-main'}`}
+          class={`text-xs px-2 rounded uppercase`}
+          classList={{
+            "text-col-fg-weak": props.node.isDone,
+            "text-col-accent-strong": !props.node.isDone,
+          }}
         >
-          {props.node.isDone ? 'Done' : 'Open'}
+          {props.node.isDone ? "Done" : "Open"}
         </span>
         <a
           href={props.node.url}
           target="_blank"
           class="transition-colors group flex items-center gap-2 grow"
         >
-          <span class="text-cf-20 font-mono text-xs group-hover:text-cs-main">
-            #{props.node.number.toString().padStart(3, '0')}
+          <span class="text-col-fg font-mono text-fs-1 group-hover:text-col-accent-strong">
+            #{props.node.number.toString().padStart(3, "0")}
           </span>
-          <span class="text-cf-10 text-sm font-medium group-hover:text-cp-main">
+          <span class="text-col-fg text-fs-2 group-hover:text-col-accent-strong">
             {props.node.title}
           </span>
         </a>
         <div class="w-30">
           <Show when={hasChildren()}>
-            <div class="flex items-center space-x-2 text-sm text-cf-10 ml-4 font-mono">
-              <div class="w-24 h-2 bg-cb-30 rounded-full overflow-hidden flex">
+            <div class="flex items-center space-x-2 text-fs-2 text-col-fg ml-4 font-fam-mono">
+              <div class="w-24 h-2 bg-col-bg-weak rounded-full overflow-hidden flex">
                 <div
-                  class="h-full bg-cp-main transition-all duration-300"
+                  class="h-full bg-col-accent transition-all duration-300"
                   style={{ width: `${percentage()}%` }}
                 ></div>
               </div>

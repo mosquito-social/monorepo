@@ -1,5 +1,5 @@
 import { A } from "@solidjs/router";
-import { ThemeToggle } from "mosquito-design-system/ThemeToggle";
+import { ThemeToggle } from "mosquito-design-system/theme-toggle";
 import { Logo } from "./Logo";
 
 export function PageContent(props: { variant: "bricolage" | "ysabeau" }) {
