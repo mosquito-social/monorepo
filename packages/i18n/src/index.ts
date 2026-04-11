@@ -1,4 +1,9 @@
-export { flatten, translator, resolveTemplate, template } from '@solid-primitives/i18n';
+export {
+  flatten,
+  translator,
+  resolveTemplate,
+  template,
+} from '@solid-primitives/i18n';
 import type { Locale } from './types.js';
 export type { Locale } from './types.js';
 
@@ -10,7 +15,8 @@ export function detectLocale(): Locale {
   if (typeof document === 'undefined') return 'en';
   const cookie = document.cookie.match(/locale=([^;]+)/)?.[1];
   if (cookie === 'de' || cookie === 'en') return cookie;
-  if (typeof navigator !== 'undefined' && navigator.language.startsWith('de')) return 'de';
+  if (typeof navigator !== 'undefined' && navigator.language.startsWith('de'))
+    return 'de';
   return 'en';
 }
 

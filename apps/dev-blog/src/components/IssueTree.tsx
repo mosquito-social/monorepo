@@ -1,5 +1,5 @@
-import { For, Show, createSignal } from "solid-js";
-import type { IssueNode } from "../utils/github";
+import { For, Show, createSignal } from 'solid-js';
+import type { IssueNode } from '../utils/github';
 
 export function IssueTreeNode(props: { node: IssueNode }) {
   const [isOpen, setIsOpen] = createSignal(false);
@@ -23,7 +23,7 @@ export function IssueTreeNode(props: { node: IssueNode }) {
             onClick={() => setIsOpen(!isOpen())}
             class="w-5 h-5 flex items-center justify-center text-col-fg-strong hover:text-col-accent-strong text-fs-1 transition-colors cursor-pointer"
           >
-            {isOpen() ? "▼" : "▶"}
+            {isOpen() ? '▼' : '▶'}
           </button>
         </Show>
         <Show when={!hasChildren()}>
@@ -32,11 +32,11 @@ export function IssueTreeNode(props: { node: IssueNode }) {
         <span
           class={`text-xs px-2 rounded uppercase`}
           classList={{
-            "text-col-fg-weak": props.node.isDone,
-            "text-col-accent-strong": !props.node.isDone,
+            'text-col-fg-weak': props.node.isDone,
+            'text-col-accent-strong': !props.node.isDone,
           }}
         >
-          {props.node.isDone ? "Done" : "Open"}
+          {props.node.isDone ? 'Done' : 'Open'}
         </span>
         <a
           href={props.node.url}
@@ -44,7 +44,7 @@ export function IssueTreeNode(props: { node: IssueNode }) {
           class="transition-colors group flex items-center gap-2 grow"
         >
           <span class="text-col-fg font-mono text-fs-1 group-hover:text-col-accent-strong">
-            #{props.node.number.toString().padStart(3, "0")}
+            #{props.node.number.toString().padStart(3, '0')}
           </span>
           <span class="text-col-fg text-fs-2 group-hover:text-col-accent-strong">
             {props.node.title}

@@ -1,8 +1,8 @@
-import { A } from "@solidjs/router";
-import { ThemeToggle } from "mosquito-design-system/theme-toggle";
-import { Logo } from "./Logo";
+import { A } from '@solidjs/router';
+import { ThemeToggle } from 'mosquito-design-system/theme-toggle';
+import { Logo } from './Logo';
 
-export function PageContent(props: { variant: "bricolage" | "ysabeau" }) {
+export function PageContent(props: { variant: 'bricolage' | 'ysabeau' }) {
   return (
     <div class="flex flex-col min-h-screen font-fam-main bg-col-bg text-col-text">
       <header class="flex items-center justify-between px-6 py-4 border-b border-cl-20">
@@ -12,13 +12,13 @@ export function PageContent(props: { variant: "bricolage" | "ysabeau" }) {
         <nav class="flex items-center gap-4">
           <A
             href="/ysabeau"
-            class={`text-cf-20 hover:text-cf-0 transition-colors ${props.variant === "ysabeau" ? "font-black" : ""}`}
+            class={`text-cf-20 hover:text-cf-0 transition-colors ${props.variant === 'ysabeau' ? 'font-black' : ''}`}
           >
             ysabeau
           </A>
           <A
             href="/bricolage"
-            class={`text-cf-20 hover:text-cf-0 transition-colors ${props.variant === "bricolage" ? "font-black" : ""}`}
+            class={`text-cf-20 hover:text-cf-0 transition-colors ${props.variant === 'bricolage' ? 'font-black' : ''}`}
           >
             bricolage
           </A>
@@ -187,22 +187,22 @@ export function PageContent(props: { variant: "bricolage" | "ysabeau" }) {
 
             <div class="border-t border-col-border pt-6">
               <p class="text-xs tracking-[0.15em] uppercase text-col-text-subtle font-semibold mb-4 font-fam-msq flex items-center gap-2">
-                Colour —{" "}
-                {props.variant === "bricolage" ? "Chemical Cyan" : "Deep Rose"}
+                Colour —{' '}
+                {props.variant === 'bricolage' ? 'Chemical Cyan' : 'Deep Rose'}
                 <span class="dark:hidden"> — Light</span>
                 <span class="light:hidden"> — Dark</span>
               </p>
 
               <div class="flex gap-3">
                 {[
-                  { bg: "bg-col-accent", label: "Accent" },
+                  { bg: 'bg-col-accent', label: 'Accent' },
                   {
-                    bg: "bg-col-bg border border-col-border",
-                    label: "Surface 1",
+                    bg: 'bg-col-bg border border-col-border',
+                    label: 'Surface 1',
                   },
-                  { bg: "bg-col-surface", label: "Surface 2" },
-                  { bg: "bg-col-text", label: "Copy 1" },
-                  { bg: "bg-col-text-muted", label: "Copy 2" },
+                  { bg: 'bg-col-surface', label: 'Surface 2' },
+                  { bg: 'bg-col-text', label: 'Copy 1' },
+                  { bg: 'bg-col-text-muted', label: 'Copy 2' },
                 ].map(({ bg, label }) => (
                   <div class="flex flex-col items-center gap-1.5">
                     <div class={`w-14 h-14 rounded-xl ${bg}`} />

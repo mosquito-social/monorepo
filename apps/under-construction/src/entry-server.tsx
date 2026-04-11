@@ -1,6 +1,6 @@
 // @refresh reload
-import { StartServer, createHandler } from "@solidjs/start/server";
-import { foucSnippet } from "mosquito-design-system/fouc.js";
+import { StartServer, createHandler } from '@solidjs/start/server';
+import { foucSnippet } from 'mosquito-design-system/fouc.js';
 
 export default createHandler(() => (
   <StartServer

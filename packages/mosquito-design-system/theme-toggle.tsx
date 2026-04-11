@@ -1,4 +1,4 @@
-import { createSignal, onMount } from "solid-js";
+import { createSignal, onMount } from 'solid-js';
 
 const SunIcon = (props: { class?: string }) => (
   <svg
@@ -43,29 +43,29 @@ const MoonIcon = (props: { class?: string }) => (
 );
 
 export function ThemeToggle() {
-  const [theme, setTheme] = createSignal("light");
+  const [theme, setTheme] = createSignal('light');
 
   onMount(() => {
     const match = document.cookie.match(/(?:^|; )colorScheme=([^;]+)/);
-    const cookieTheme = match ? match[1] : "light";
-    updateTheme(cookieTheme === "system" ? "light" : cookieTheme);
+    const cookieTheme = match ? match[1] : 'light';
+    updateTheme(cookieTheme === 'system' ? 'light' : cookieTheme);
   });
 
   const updateTheme = (newTheme: string) => {
     setTheme(newTheme);
     document.cookie = `colorScheme=${newTheme}; path=/; max-age=31536000`;
 
-    document.documentElement.classList.remove("dark", "light");
+    document.documentElement.classList.remove('dark', 'light');
 
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else if (newTheme === "light") {
-      document.documentElement.classList.add("light");
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else if (newTheme === 'light') {
+      document.documentElement.classList.add('light');
     }
   };
 
   const toggleTheme = () => {
-    updateTheme(theme() === "light" ? "dark" : "light");
+    updateTheme(theme() === 'light' ? 'dark' : 'light');
   };
 
   return (
@@ -75,12 +75,12 @@ export function ThemeToggle() {
       title="Toggle Theme"
     >
       <div
-        class={`p-1 rounded-full ${theme() === "light" ? "text-col-bg bg-col-accent" : "text-col-fg-soft"}`}
+        class={`p-1 rounded-full ${theme() === 'light' ? 'text-col-bg bg-col-accent' : 'text-col-fg-soft'}`}
       >
         <SunIcon />
       </div>
       <div
-        class={`p-1 rounded-full ${theme() === "light" ? "text-col-fg-soft" : "text-col-bg bg-col-accent"}`}
+        class={`p-1 rounded-full ${theme() === 'light' ? 'text-col-fg-soft' : 'text-col-bg bg-col-accent'}`}
       >
         <MoonIcon />
       </div>

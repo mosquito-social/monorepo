@@ -1,4 +1,4 @@
-import { H2, Heading } from "mosquito-design-system";
+import { H2, Heading } from 'mosquito-design-system';
 
 const ColorTile = (props: {
   name: string;
@@ -52,35 +52,35 @@ const LineTile = (props: { name: string; class: string }) => {
 
 export default function DesignSystem() {
   const accentColors = [
-    { name: "col-accent", class: "bg-col-accent text-cb-0" },
-    { name: "col-accent-weak", class: "bg-col-accent-weak text-cb-0" },
+    { name: 'col-accent', class: 'bg-col-accent text-cb-0' },
+    { name: 'col-accent-weak', class: 'bg-col-accent-weak text-cb-0' },
     {
-      name: "col-accent-strong",
-      class: "bg-col-accent-strong text-cb-0",
+      name: 'col-accent-strong',
+      class: 'bg-col-accent-strong text-cb-0',
       isLight: true,
     },
   ];
   const adjacentColors = [
-    { name: "col-adjacent-1", class: "bg-col-adjacent-1 text-cb-0" },
-    { name: "col-accent", class: "bg-col-accent text-cb-0" },
-    { name: "col-adjacent-2", class: "bg-col-adjacent-2 text-cb-0" },
+    { name: 'col-adjacent-1', class: 'bg-col-adjacent-1 text-cb-0' },
+    { name: 'col-accent', class: 'bg-col-accent text-cb-0' },
+    { name: 'col-adjacent-2', class: 'bg-col-adjacent-2 text-cb-0' },
   ];
   const bgColors = [
-    { name: "col-bg", class: "bg-col-bg text-cf-0" },
-    { name: "col-bg-soft", class: "bg-col-bg-soft text-cf-10" },
-    { name: "col-bg-weak", class: "bg-col-bg-weak text-cf-10" },
+    { name: 'col-bg', class: 'bg-col-bg text-cf-0' },
+    { name: 'col-bg-soft', class: 'bg-col-bg-soft text-cf-10' },
+    { name: 'col-bg-weak', class: 'bg-col-bg-weak text-cf-10' },
   ];
   const fgColors = [
-    { name: "col-fg-strong", class: "text-col-fg-strong" },
-    { name: "col-fg", class: "text-col-fg" },
-    { name: "col-fg-soft", class: "text-col-fg-soft" },
-    { name: "col-fg-weak", class: "text-col-fg-weak" },
+    { name: 'col-fg-strong', class: 'text-col-fg-strong' },
+    { name: 'col-fg', class: 'text-col-fg' },
+    { name: 'col-fg-soft', class: 'text-col-fg-soft' },
+    { name: 'col-fg-weak', class: 'text-col-fg-weak' },
   ];
   const lineColors = [
-    { name: "col-line-strongest", class: "border-col-line-strongest" },
-    { name: "col-line-strong", class: "border-col-line-strong" },
-    { name: "col-line", class: "border-col-line" },
-    { name: "col-line-soft", class: "border-col-line-soft" },
+    { name: 'col-line-strongest', class: 'border-col-line-strongest' },
+    { name: 'col-line-strong', class: 'border-col-line-strong' },
+    { name: 'col-line', class: 'border-col-line' },
+    { name: 'col-line-soft', class: 'border-col-line-soft' },
   ];
 
   return (
