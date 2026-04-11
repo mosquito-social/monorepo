@@ -1,5 +1,5 @@
 import { JSX } from 'solid-js';
-import { Button } from 'mosquito-design-system/Button';
+import { Button } from 'mosquito-design-system/button';
 
 export interface CtaCardProps {
   title: string;

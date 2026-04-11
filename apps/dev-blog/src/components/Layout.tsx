@@ -1,33 +1,10 @@
-import { A } from '@solidjs/router';
-import { ThemeToggle } from 'mosquito-design-system/ThemeToggle';
-import { JSX } from 'solid-js';
+import { JSX } from "solid-js";
+import { SiteHeader } from "./site-header";
 
 export function Layout(props: { children: JSX.Element }) {
   return (
     <div class="min-h-screen bg-cb-10 font-sans">
-      <header class="sticky top-0 z-10 border-b border-cl-10 p-3 flex justify-between items-center px-4 bg-cb-20">
-        <div>
-          <A class="font-mos text-2xl text-cf-10" href="/">
-            <span class="text-cf-30/80">dev.</span>
-            <span class="mos-effect text-cb-30">mosquito</span>.social
-          </A>
-        </div>
-        <div class="flex gap-4 items-center">
-          <A
-            class="font-bold text-lg hover:text-cp-main transition-colors"
-            href="/"
-          >
-            Blog
-          </A>
-          <A
-            class="font-bold text-lg hover:text-cp-main transition-colors"
-            href="/docs"
-          >
-            Docs
-          </A>
-          <ThemeToggle />
-        </div>
-      </header>
+      <SiteHeader />
       <main class="max-w-5xl mx-auto p-6 md:p-10 min-h-[calc(100vh-80px)]">
         {props.children}
       </main>

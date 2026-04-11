@@ -12,11 +12,26 @@
       "default": "./fouc.js"
     },
     ".": "./index.tsx",
-    "./canonical": "./canonical.tsx",
-    "./Button": "./button.tsx",
-    "./Tag": "./tag.tsx",
-    "./SectionWrapper": "./section-wrapper.tsx",
-    "./ThemeToggle": "./theme-toggle.tsx"
+    "./canonical": {
+      "types": "./canonical.tsx",
+      "default": "./canonical.tsx"
+    },
+    "./button": {
+      "types": "./button.tsx",
+      "default": "./button.tsx"
+    },
+    "./tag": {
+      "types": "./tag.tsx",
+      "default": "./tag.tsx"
+    },
+    "./section-wrapper": {
+      "types": "./section-wrapper.tsx",
+      "default": "./section-wrapper.tsx"
+    },
+    "./theme-toggle": {
+      "types": "./theme-toggle.tsx",
+      "default": "./theme-toggle.tsx"
+    }
   },
   "devDependencies": {
     "@solidjs/router": "^0.15.4"

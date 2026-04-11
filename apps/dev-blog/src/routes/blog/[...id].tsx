@@ -1,14 +1,15 @@
-import { Meta, Title } from '@solidjs/meta';
-import { createAsync, useParams } from '@solidjs/router';
-import { canonicalComponents } from 'mosquito-design-system/canonical';
-import { Show, Suspense } from 'solid-js';
-import { transform } from 'solid-mds';
-import { Metadata } from '../../types';
-import { getDoc } from '../../utils/queries';
+import { Meta, Title } from "@solidjs/meta";
+import { createAsync, useParams } from "@solidjs/router";
+import { canonicalComponents } from "mosquito-design-system/canonical";
+import { Show, Suspense } from "solid-js";
+import { transform } from "solid-mds";
+import { Metadata } from "../../types";
+import { getDoc } from "../../utils/queries";
+import { Heading } from "mosquito-design-system";
 
 export default function DocDetail() {
   const params = useParams();
-  const doc = createAsync(() => getDoc(`blog/${params.id || ''}`));
+  const doc = createAsync(() => getDoc(`blog/${params.id || ""}`));
 
   return (
     <Suspense fallback={<div class="">Loading...</div>}>
@@ -29,16 +30,15 @@ export default function DocDetail() {
           return (
             <div class="max-w-2xl mx-auto">
               <Title>
-                {result.global?.title ?? ''} | Blog | mosquito.social
+                {result.global?.title ?? ""} | Blog | mosquito.social
               </Title>
               <Meta
                 name="description"
-                content={result.global?.description ?? ''}
+                content={result.global?.description ?? ""}
               />
-              <h1 class="font-mos mos-effect text-6xl text-cb-0 mb-4">
-                {result.global?.title ?? 'Documentation'}
-              </h1>
-              <p class="text-cf-20 text-xl mb-8">{result.global?.subtitle}</p>
+              <Heading level={1} sub={result.global?.subtitle}>
+                {result.global?.title}
+              </Heading>
               <MarkdownBody />
             </div>
           );
