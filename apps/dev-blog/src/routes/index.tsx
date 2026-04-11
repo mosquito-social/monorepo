@@ -1,14 +1,14 @@
-import { Meta, Title } from "@solidjs/meta";
-import { A, createAsync } from "@solidjs/router";
-import { canonicalComponents, H2, H3 } from "mosquito-design-system/canonical";
-import { For, Show } from "solid-js";
-import { transform } from "solid-mds";
-import { Metadata } from "../types";
-import { getDoc, getMetadata } from "../utils/queries";
-import { Heading } from "mosquito-design-system";
+import { Meta, Title } from '@solidjs/meta';
+import { A, createAsync } from '@solidjs/router';
+import { Heading } from 'mosquito-design-system';
+import { H2, canonicalComponents } from 'mosquito-design-system/canonical';
+import { For, Show } from 'solid-js';
+import { transform } from 'solid-mds';
+import { Metadata } from '../types';
+import { getDoc, getMetadata } from '../utils/queries';
 
 export default function Index() {
-  const page = createAsync(() => getDoc("home"));
+  const page = createAsync(() => getDoc('home'));
   const metadata = createAsync(() => getMetadata());
 
   return (
@@ -40,7 +40,7 @@ export default function Index() {
               return (
                 <div>
                   <Title>Development Portal | mosquito.social</Title>
-                  <Meta name="description" content={""} />
+                  <Meta name="description" content={''} />
                   <MarkdownBody />
                 </div>
               );
@@ -54,7 +54,7 @@ export default function Index() {
           <Show when={metadata()} fallback={<div></div>}>
             {(meta) => {
               const allBlogs = Object.entries(meta()).filter(([key]) =>
-                key.startsWith("/blog"),
+                key.startsWith('/blog'),
               );
               return (
                 <For each={allBlogs}>

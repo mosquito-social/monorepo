@@ -1,5 +1,5 @@
-import { JSX } from 'solid-js';
 import { Button } from 'mosquito-design-system/button';
+import { JSX } from 'solid-js';
 
 export interface CtaCardProps {
   title: string;
@@ -36,7 +36,9 @@ export function CtaCard(props: CtaCardProps) {
         </p>
         <p
           class={`text-sm leading-relaxed ${
-            props.variant === 'accent' ? 'text-col-accent-fg/80' : 'text-col-text-muted'
+            props.variant === 'accent'
+              ? 'text-col-accent-fg/80'
+              : 'text-col-text-muted'
           }`}
         >
           {props.body}

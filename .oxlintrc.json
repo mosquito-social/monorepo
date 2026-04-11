@@ -1,0 +1,7 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/refs/heads/main/npm/oxlint/configuration_schema.json",
+  "rules": {
+    "jsx-key": "off",
+    "no-document-cookie": "off"
+  }
+}

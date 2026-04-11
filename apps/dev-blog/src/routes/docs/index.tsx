@@ -1,5 +1,3 @@
-import { A } from '@solidjs/router';
-
 export default function DocsIndex() {
   return (
     <div class="prose dark:prose-invert max-w-none">

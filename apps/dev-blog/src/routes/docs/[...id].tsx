@@ -1,15 +1,15 @@
-import { Meta, Title } from "@solidjs/meta";
-import { createAsync, useParams } from "@solidjs/router";
-import { canonicalComponents } from "mosquito-design-system/canonical";
-import { Show, Suspense } from "solid-js";
-import { transform } from "solid-mds";
-import { Metadata } from "../../types";
-import { getDoc } from "../../utils/queries";
-import { Heading } from "mosquito-design-system";
+import { Meta, Title } from '@solidjs/meta';
+import { createAsync, useParams } from '@solidjs/router';
+import { Heading } from 'mosquito-design-system';
+import { canonicalComponents } from 'mosquito-design-system/canonical';
+import { Show, Suspense } from 'solid-js';
+import { transform } from 'solid-mds';
+import { Metadata } from '../../types';
+import { getDoc } from '../../utils/queries';
 
 export default function DocDetail() {
   const params = useParams();
-  const doc = createAsync(() => getDoc(`docs/${params.id || ""}`));
+  const doc = createAsync(() => getDoc(`docs/${params.id || ''}`));
 
   return (
     <Suspense fallback={<div class="">Loading...</div>}>
@@ -30,12 +30,12 @@ export default function DocDetail() {
           return (
             <div class="">
               <Title>
-                {result.global?.title ?? "Documentation"} | Docs |
+                {result.global?.title ?? 'Documentation'} | Docs |
                 mosquito.social
               </Title>
               <Meta
                 name="description"
-                content={result.global?.description ?? ""}
+                content={result.global?.description ?? ''}
               />
               <Heading
                 level={1}

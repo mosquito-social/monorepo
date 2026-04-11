@@ -9,10 +9,7 @@
   --font-fam-mono: Menlo, monospace;
 
   --color-col-accent: light-dark(oklch(60% 0.26 192), oklch(76% 0.22 192));
-  --color-col-accent-hover: light-dark(
-    oklch(54% 0.26 192),
-    oklch(81% 0.22 192)
-  );
+  --color-col-accent-hover: light-dark(oklch(54% 0.26 192), oklch(81% 0.22 192));
   --color-col-accent-fg: light-dark(oklch(99% 0 0), oklch(10% 0.018 192));
   --color-col-bg: light-dark(oklch(97% 0.005 192), oklch(14% 0.018 192));
   --color-col-surface: light-dark(oklch(90% 0.012 192), oklch(23% 0.022 192));
@@ -22,10 +19,7 @@
   );
   --color-col-text: light-dark(oklch(14% 0.018 192), oklch(97% 0.005 192));
   --color-col-text-muted: light-dark(oklch(38% 0.016 192), oklch(72% 0.01 192));
-  --color-col-text-subtle: light-dark(
-    oklch(58% 0.01 192),
-    oklch(52% 0.012 192)
-  );
+  --color-col-text-subtle: light-dark(oklch(58% 0.01 192), oklch(52% 0.012 192));
   --color-col-border: light-dark(oklch(80% 0.014 192), oklch(30% 0.022 192));
   --color-col-border-subtle: light-dark(
     oklch(88% 0.01 192),
@@ -61,10 +55,7 @@
   --color-col-text-muted: light-dark(oklch(40% 0.018 10), oklch(72% 0.01 10));
   --color-col-text-subtle: light-dark(oklch(60% 0.01 10), oklch(50% 0.012 10));
   --color-col-border: light-dark(oklch(82% 0.014 10), oklch(30% 0.028 10));
-  --color-col-border-subtle: light-dark(
-    oklch(88% 0.01 10),
-    oklch(22% 0.022 10)
-  );
+  --color-col-border-subtle: light-dark(oklch(88% 0.01 10), oklch(22% 0.022 10));
   --color-col-live: light-dark(oklch(50% 0.24 10), oklch(68% 0.2 10));
   --color-col-tag-bg: light-dark(oklch(91% 0.012 10), oklch(24% 0.028 10));
   --color-col-tag-text: light-dark(oklch(50% 0.24 10), oklch(68% 0.2 10));

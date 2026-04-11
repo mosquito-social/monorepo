@@ -1,5 +1,5 @@
-import { JSX } from "solid-js";
-import { SiteHeader } from "./site-header";
+import { JSX } from 'solid-js';
+import { SiteHeader } from './site-header';
 
 export function Layout(props: { children: JSX.Element }) {
   return (

@@ -1,19 +1,19 @@
-import { For, Show, createSignal, onMount } from "solid-js";
-import { IssueTreeNode } from "../../components/IssueTree";
-import type { IssueNode } from "../../utils/github";
-import { Heading } from "mosquito-design-system";
+import { Heading } from 'mosquito-design-system';
+import { For, Show, createSignal, onMount } from 'solid-js';
+import { IssueTreeNode } from '../../components/IssueTree';
+import type { IssueNode } from '../../utils/github';
 
 export default function IssuesPage() {
   const [issues, setIssues] = createSignal<IssueNode[]>([]);
   const [loading, setLoading] = createSignal(true);
-  const [error, setError] = createSignal("");
+  const [error, setError] = createSignal('');
 
   const fetchIssues = async (refresh = false) => {
     setLoading(true);
-    setError("");
+    setError('');
     try {
-      const res = await fetch(`/api/issues${refresh ? "?refresh=true" : ""}`);
-      if (!res.ok) throw new Error("Failed to fetch issues");
+      const res = await fetch(`/api/issues${refresh ? '?refresh=true' : ''}`);
+      if (!res.ok) throw new Error('Failed to fetch issues');
       const data = await res.json();
       setIssues(data);
     } catch (e: any) {
@@ -64,7 +64,7 @@ export default function IssuesPage() {
               ></path>
             </svg>
           </Show>
-          {loading() ? "Refreshing..." : "Refresh"}
+          {loading() ? 'Refreshing...' : 'Refresh'}
         </button>
       </div>
 

@@ -1,4 +1,4 @@
-import { Tag } from "mosquito-design-system";
+import { Tag } from 'mosquito-design-system';
 
 export interface RoadmapStepProps {
   step: number;
@@ -17,8 +17,8 @@ export function RoadmapStep(props: RoadmapStepProps) {
         <div
           class={`w-10 h-10 rounded-full flex items-center justify-center text-fs-3 font-bold font-fam-msq shrink-0 border-2 ${
             props.current
-              ? "bg-col-accent text-col-accent-fg border-col-accent"
-              : "bg-col-bg text-col-text-weak border-col-line"
+              ? 'bg-col-accent text-col-accent-fg border-col-accent'
+              : 'bg-col-bg text-col-text-weak border-col-line'
           }`}
         >
           {props.step}

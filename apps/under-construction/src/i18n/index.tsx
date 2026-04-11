@@ -1,8 +1,19 @@
-import { createContext, createSignal, useContext, type ParentProps } from 'solid-js';
-import { flatten, translator, resolveTemplate, detectLocale, persistLocale } from 'i18n';
+import {
+  detectLocale,
+  flatten,
+  persistLocale,
+  resolveTemplate,
+  translator,
+} from 'i18n';
 import type { Locale } from 'i18n';
-import { en } from './en';
+import {
+  type ParentProps,
+  createContext,
+  createSignal,
+  useContext,
+} from 'solid-js';
 import { de } from './de';
+import { en } from './en';
 
 const dicts = {
   en: flatten(en),

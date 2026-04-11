@@ -50,23 +50,29 @@
 
   /* === semantic tailwind font sizes === */
   --text-fs-1: calc(
-    var(--msq-font-base-size) * pow(var(--msq-font-size-ratio), -1)
+    var(--msq-font-base-size) *
+    pow(var(--msq-font-size-ratio), -1)
   );
   --text-fs-2: calc(
-    var(--msq-font-base-size) * pow(var(--msq-font-size-ratio), -0.5)
+    var(--msq-font-base-size) *
+    pow(var(--msq-font-size-ratio), -0.5)
   );
   --text-fs-3: var(--msq-font-base-size);
   --text-fs-4: calc(
-    var(--msq-font-base-size) * pow(var(--msq-font-size-ratio), 0.5)
+    var(--msq-font-base-size) *
+    pow(var(--msq-font-size-ratio), 0.5)
   );
   --text-fs-5: calc(
-    var(--msq-font-base-size) * pow(var(--msq-font-size-ratio), 1)
+    var(--msq-font-base-size) *
+    pow(var(--msq-font-size-ratio), 1)
   );
   --text-fs-6: calc(
-    var(--msq-font-base-size) * pow(var(--msq-font-size-ratio), 2)
+    var(--msq-font-base-size) *
+    pow(var(--msq-font-size-ratio), 2)
   );
   --text-fs-7: calc(
-    var(--msq-font-base-size) * pow(var(--msq-font-size-ratio), 3)
+    var(--msq-font-base-size) *
+    pow(var(--msq-font-size-ratio), 3)
   );
   --text-base: var(--text-fs-3);
 

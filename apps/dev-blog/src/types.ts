@@ -1,4 +1,4 @@
-import { HastParseResult } from "hast-mds";
+import { HastParseResult } from 'hast-mds';
 
 export interface Metadata {
   title?: string;

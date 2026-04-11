@@ -1,6 +1,6 @@
-import { ThemeToggle } from "mosquito-design-system";
-import { Logo } from "./logo";
-import { A } from "@solidjs/router";
+import { A } from '@solidjs/router';
+import { ThemeToggle } from 'mosquito-design-system';
+import { Logo } from './logo';
 
 export function SiteHeader() {
   return (

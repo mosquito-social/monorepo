@@ -1,15 +1,3 @@
-import { For } from "solid-js";
-import { Button, Tag, SectionWrapper, Heading } from "mosquito-design-system";
-import { SiteHeader } from "~/components/site-header";
-import { Carousel } from "~/components/carousel";
-import { UseCaseCard } from "~/components/use-case-card";
-import { FeatureTile } from "~/components/feature-tile";
-import { RoadmapStep } from "~/components/roadmap-step";
-import { ContributorCard } from "~/components/contributor-card";
-import { CtaCard } from "~/components/cta-card";
-import { useT } from "~/i18n/index";
-import ArrowRight from "lucide-solid/icons/arrow-right";
-import heroImage from "../components/hero.jpg";
 import {
   AtSign,
   Check,
@@ -24,20 +12,32 @@ import {
   ShieldOff,
   Star,
   Users,
-} from "lucide-solid";
+} from 'lucide-solid';
+import ArrowRight from 'lucide-solid/icons/arrow-right';
+import { Button, Heading, SectionWrapper, Tag } from 'mosquito-design-system';
+import { For } from 'solid-js';
+import { Carousel } from '~/components/carousel';
+import { ContributorCard } from '~/components/contributor-card';
+import { CtaCard } from '~/components/cta-card';
+import { FeatureTile } from '~/components/feature-tile';
+import { RoadmapStep } from '~/components/roadmap-step';
+import { SiteHeader } from '~/components/site-header';
+import { UseCaseCard } from '~/components/use-case-card';
+import { useT } from '~/i18n/index';
+import heroImage from '../components/hero.jpg';
 
 // ─── Inline SVG icons ────────────────────────────────────────────────────────
 
 // ─── Use case card data ───────────────────────────────────────────────────────
 
 const cardGradients = [
-  "linear-gradient(135deg, oklch(60% 0.12 230), oklch(45% 0.18 250))",
-  "linear-gradient(135deg, oklch(75% 0.08 60), oklch(60% 0.14 40))",
-  "linear-gradient(135deg, oklch(55% 0.14 310), oklch(45% 0.18 280))",
-  "linear-gradient(135deg, oklch(40% 0.20 20), oklch(30% 0.15 350))",
-  "linear-gradient(135deg, oklch(70% 0.10 100), oklch(55% 0.14 80))",
-  "linear-gradient(135deg, oklch(45% 0.22 25), oklch(35% 0.18 10))",
-  "linear-gradient(135deg, oklch(65% 0.09 40), oklch(55% 0.12 20))",
+  'linear-gradient(135deg, oklch(60% 0.12 230), oklch(45% 0.18 250))',
+  'linear-gradient(135deg, oklch(75% 0.08 60), oklch(60% 0.14 40))',
+  'linear-gradient(135deg, oklch(55% 0.14 310), oklch(45% 0.18 280))',
+  'linear-gradient(135deg, oklch(40% 0.20 20), oklch(30% 0.15 350))',
+  'linear-gradient(135deg, oklch(70% 0.10 100), oklch(55% 0.14 80))',
+  'linear-gradient(135deg, oklch(45% 0.22 25), oklch(35% 0.18 10))',
+  'linear-gradient(135deg, oklch(65% 0.09 40), oklch(55% 0.12 20))',
 ];
 
 // ─── Main page component ──────────────────────────────────────────────────────
@@ -46,49 +46,49 @@ export default function Home() {
   const { t } = useT();
 
   const useCaseKeys = [
-    "card1",
-    "card2",
-    "card3",
-    "card4",
-    "card5",
-    "card6",
-    "card7",
+    'card1',
+    'card2',
+    'card3',
+    'card4',
+    'card5',
+    'card6',
+    'card7',
   ] as const;
 
   const conceptKeys = [
-    { key: "concept1", icon: <GitPullRequest size={32} /> },
-    { key: "concept2", icon: <Flower size={32} /> },
-    { key: "concept3", icon: <CircleUserRound size={32} /> },
-    { key: "concept4", icon: <AtSign size={32} /> },
-    { key: "concept5", icon: <MessagesSquare size={32} /> },
-    { key: "concept6", icon: <MoveUpRight size={32} /> },
+    { key: 'concept1', icon: <GitPullRequest size={32} /> },
+    { key: 'concept2', icon: <Flower size={32} /> },
+    { key: 'concept3', icon: <CircleUserRound size={32} /> },
+    { key: 'concept4', icon: <AtSign size={32} /> },
+    { key: 'concept5', icon: <MessagesSquare size={32} /> },
+    { key: 'concept6', icon: <MoveUpRight size={32} /> },
   ] as const;
 
   const featureKeys = [
-    "feature1",
-    "feature2",
-    "feature3",
-    "feature4",
-    "feature5",
-    "feature6",
-    "feature7",
-    "feature8",
+    'feature1',
+    'feature2',
+    'feature3',
+    'feature4',
+    'feature5',
+    'feature6',
+    'feature7',
+    'feature8',
   ] as const;
 
   const roadmapSteps: Array<{ key: string; current?: boolean }> = [
-    { key: "step1", current: true },
-    { key: "step2" },
-    { key: "step3" },
-    { key: "step4" },
-    { key: "step5" },
+    { key: 'step1', current: true },
+    { key: 'step2' },
+    { key: 'step3' },
+    { key: 'step4' },
+    { key: 'step5' },
   ];
 
   const contributors = [
-    { name: "Irena Makar", role: "Concept, Coding", initials: "IM" },
-    { name: "Anne Reis", role: "Copywriting, Communication", initials: "AR" },
-    { name: "Silke Voigts", role: "Design", initials: "SV" },
-    { name: "Matthias Reis", role: "Concept, Architecture", initials: "MR" },
-    { name: "Bernhard Häussner", role: "Engineering, DevOps", initials: "BH" },
+    { name: 'Irena Makar', role: 'Concept, Coding', initials: 'IM' },
+    { name: 'Anne Reis', role: 'Copywriting, Communication', initials: 'AR' },
+    { name: 'Silke Voigts', role: 'Design', initials: 'SV' },
+    { name: 'Matthias Reis', role: 'Concept, Architecture', initials: 'MR' },
+    { name: 'Bernhard Häussner', role: 'Engineering, DevOps', initials: 'BH' },
   ];
 
   return (
@@ -111,24 +111,24 @@ export default function Home() {
             <div class="max-w-xl flex flex-col gap-7">
               {/* Tags */}
               <div class="flex flex-wrap gap-2">
-                <Tag>{t("hero.tagOpenSource")}</Tag>
-                <Tag>{t("hero.tagFederated")}</Tag>
-                <Tag>{t("hero.tagPersonal")}</Tag>
+                <Tag>{t('hero.tagOpenSource')}</Tag>
+                <Tag>{t('hero.tagFederated')}</Tag>
+                <Tag>{t('hero.tagPersonal')}</Tag>
               </div>
 
               {/* Headline */}
               <h1 class="text-fs-6 md:text-fs-7 font-fam-msq font-black text-col-fg-strong leading-none">
-                {t("hero.headline")}
+                {t('hero.headline')}
               </h1>
 
               {/* Subline */}
-              <p class="text-fs-4 text-col-fg-soft">{t("hero.sub")}</p>
+              <p class="text-fs-4 text-col-fg-soft">{t('hero.sub')}</p>
 
               {/* CTAs */}
               <div class="flex flex-wrap gap-4">
-                <Button size="lg">{t("hero.ctaPrimary")}</Button>
+                <Button size="lg">{t('hero.ctaPrimary')}</Button>
                 <Button size="lg" variant="ghost">
-                  {t("hero.ctaSecondary")} <ArrowRight />
+                  {t('hero.ctaSecondary')} <ArrowRight />
                 </Button>
               </div>
             </div>
@@ -139,17 +139,17 @@ export default function Home() {
         <SectionWrapper bg="weak">
           <Heading
             level={2}
-            super={t("problem.label")}
-            sub={t("problem.intro")}
+            super={t('problem.label')}
+            sub={t('problem.intro')}
           >
-            {t("problem.headline")}
+            {t('problem.headline')}
           </Heading>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <For
               each={[
-                { icon: <SearchX size={40} />, text: t("problem.bullet1") },
-                { icon: <LockOpen size={40} />, text: t("problem.bullet2") },
-                { icon: <ShieldOff size={40} />, text: t("problem.bullet3") },
+                { icon: <SearchX size={40} />, text: t('problem.bullet1') },
+                { icon: <LockOpen size={40} />, text: t('problem.bullet2') },
+                { icon: <ShieldOff size={40} />, text: t('problem.bullet3') },
               ]}
             >
               {(item) => (
@@ -170,14 +170,14 @@ export default function Home() {
             <div class="flex flex-col gap-6">
               <Heading
                 level={2}
-                super={t("solution.label")}
-                sub={t("solution.body")}
+                super={t('solution.label')}
+                sub={t('solution.body')}
               >
-                {t("solution.headline")}
+                {t('solution.headline')}
               </Heading>
               <div class="flex flex-wrap gap-3">
                 <For
-                  each={["tile1", "tile2", "tile3", "tile4", "tile5"] as const}
+                  each={['tile1', 'tile2', 'tile3', 'tile4', 'tile5'] as const}
                 >
                   {(key) => <Tag variant="default">{t(`solution.${key}`)}</Tag>}
                 </For>
@@ -205,10 +205,10 @@ export default function Home() {
           <Heading
             class="px-6"
             level={2}
-            super={t("useCases.label")}
-            sub={t("useCases.sub")}
+            super={t('useCases.label')}
+            sub={t('useCases.sub')}
           >
-            {t("useCases.headline")}
+            {t('useCases.headline')}
           </Heading>
 
           <Carousel>
@@ -226,8 +226,8 @@ export default function Home() {
 
         {/* ── 5: How it Works ─────────────────────────────────────────── */}
         <SectionWrapper bg="weak">
-          <Heading level={2} super={t("howItWorks.label")}>
-            {t("howItWorks.headline")}
+          <Heading level={2} super={t('howItWorks.label')}>
+            {t('howItWorks.headline')}
           </Heading>
 
           {/* Concept tiles */}
@@ -246,7 +246,7 @@ export default function Home() {
           {/* Planned features */}
           <div class="border-t border-col-line pt-12">
             <h3 class="text-fs-4 font-bold text-col-fg mb-6">
-              {t("howItWorks.featuresHeadline")}
+              {t('howItWorks.featuresHeadline')}
             </h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <For each={featureKeys}>
@@ -265,25 +265,25 @@ export default function Home() {
 
         {/* ── 6: CTA ──────────────────────────────────────────────────── */}
         <SectionWrapper bg="strong">
-          <Heading level={2}>{t("cta.headline")}</Heading>
+          <Heading level={2}>{t('cta.headline')}</Heading>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <CtaCard
-              title={t("cta.card1Title")}
-              body={t("cta.card1Body")}
-              cta={t("cta.card1Cta")}
+              title={t('cta.card1Title')}
+              body={t('cta.card1Body')}
+              cta={t('cta.card1Cta')}
               icon={<Star />}
             />
             <CtaCard
-              title={t("cta.card2Title")}
-              body={t("cta.card2Body")}
-              cta={t("cta.card2Cta")}
+              title={t('cta.card2Title')}
+              body={t('cta.card2Body')}
+              cta={t('cta.card2Cta')}
               icon={<HeartHandshake />}
               variant="accent"
             />
             <CtaCard
-              title={t("cta.card3Title")}
-              body={t("cta.card3Body")}
-              cta={t("cta.card3Cta")}
+              title={t('cta.card3Title')}
+              body={t('cta.card3Body')}
+              cta={t('cta.card3Cta')}
               icon={<Users />}
             />
           </div>
@@ -293,8 +293,8 @@ export default function Home() {
         <SectionWrapper>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             <div>
-              <Heading level={2} super={t("roadmap.label")}>
-                {t("roadmap.headline")}
+              <Heading level={2} super={t('roadmap.label')}>
+                {t('roadmap.headline')}
               </Heading>
             </div>
             <div>
@@ -307,7 +307,7 @@ export default function Home() {
                     current={item.current ?? false}
                     last={i() === roadmapSteps.length - 1}
                     currentLabel={
-                      item.current ? t("roadmap.currentLabel") : undefined
+                      item.current ? t('roadmap.currentLabel') : undefined
                     }
                   />
                 )}
@@ -318,8 +318,8 @@ export default function Home() {
 
         {/* ── 8: Contributors ─────────────────────────────────────────── */}
         <SectionWrapper bg="weak">
-          <Heading level={2} super={t("contributors.label")}>
-            {t("contributors.headline")}
+          <Heading level={2} super={t('contributors.label')}>
+            {t('contributors.headline')}
           </Heading>
           <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
             <For each={contributors}>
@@ -332,7 +332,7 @@ export default function Home() {
               )}
             </For>
           </div>
-          <p class="text-col-fg-weak">{t("contributors.joinCta")}</p>
+          <p class="text-col-fg-weak">{t('contributors.joinCta')}</p>
         </SectionWrapper>
 
         {/* ── 9: Contact ──────────────────────────────────────────────── */}
@@ -341,10 +341,10 @@ export default function Home() {
             <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
               <div class="flex flex-col gap-3">
                 <h2 class="text-3xl md:text-4xl font-fam-msq font-black">
-                  {t("contact.headline")}
+                  {t('contact.headline')}
                 </h2>
                 <p class="text-col-bg/70 leading-relaxed">
-                  {t("contact.tagline")}
+                  {t('contact.tagline')}
                 </p>
               </div>
               <div class="flex flex-wrap gap-4">
@@ -354,7 +354,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-col-line bg-col-fg text-col-bg hover:bg-col-bg/50 transition-colors text-sm font-bold"
                 >
-                  {t("contact.bluesky")}
+                  {t('contact.bluesky')}
                 </a>
                 <a
                   href="https://linkedin.com"
@@ -362,13 +362,13 @@ export default function Home() {
                   rel="noopener noreferrer"
                   class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-col-line bg-col-fg text-col-bg hover:bg-col-bg/50 transition-colors text-sm font-bold"
                 >
-                  {t("contact.linkedin")}
+                  {t('contact.linkedin')}
                 </a>
                 <a
                   href="mailto:hello@mosquito.social"
                   class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-col-line bg-col-fg text-col-bg hover:bg-col-bg/50 transition-colors text-sm font-bold"
                 >
-                  {t("contact.email")}
+                  {t('contact.email')}
                 </a>
               </div>
             </div>

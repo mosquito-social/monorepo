@@ -1,31 +1,31 @@
-import { Heading, ThemeToggle } from "mosquito-design-system";
-import { Logo } from "~/components/Logo";
+import { Heading, ThemeToggle } from 'mosquito-design-system';
+import { Logo } from '~/components/Logo';
 
 export default function Color() {
   const items = [
     [
-      ["primary dimmed", "var(--msq-col-primary-dimmed)"],
-      ["primary", "var(--msq-col-primary)"],
-      ["primary lightened", "var(--msq-col-primary-lightened)"],
+      ['primary dimmed', 'var(--msq-col-primary-dimmed)'],
+      ['primary', 'var(--msq-col-primary)'],
+      ['primary lightened', 'var(--msq-col-primary-lightened)'],
     ],
     [
-      ["adjacent 1", "var(--msq-col-adjacent-1)"],
-      ["primary", "var(--msq-col-primary)"],
-      ["adjacent 2", "var(--msq-col-adjacent-2)"],
+      ['adjacent 1', 'var(--msq-col-adjacent-1)'],
+      ['primary', 'var(--msq-col-primary)'],
+      ['adjacent 2', 'var(--msq-col-adjacent-2)'],
     ],
     [
-      ["bright 0", "var(--msq-col-bright-0)"],
-      ["bright 1", "var(--msq-col-bright-1)"],
-      ["bright 2", "var(--msq-col-bright-2)"],
-      ["bright 3", "var(--msq-col-bright-3)"],
-      ["bright 4", "var(--msq-col-bright-4)"],
+      ['bright 0', 'var(--msq-col-bright-0)'],
+      ['bright 1', 'var(--msq-col-bright-1)'],
+      ['bright 2', 'var(--msq-col-bright-2)'],
+      ['bright 3', 'var(--msq-col-bright-3)'],
+      ['bright 4', 'var(--msq-col-bright-4)'],
     ],
     [
-      ["dark 0", "var(--msq-col-dark-0)"],
-      ["dark 1", "var(--msq-col-dark-1)"],
-      ["dark 2", "var(--msq-col-dark-2)"],
-      ["dark 3", "var(--msq-col-dark-3)"],
-      ["dark 4", "var(--msq-col-dark-4)"],
+      ['dark 0', 'var(--msq-col-dark-0)'],
+      ['dark 1', 'var(--msq-col-dark-1)'],
+      ['dark 2', 'var(--msq-col-dark-2)'],
+      ['dark 3', 'var(--msq-col-dark-3)'],
+      ['dark 4', 'var(--msq-col-dark-4)'],
     ],
   ];
 
@@ -47,7 +47,7 @@ export default function Color() {
               <li
                 class="aspect-square rounded-lg border-2 border-col-border items-end justify-center pb-2 text-center flex text-sm font-fam-msq text-shadow-sm text-shadow-black text-white"
                 style={{
-                  "background-color": color[1],
+                  'background-color': color[1],
                 }}
               >
                 {color[0]}
