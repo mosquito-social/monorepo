@@ -55,7 +55,7 @@ export const MOCK_COMMUNITIES: Community[] = [
     logoUrl: 'https://api.dicebear.com/9.x/initials/svg?seed=CA&backgroundColor=0ea5e9',
     description:
       'Organizing citizens, researchers, and policy folks around concrete climate action. Local chapters across DACH.',
-    type: 'activist',
+    type: 'club',
     theme: {
       style: 'minimal',
       primaryHue: 200,
