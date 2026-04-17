@@ -209,7 +209,7 @@ const useCases: UseCase[] = [
   },
 ];
 
-const MONTHLY_CONVERSION_RATE = 0.003; // use cases with a fit for our tool actually convert to it every month
+const MONTHLY_CONVERSION_RATE = 0.001; // use cases with a fit for our tool actually convert to it every month
 
 const START_MARKET_SIZE = 2_000_000; // we start in the hamburg region
 const MONTHLY_MARKET_SIZE_INCREASE = 1.01; // we increase the market size by 1% each month
@@ -223,8 +223,8 @@ const MONTHLY_COSTS_PER_COMMUNITY = 0.1; // in euro
 
 //inbound
 const TRANSACTION_CHARGE_PER_EUR = 0.1; //10% of every event sale goes to us
-const STORAGE_CHARGE_PER_GB = 0.015; // in euro
-const FREE_STORAGE = 10; // GB
+const STORAGE_CHARGE_PER_GB = 0.03; // in euro
+const FREE_STORAGE = 1; // GB
 const FREE_MEMBERS = 100; // we charge groups above 100
 const PER_MEMBER_CHARGE = 0.2; // in euro per member above the limit
 const PREMIUM_CHARGE = 2.99; // per community
@@ -341,7 +341,7 @@ const sums = {
   "revenue from premium": pickSum("revenuePremium"),
 };
 
-console.table(sums, [0, 1, 2, 5, 11, 23, 35]);
+console.table(sums, [0, 1, 2, 5, 11, 23, 35, 47]);
 
 [11, 23, 35, 47].map((n) => {
   console.log("month", n + 1);
