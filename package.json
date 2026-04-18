@@ -2,7 +2,10 @@
   "name": "monorepo",
   "version": "1.0.0",
   "private": true,
-  "workspaces": ["apps/*", "packages/*"],
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "build:dbl": "cd apps/dev-blog && bun run build",
     "start:dbl": "cd apps/dev-blog && bun run start",
@@ -10,8 +13,11 @@
     "build:di": "cd apps/discovery-instance && bun run build",
     "start:di": "cd apps/discovery-instance && bun run start",
     "dev:di": "cd apps/discovery-instance && bun run dev",
-    "build:uc": "cd apps/under-construction && bun run build",
+    "build:mi": "cd apps/managing-instance && bun run build",
+    "start:mi": "cd apps/managing-instance && bun run start",
+    "dev:mi": "cd apps/managing-instance && bun run dev",
     "start:uc": "cd apps/under-construction && bun run start",
+    "build:uc": "cd apps/under-construction && bun run build",
     "dev:uc": "cd apps/under-construction && bun run dev",
     "check:ts": "tsc --noEmit",
     "check:format": "biome check .",

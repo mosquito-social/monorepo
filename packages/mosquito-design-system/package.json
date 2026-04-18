@@ -31,6 +31,10 @@
     "./theme-toggle": {
       "types": "./theme-toggle.tsx",
       "default": "./theme-toggle.tsx"
+    },
+    "./avatar": {
+      "types": "./avatar.tsx",
+      "default": "./avatar.tsx"
     }
   },
   "devDependencies": {

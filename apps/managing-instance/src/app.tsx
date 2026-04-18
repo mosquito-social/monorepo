@@ -1,9 +1,22 @@
 import './app.css';
+import { Router, type RouteSectionProps } from '@solidjs/router';
+import { FileRoutes } from '@solidjs/start/router';
+import { Suspense } from 'solid-js';
+import { Header } from './components/header';
+
+function RootLayout(props: RouteSectionProps) {
+  return (
+    <>
+      <Header />
+      <Suspense>{props.children}</Suspense>
+    </>
+  );
+}
 
 export default function App() {
   return (
-    <main>
-      <h1 class="text-mosquito">Managing Instance</h1>
-    </main>
+    <Router root={RootLayout}>
+      <FileRoutes />
+    </Router>
   );
 }

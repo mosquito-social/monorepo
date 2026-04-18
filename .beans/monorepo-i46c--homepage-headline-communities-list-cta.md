@@ -1,10 +1,11 @@
 ---
 # monorepo-i46c
 title: Homepage – Headline, Communities List & CTA
-status: todo
+status: completed
 type: feature
+priority: normal
 created_at: 2026-04-17T14:41:57Z
-updated_at: 2026-04-17T14:41:57Z
+updated_at: 2026-04-17T15:26:31Z
 parent: monorepo-5uvk
 ---
 
@@ -49,3 +50,13 @@ design system accepting the user data.
 - Search or filtering communities
 - Pagination
 - Authentication
+
+## Summary of Changes
+
+- Created  component in the design system () — accepts  data, size prop (sm/md/lg), falls back to initials if no avatarUrl
+- Exported  from the design system index and package.json exports
+- Added  as a direct dependency to the managing-instance app
+- Rewired  to use  +  with a  that renders the  on all pages
+- Created  component () — logo/app name left, first mock user's avatar + name right
+- Created homepage route () — hero section with  (super/main/sub), two CTAs (top and bottom), community cards grid using 
+-  shows: bg image with gradient overlay, community logo, name, description, member count

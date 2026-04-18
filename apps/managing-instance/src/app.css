@@ -1,2 +1,4 @@
 @import "tailwindcss";
 @import "mosquito-design-system/theme.css";
+
+@source "../../../packages/mosquito-design-system";

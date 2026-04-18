@@ -1,10 +1,11 @@
 ---
 # monorepo-zty4
 title: Community Settings Page – Theme Tweaker
-status: todo
+status: completed
 type: feature
+priority: normal
 created_at: 2026-04-17T14:42:10Z
-updated_at: 2026-04-17T14:42:10Z
+updated_at: 2026-04-18T15:31:49Z
 parent: monorepo-5uvk
 ---
 
@@ -12,23 +13,15 @@ Route: `/communities/:slug/settings`
 
 ## Layout & Content
 
-- Page heading: "Community Settings" (or "Theme")
-- Three theme controls:
-  1. **Primary Hue** – horizontal slider (0–360), shows a color swatch preview
-  2. **Font** – dropdown with named options (e.g. Sans, Serif, Mono, Rounded)
-  3. **Spacing** – horizontal slider (compact → spacious, e.g. 0–100)
-- Live preview: changes should reflect immediately in the UI (local state, not persisted)
-- Save button (no-op for prototype, can show a toast)
+- Page heading: "Community Settings"
 
-## Design Assumptions
+Have a general look at the page
+apps/managing-instance/src/routes/new-community.tsx, the new community page.
 
-- This is a key "wow" screen – the live preview should be visually satisfying
-- The preview could be a miniature mockup of the community page or just the current page re-styled in place
-- Hue slider should show a gradient track (full spectrum) with a thumb
-- Spacing slider affects padding/gap in the preview component
-- Controls are clearly labeled with current value shown (e.g. "Hue: 220°")
+This page should have (for now) the exact same content. Just add the mock data
+of the community as a prefill of the form data.
 
-## Out of scope
+Please optimize. As both pages use the same content, extract it into a shared
+component.
 
-- Persisting settings to backend
-- Other settings (name, description edits, member management)
+## Summary of Changes\n\n- Added  interface to  with optional , , , , , and  props\n- All form fields now initialize from  (with safe fallbacks), so the same component works for both create and settings flows\n- Font IDs that don't exist in the FONTS array (e.g. 'geist', 'lora', 'inter' from mock data) fall back to 'bricolage'\n- Created  — loads community by slug, passes mock data as , sets heading/button labels for the settings context\n- The sidebar already had a "Community Settings" link pointing to this route for admins
