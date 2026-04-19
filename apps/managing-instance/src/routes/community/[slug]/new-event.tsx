@@ -141,30 +141,27 @@ export default function NewEventPage() {
           maxZoom: 19,
         }).addTo(map);
 
-        map.on(
-          "click",
-          async (e: { latlng: { lat: number; lng: number } }) => {
-            const { lat, lng } = e.latlng;
-            const icon = pinIcon();
+        map.on("click", async (e: { latlng: { lat: number; lng: number } }) => {
+          const { lat, lng } = e.latlng;
+          const icon = pinIcon();
 
-            if (marker) {
-              marker.setLatLng([lat, lng]);
-              marker.setIcon(icon);
-            } else {
-              marker = L.marker([lat, lng], { icon }).addTo(map!);
-            }
+          if (marker) {
+            marker.setLatLng([lat, lng]);
+            marker.setIcon(icon);
+          } else {
+            marker = L.marker([lat, lng], { icon }).addTo(map!);
+          }
 
-            setLocationLoading(true);
-            setLocationLabel("");
-            setLocationAddress("");
-            const result = await reverseGeocodeAddress(lat, lng);
-            if (result) {
-              setLocationLabel(result.label);
-              setLocationAddress(result.address);
-            }
-            setLocationLoading(false);
-          },
-        );
+          setLocationLoading(true);
+          setLocationLabel("");
+          setLocationAddress("");
+          const result = await reverseGeocodeAddress(lat, lng);
+          if (result) {
+            setLocationLabel(result.label);
+            setLocationAddress(result.address);
+          }
+          setLocationLoading(false);
+        });
 
         onCleanup(() => map?.remove());
       }, 0);
@@ -288,7 +285,12 @@ export default function NewEventPage() {
                           : "border-col-line text-col-fg-soft hover:border-col-accent hover:text-col-fg"
                       }`}
                     >
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        fill="none"
+                      >
                         <circle
                           cx="7"
                           cy="7"
@@ -313,7 +315,12 @@ export default function NewEventPage() {
                           : "border-col-line text-col-fg-soft hover:border-col-accent hover:text-col-fg"
                       }`}
                     >
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        fill="none"
+                      >
                         <path
                           d="M7 1C4.791 1 3 2.791 3 5c0 3 4 8 4 8s4-5 4-8c0-2.209-1.791-4-4-4z"
                           stroke="currentColor"
@@ -448,18 +455,13 @@ export default function NewEventPage() {
 
                 {/* Submit */}
                 <div class="flex items-center gap-4 pt-2">
-                  <button
-                    type="button"
-                    class="inline-flex items-center justify-center rounded-full px-8 py-4 text-fs-4 font-fam-msq font-black bg-col-accent border-2 border-col-accent text-col-bg hover:bg-col-accent-strong hover:text-col-bg-strong transition-colors cursor-pointer"
-                  >
-                    Create Event
-                  </button>
-                  <A
+                  <Button>Create Event</Button>
+                  <Button
                     href={`/community/${c().slug}/events`}
-                    class="text-fs-2 text-col-fg-soft hover:text-col-fg no-underline transition-colors"
+                    variant="secondary"
                   >
                     Cancel
-                  </A>
+                  </Button>
                 </div>
               </div>
             </div>

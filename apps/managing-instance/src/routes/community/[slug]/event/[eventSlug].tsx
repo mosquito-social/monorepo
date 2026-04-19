@@ -1,20 +1,22 @@
-import { A, useParams } from '@solidjs/router';
-import { Show, createMemo } from 'solid-js';
-import { Button } from 'mosquito-design-system';
-import { MOCK_COMMUNITIES } from '../../../../mocks/communities';
-import { MOCK_EVENTS } from '../../../../mocks/events';
-import { MOCK_USERS } from '../../../../mocks/users';
-import { CommunitySidebar } from '../../../../components/community-sidebar';
+import { A, useParams } from "@solidjs/router";
+import { Show, createMemo } from "solid-js";
+import { Button } from "mosquito-design-system";
+import { MOCK_COMMUNITIES } from "../../../../mocks/communities";
+import { MOCK_EVENTS } from "../../../../mocks/events";
+import { MOCK_USERS } from "../../../../mocks/users";
+import { CommunitySidebar } from "../../../../components/community-sidebar";
 
 const CURRENT_USER = MOCK_USERS[0];
 
 function CalendarCard(props: { date: Date }) {
   const month = () =>
-    new Intl.DateTimeFormat('en-US', { month: 'short' }).format(props.date).toUpperCase();
+    new Intl.DateTimeFormat("en-US", { month: "short" })
+      .format(props.date)
+      .toUpperCase();
   const day = () => props.date.getDate();
 
   return (
-    <div class="flex-shrink-0 w-14 h-16 rounded-xl overflow-hidden border border-col-line flex flex-col items-center shadow-sm">
+    <div class="shrink-0 w-14 h-16 rounded-xl overflow-hidden border border-col-line flex flex-col items-center shadow-sm">
       <div class="w-full bg-col-accent text-col-bg text-center text-fs-1 font-bold font-fam-msq py-0.5 leading-tight">
         {month()}
       </div>
@@ -26,9 +28,9 @@ function CalendarCard(props: { date: Date }) {
 }
 
 function formatTime(date: Date) {
-  return new Intl.DateTimeFormat('en-US', {
-    hour: 'numeric',
-    minute: '2-digit',
+  return new Intl.DateTimeFormat("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
     hour12: true,
   }).format(date);
 }
@@ -42,22 +44,22 @@ function formatDuration(minutes: number) {
 }
 
 function formatFullDate(date: Date) {
-  return new Intl.DateTimeFormat('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+  return new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   }).format(date);
 }
 
 function AgendaLine(props: { index: number; text: string }) {
-  const parts = props.text.split(' – ');
+  const parts = props.text.split(" – ");
   const time = parts.length > 1 ? parts[0] : null;
-  const item = parts.length > 1 ? parts.slice(1).join(' – ') : props.text;
+  const item = parts.length > 1 ? parts.slice(1).join(" – ") : props.text;
 
   return (
     <div class="flex gap-4 py-3 border-b border-col-line last:border-0">
-      <div class="flex-shrink-0 flex items-start gap-3">
+      <div class="shrink-0 flex items-start gap-3">
         <div class="w-6 h-6 rounded-full bg-col-accent/10 text-col-accent flex items-center justify-center text-fs-1 font-bold font-fam-msq mt-0.5">
           {props.index + 1}
         </div>
@@ -100,7 +102,7 @@ export default function EventDetailPage() {
   const agendaLines = createMemo(() => {
     const e = event();
     if (!e) return [];
-    return e.agenda.split('\n').filter((l) => l.trim().length > 0);
+    return e.agenda.split("\n").filter((l) => l.trim().length > 0);
   });
 
   const hasCoords = createMemo(() => {
@@ -121,9 +123,15 @@ export default function EventDetailPage() {
       when={community()}
       fallback={
         <div class="min-h-[60vh] flex flex-col items-center justify-center gap-6 text-center px-4">
-          <div class="text-5xl font-black font-fam-msq text-col-fg-weak">404</div>
-          <h1 class="text-fs-6 font-fam-msq font-bold text-col-fg-strong">Community not found</h1>
-          <Button href="/" variant="secondary">Back to Homepage</Button>
+          <div class="text-5xl font-black font-fam-msq text-col-fg-weak">
+            404
+          </div>
+          <h1 class="text-fs-6 font-fam-msq font-bold text-col-fg-strong">
+            Community not found
+          </h1>
+          <Button href="/" variant="secondary">
+            Back to Homepage
+          </Button>
         </div>
       }
     >
@@ -135,12 +143,19 @@ export default function EventDetailPage() {
               <CommunitySidebar community={c()} membership={membership()} />
               <main class="flex-1 overflow-y-auto bg-col-bg-weak">
                 <div class="min-h-[60vh] flex flex-col items-center justify-center gap-6 text-center px-4">
-                  <div class="text-5xl font-black font-fam-msq text-col-fg-weak">404</div>
-                  <h1 class="text-fs-6 font-fam-msq font-bold text-col-fg-strong">Event not found</h1>
+                  <div class="text-5xl font-black font-fam-msq text-col-fg-weak">
+                    404
+                  </div>
+                  <h1 class="text-fs-6 font-fam-msq font-bold text-col-fg-strong">
+                    Event not found
+                  </h1>
                   <p class="text-fs-3 text-col-fg-soft max-w-sm">
                     This event doesn't exist or may have been removed.
                   </p>
-                  <Button href={`/community/${c().slug}/events`} variant="secondary">
+                  <Button
+                    href={`/community/${c().slug}/events`}
+                    variant="secondary"
+                  >
                     Back to Events
                   </Button>
                 </div>
@@ -195,7 +210,7 @@ export default function EventDetailPage() {
                       {/* CTA / Status */}
                       <div class="bg-col-bg rounded-2xl border border-col-line p-4">
                         <Show
-                          when={ev().status === 'upcoming'}
+                          when={ev().status === "upcoming"}
                           fallback={
                             <p class="text-fs-2 font-bold text-col-fg-weak text-center py-1">
                               Past event

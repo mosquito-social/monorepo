@@ -16,7 +16,7 @@ export function CommunitySidebar(props: CommunitySidebarProps) {
     { label: "Home", href: `/community/${slug()}`, end: true },
     { label: "Events", href: `/community/${slug()}/events`, end: false },
     { label: "Members", href: `/community/${slug()}/members`, end: false },
-    { label: "Chat", href: `/community/${slug()}/chat`, end: false },
+    { label: "Chat", href: `/community/${slug()}/chats`, end: false },
   ];
 
   return (

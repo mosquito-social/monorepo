@@ -3,9 +3,10 @@ export const foucSnippet = `
     try {
       var match = document.cookie.match(/(?:^|; )colorScheme=([^;]+)/);
       var cookieTheme = match ? match[1] : null;
-      if (cookieTheme === 'dark' || cookieTheme === 'light') {
-        document.documentElement.classList.add(cookieTheme);
-      }
+      var theme = (cookieTheme === 'dark' || cookieTheme === 'light')
+        ? cookieTheme
+        : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.classList.add(theme);
     } catch (e) {}
   })();
 `;

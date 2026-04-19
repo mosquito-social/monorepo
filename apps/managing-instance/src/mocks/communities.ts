@@ -20,10 +20,10 @@ export const MOCK_COMMUNITIES: Community[] = [
       spacing: 1,
     },
     members: [
-      { user: alice, role: 'admin' },
-      { user: bob, role: 'member' },
-      { user: clara, role: 'member' },
-      { user: david, role: 'member' },
+      { user: alice, role: 'admin', joinedAt: new Date('2023-01-15') },
+      { user: bob, role: 'member', joinedAt: new Date('2023-03-08') },
+      { user: clara, role: 'member', joinedAt: new Date('2023-05-21') },
+      { user: david, role: 'member', joinedAt: new Date('2024-02-11') },
     ],
   },
   {
@@ -42,9 +42,9 @@ export const MOCK_COMMUNITIES: Community[] = [
       spacing: 1.2,
     },
     members: [
-      { user: elena, role: 'admin' },
-      { user: farid, role: 'member' },
-      { user: grace, role: 'member' },
+      { user: elena, role: 'admin', joinedAt: new Date('2022-09-01') },
+      { user: farid, role: 'member', joinedAt: new Date('2022-11-14') },
+      { user: grace, role: 'member', joinedAt: new Date('2023-04-03') },
     ],
   },
   {
@@ -63,10 +63,10 @@ export const MOCK_COMMUNITIES: Community[] = [
       spacing: 1,
     },
     members: [
-      { user: clara, role: 'admin' },
-      { user: alice, role: 'member' },
-      { user: farid, role: 'member' },
-      { user: bob, role: 'member' },
+      { user: clara, role: 'admin', joinedAt: new Date('2021-06-20') },
+      { user: alice, role: 'member', joinedAt: new Date('2021-08-05') },
+      { user: farid, role: 'member', joinedAt: new Date('2022-01-19') },
+      { user: bob, role: 'member', joinedAt: new Date('2023-07-30') },
     ],
   },
 ];
