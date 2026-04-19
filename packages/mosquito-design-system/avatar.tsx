@@ -5,9 +5,10 @@ export interface AvatarUser {
   avatarUrl?: string;
 }
 
-type AvatarSize = 'sm' | 'md' | 'lg';
+type AvatarSize = 'xs' | 'sm' | 'md' | 'lg';
 
 const sizeClasses: Record<AvatarSize, string> = {
+  xs: 'w-6 h-6 text-fs-1',
   sm: 'w-8 h-8 text-fs-1',
   md: 'w-10 h-10 text-fs-2',
   lg: 'w-14 h-14 text-fs-3',

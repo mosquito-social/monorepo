@@ -33,6 +33,7 @@ export interface User {
 export interface Member {
   user: User;
   role?: MemberRole;
+  joinedAt?: Date;
 }
 
 export interface Community {
