@@ -1,7 +1,7 @@
-import { A } from "@solidjs/router";
-import { Avatar, ThemeToggle } from "mosquito-design-system";
-import { MOCK_USERS } from "../mocks";
-import { Logo } from "./logo";
+import { A } from '@solidjs/router';
+import { Avatar, ThemeToggle } from 'mosquito-design-system';
+import { MOCK_USERS } from '../mocks';
+import { Logo } from './logo';
 
 const currentUser = MOCK_USERS[0];
 

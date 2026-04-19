@@ -2,10 +2,7 @@
   "name": "monorepo",
   "version": "1.0.0",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "workspaces": ["apps/*", "packages/*"],
   "scripts": {
     "build:dbl": "cd apps/dev-blog && bun run build",
     "start:dbl": "cd apps/dev-blog && bun run start",

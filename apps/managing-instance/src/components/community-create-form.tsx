@@ -1,5 +1,6 @@
-import "leaflet/dist/leaflet.css";
-import { A } from "@solidjs/router";
+import 'leaflet/dist/leaflet.css';
+import { A } from '@solidjs/router';
+import { Button } from 'mosquito-design-system';
 import {
   For,
   Show,
@@ -8,64 +9,63 @@ import {
   createSignal,
   onCleanup,
   onMount,
-} from "solid-js";
-import { COMMUNITY_TYPES } from "../config/community-types";
-import { THEME_BASE_STYLES } from "../config/theme-styles";
-import { Button } from "mosquito-design-system";
+} from 'solid-js';
+import { COMMUNITY_TYPES } from '../config/community-types';
+import { THEME_BASE_STYLES } from '../config/theme-styles';
 
 function slugify(str: string): string {
   return str
-    .replace(/[äÄ]/g, "ae")
-    .replace(/[öÖ]/g, "oe")
-    .replace(/[üÜ]/g, "ue")
-    .replace(/ß/g, "ss")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[äÄ]/g, 'ae')
+    .replace(/[öÖ]/g, 'oe')
+    .replace(/[üÜ]/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/[^a-z0-9\s-]/g, '')
     .trim()
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-");
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
 }
 
 const FONTS = [
   {
-    id: "bricolage",
-    label: "Bricolage",
+    id: 'bricolage',
+    label: 'Bricolage',
     family: '"Bricolage Grotesque", sans-serif',
   },
   {
-    id: "helvetica",
-    label: "Helvetica",
+    id: 'helvetica',
+    label: 'Helvetica',
     family: '"Helvetica Neue", Helvetica, Arial, sans-serif',
   },
   {
-    id: "georgia",
-    label: "Georgia",
+    id: 'georgia',
+    label: 'Georgia',
     family: 'Georgia, "Times New Roman", serif',
   },
 ] as const;
 
-type FontId = (typeof FONTS)[number]["id"];
+type FontId = (typeof FONTS)[number]['id'];
 
 const THEME_PRESETS: Record<
   string,
   { hue: number; font: FontId; density: number }
 > = {
-  minimal: { hue: 220, font: "helvetica", density: 1.0 },
-  bold: { hue: 350, font: "bricolage", density: 1.25 },
-  warm: { hue: 45, font: "georgia", density: 1.35 },
-  glass: { hue: 200, font: "bricolage", density: 1.1 },
+  minimal: { hue: 220, font: 'helvetica', density: 1.0 },
+  bold: { hue: 350, font: 'bricolage', density: 1.25 },
+  warm: { hue: 45, font: 'georgia', density: 1.35 },
+  glass: { hue: 200, font: 'bricolage', density: 1.1 },
 };
 
 const DEFAULT_BG =
-  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200";
-const DEFAULT_CREST = "/logos/frankfurt-js.svg";
+  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200';
+const DEFAULT_CREST = '/logos/frankfurt-js.svg';
 
 const inputClass =
-  "w-full rounded-xl border border-col-line bg-col-bg px-4 py-3 text-fs-3 text-col-fg placeholder:text-col-fg-weak focus:outline-none focus:border-col-accent transition-colors";
+  'w-full rounded-xl border border-col-line bg-col-bg px-4 py-3 text-fs-3 text-col-fg placeholder:text-col-fg-weak focus:outline-none focus:border-col-accent transition-colors';
 
-const labelClass = "block text-fs-2 font-semibold text-col-fg-soft mb-1.5";
+const labelClass = 'block text-fs-2 font-semibold text-col-fg-soft mb-1.5';
 
 async function reverseGeocode(
   lat: number,
@@ -74,7 +74,7 @@ async function reverseGeocode(
   try {
     const res = await fetch(
       `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=10`,
-      { headers: { "Accept-Language": "en" } },
+      { headers: { 'Accept-Language': 'en' } },
     );
     const data = await res.json();
     const addr = data.address ?? {};
@@ -113,16 +113,16 @@ interface CommunityFormProps {
 export function CommunityCreateForm(props: CommunityFormProps) {
   const init = props.initialData ?? {};
   const validFont = (f: string | undefined): FontId =>
-    FONTS.some((x) => x.id === f) ? (f as FontId) : "bricolage";
+    FONTS.some((x) => x.id === f) ? (f as FontId) : 'bricolage';
 
-  const [name, setName] = createSignal(init.name ?? "");
-  const [description, setDescription] = createSignal(init.description ?? "");
+  const [name, setName] = createSignal(init.name ?? '');
+  const [description, setDescription] = createSignal(init.description ?? '');
   const [communityType, setCommunityType] = createSignal<string | null>(
     init.communityType ?? null,
   );
   const [typeOpen, setTypeOpen] = createSignal(false);
   const [themeStyle, setThemeStyle] = createSignal(
-    init.themeStyle ?? "minimal",
+    init.themeStyle ?? 'minimal',
   );
   const [primaryHue, setPrimaryHue] = createSignal(init.primaryHue ?? 220);
   const [font, setFont] = createSignal<FontId>(validFont(init.font));
@@ -131,8 +131,8 @@ export function CommunityCreateForm(props: CommunityFormProps) {
   const [isCustomTheme, setIsCustomTheme] = createSignal(false);
 
   // Homebase
-  const [homebaseMode, setHomebaseMode] = createSignal<"none" | "location">(
-    "none",
+  const [homebaseMode, setHomebaseMode] = createSignal<'none' | 'location'>(
+    'none',
   );
   const [homebaseCity, setHomebaseCity] = createSignal<string | null>(null);
   const [homebaseLoading, setHomebaseLoading] = createSignal(false);
@@ -141,7 +141,7 @@ export function CommunityCreateForm(props: CommunityFormProps) {
   const communityUrl = createMemo(() =>
     slug()
       ? `mosquito.social/communities/${slug()}`
-      : "mosquito.social/communities/my-community",
+      : 'mosquito.social/communities/my-community',
   );
   const selectedType = createMemo(() =>
     communityType() ? COMMUNITY_TYPES[communityType()!] : null,
@@ -150,7 +150,7 @@ export function CommunityCreateForm(props: CommunityFormProps) {
     () => FONTS.find((f) => f.id === font()) ?? FONTS[0],
   );
   const currentThemeLabel = createMemo(() => {
-    if (isCustomTheme()) return "Custom";
+    if (isCustomTheme()) return 'Custom';
     return THEME_BASE_STYLES[themeStyle()]?.name ?? themeStyle();
   });
 
@@ -163,24 +163,24 @@ export function CommunityCreateForm(props: CommunityFormProps) {
       if (typeRef && !typeRef.contains(e.target as Node)) setTypeOpen(false);
       if (fontRef && !fontRef.contains(e.target as Node)) setFontOpen(false);
     };
-    document.addEventListener("click", handleClick);
-    onCleanup(() => document.removeEventListener("click", handleClick));
+    document.addEventListener('click', handleClick);
+    onCleanup(() => document.removeEventListener('click', handleClick));
   });
 
   // Leaflet map – initialized lazily the first time the user picks "location".
   // The map container div is always in the DOM (just hidden via CSS), so mapEl is stable.
   onMount(async () => {
-    const L = (await import("leaflet")).default;
+    const L = (await import('leaflet')).default;
 
     // Fix default icon images broken by bundlers
     // @ts-ignore
     delete L.Icon.Default.prototype._getIconUrl;
     L.Icon.Default.mergeOptions({
-      iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+      iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
       iconRetinaUrl:
-        "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+        'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
       shadowUrl:
-        "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+        'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
     });
 
     let map: ReturnType<typeof L.map> | null = null;
@@ -189,7 +189,7 @@ export function CommunityCreateForm(props: CommunityFormProps) {
 
     const buildPinIcon = (hue: number) =>
       L.divIcon({
-        className: "",
+        className: '',
         html: `<div style="
           width:18px;height:18px;border-radius:50%;
           background:oklch(0.6 0.26 ${hue});
@@ -202,7 +202,7 @@ export function CommunityCreateForm(props: CommunityFormProps) {
 
     // createEffect inside onMount → client-only, reacts to homebaseMode signal
     createEffect(() => {
-      if (homebaseMode() !== "location") return;
+      if (homebaseMode() !== 'location') return;
 
       if (mapReady) {
         // Already initialized; just fix size after the hidden→visible CSS transition
@@ -216,13 +216,13 @@ export function CommunityCreateForm(props: CommunityFormProps) {
 
         map = L.map(mapEl, { zoomControl: true }).setView([51.1, 10.4], 4);
 
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution:
             '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
           maxZoom: 19,
         }).addTo(map);
 
-        map.on("click", async (e: { latlng: { lat: number; lng: number } }) => {
+        map.on('click', async (e: { latlng: { lat: number; lng: number } }) => {
           const { lat, lng } = e.latlng;
           const icon = buildPinIcon(primaryHue());
 
@@ -261,7 +261,7 @@ export function CommunityCreateForm(props: CommunityFormProps) {
   return (
     <div class="max-w-7xl mx-auto px-6 py-10">
       <A
-        href={props.backHref ?? "/"}
+        href={props.backHref ?? '/'}
         class="inline-flex items-center gap-2 text-fs-2 text-col-fg-soft hover:text-col-fg no-underline transition-colors mb-8"
       >
         <svg
@@ -279,16 +279,16 @@ export function CommunityCreateForm(props: CommunityFormProps) {
             stroke-linejoin="round"
           />
         </svg>
-        {props.backLabel ?? "Back to communities"}
+        {props.backLabel ?? 'Back to communities'}
       </A>
 
       <div class="mb-8">
         <h1 class="text-fs-6 font-fam-msq font-black text-col-fg-strong leading-tight">
-          {props.heading ?? "Create your community"}
+          {props.heading ?? 'Create your community'}
         </h1>
         <p class="text-fs-3 text-col-fg-soft mt-1">
           {props.subheading ??
-            "Set up your space in a few steps. You can change everything later."}
+            'Set up your space in a few steps. You can change everything later.'}
         </p>
       </div>
 
@@ -335,16 +335,16 @@ export function CommunityCreateForm(props: CommunityFormProps) {
                 class="w-full flex items-center justify-between rounded-xl border border-col-line bg-col-bg px-4 py-3 text-fs-3 text-col-fg hover:border-col-accent transition-colors cursor-pointer"
               >
                 <span
-                  class={selectedType() ? "text-col-fg" : "text-col-fg-weak"}
+                  class={selectedType() ? 'text-col-fg' : 'text-col-fg-weak'}
                 >
-                  {selectedType()?.name ?? "Select a type"}
+                  {selectedType()?.name ?? 'Select a type'}
                 </span>
                 <svg
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
                   fill="none"
-                  class={`flex-shrink-0 transition-transform ${typeOpen() ? "rotate-180" : ""}`}
+                  class={`flex-shrink-0 transition-transform ${typeOpen() ? 'rotate-180' : ''}`}
                 >
                   <path
                     d="M4 6L8 10L12 6"
@@ -365,7 +365,7 @@ export function CommunityCreateForm(props: CommunityFormProps) {
                           setCommunityType(key);
                           setTypeOpen(false);
                         }}
-                        class={`w-full text-left px-4 py-3 hover:bg-col-bg-soft transition-colors border-b border-col-line last:border-0 ${communityType() === key ? "bg-col-bg-soft" : ""}`}
+                        class={`w-full text-left px-4 py-3 hover:bg-col-bg-soft transition-colors border-b border-col-line last:border-0 ${communityType() === key ? 'bg-col-bg-soft' : ''}`}
                       >
                         <div class="text-fs-3 font-semibold text-col-fg">
                           {type.name}
@@ -463,8 +463,8 @@ export function CommunityCreateForm(props: CommunityFormProps) {
                       onClick={() => applyThemePreset(key)}
                       class={`rounded-full px-3 py-1.5 text-fs-2 font-semibold border transition-colors ${
                         themeStyle() === key && !isCustomTheme()
-                          ? "bg-col-accent text-col-bg border-col-accent"
-                          : "border-col-line text-col-fg-soft hover:border-col-accent hover:text-col-fg"
+                          ? 'bg-col-accent text-col-bg border-col-accent'
+                          : 'border-col-line text-col-fg-soft hover:border-col-accent hover:text-col-fg'
                       }`}
                     >
                       {style.name}
@@ -482,7 +482,7 @@ export function CommunityCreateForm(props: CommunityFormProps) {
               </div>
               <p class="mt-1.5 text-fs-1 text-col-fg-weak">
                 {isCustomTheme()
-                  ? "Custom theme — select a preset to start fresh"
+                  ? 'Custom theme — select a preset to start fresh'
                   : THEME_BASE_STYLES[themeStyle()]?.description}
               </p>
             </div>
@@ -534,7 +534,7 @@ export function CommunityCreateForm(props: CommunityFormProps) {
                     height="16"
                     viewBox="0 0 16 16"
                     fill="none"
-                    class={`flex-shrink-0 text-col-fg-weak transition-transform ${fontOpen() ? "rotate-180" : ""}`}
+                    class={`flex-shrink-0 text-col-fg-weak transition-transform ${fontOpen() ? 'rotate-180' : ''}`}
                   >
                     <path
                       d="M4 6L8 10L12 6"
@@ -556,7 +556,7 @@ export function CommunityCreateForm(props: CommunityFormProps) {
                             setFontOpen(false);
                             markCustomTheme();
                           }}
-                          class={`w-full text-left px-4 py-3 hover:bg-col-bg-soft transition-colors border-b border-col-line last:border-0 ${font() === f.id ? "bg-col-bg-soft" : ""}`}
+                          class={`w-full text-left px-4 py-3 hover:bg-col-bg-soft transition-colors border-b border-col-line last:border-0 ${font() === f.id ? 'bg-col-bg-soft' : ''}`}
                         >
                           <div
                             class="text-fs-5 text-col-fg font-medium"
@@ -613,13 +613,13 @@ export function CommunityCreateForm(props: CommunityFormProps) {
               <button
                 type="button"
                 onClick={() => {
-                  setHomebaseMode("none");
+                  setHomebaseMode('none');
                   setHomebaseCity(null);
                 }}
                 class={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-fs-2 font-semibold border transition-colors ${
-                  homebaseMode() === "none"
-                    ? "bg-col-accent text-col-bg border-col-accent"
-                    : "border-col-line text-col-fg-soft hover:border-col-accent hover:text-col-fg"
+                  homebaseMode() === 'none'
+                    ? 'bg-col-accent text-col-bg border-col-accent'
+                    : 'border-col-line text-col-fg-soft hover:border-col-accent hover:text-col-fg'
                 }`}
               >
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -640,11 +640,11 @@ export function CommunityCreateForm(props: CommunityFormProps) {
               </button>
               <button
                 type="button"
-                onClick={() => setHomebaseMode("location")}
+                onClick={() => setHomebaseMode('location')}
                 class={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-fs-2 font-semibold border transition-colors ${
-                  homebaseMode() === "location"
-                    ? "bg-col-accent text-col-bg border-col-accent"
-                    : "border-col-line text-col-fg-soft hover:border-col-accent hover:text-col-fg"
+                  homebaseMode() === 'location'
+                    ? 'bg-col-accent text-col-bg border-col-accent'
+                    : 'border-col-line text-col-fg-soft hover:border-col-accent hover:text-col-fg'
                 }`}
               >
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -667,7 +667,7 @@ export function CommunityCreateForm(props: CommunityFormProps) {
             </div>
 
             {/* Map container – always in DOM so the ref is stable; hidden via CSS when not active */}
-            <div class={homebaseMode() === "location" ? "" : "hidden"}>
+            <div class={homebaseMode() === 'location' ? '' : 'hidden'}>
               <div
                 ref={mapEl}
                 class="h-56 rounded-xl overflow-hidden border border-col-line"
@@ -711,7 +711,7 @@ export function CommunityCreateForm(props: CommunityFormProps) {
                   when={
                     !homebaseLoading() &&
                     !homebaseCity() &&
-                    homebaseMode() === "location"
+                    homebaseMode() === 'location'
                   }
                 >
                   <span class="text-fs-1 text-col-fg-weak">
@@ -721,7 +721,7 @@ export function CommunityCreateForm(props: CommunityFormProps) {
               </div>
             </div>
 
-            <Show when={homebaseMode() === "none"}>
+            <Show when={homebaseMode() === 'none'}>
               <p class="text-fs-2 text-col-fg-soft">
                 This community is fully remote — no physical homebase.
               </p>
@@ -730,7 +730,7 @@ export function CommunityCreateForm(props: CommunityFormProps) {
 
           {/* Submit */}
           <div class="flex items-center gap-4 pt-2">
-            <Button>{props.submitLabel ?? "Create Community"}</Button>
+            <Button>{props.submitLabel ?? 'Create Community'}</Button>
             <Button href="/" variant="secondary">
               Cancel
             </Button>
@@ -768,19 +768,19 @@ export function CommunityCreateForm(props: CommunityFormProps) {
               style={`font-family: ${selectedFont().family}`}
             >
               <h2 class="text-fs-5 font-bold text-col-fg-strong leading-tight">
-                {name() || "Community Name"}
+                {name() || 'Community Name'}
               </h2>
               <p class="text-fs-2 text-col-fg-soft mt-1.5 leading-snug">
                 {description() ||
-                  "Your community description will appear here."}
+                  'Your community description will appear here.'}
               </p>
 
               {/* Homebase in preview */}
               <div class="flex items-center gap-1.5 mt-2">
                 <Show
-                  when={homebaseMode() === "location" && homebaseCity()}
+                  when={homebaseMode() === 'location' && homebaseCity()}
                   fallback={
-                    <Show when={homebaseMode() === "location"}>
+                    <Show when={homebaseMode() === 'location'}>
                       <svg
                         width="12"
                         height="12"
@@ -818,7 +818,7 @@ export function CommunityCreateForm(props: CommunityFormProps) {
                     {homebaseCity()}
                   </span>
                 </Show>
-                <Show when={homebaseMode() === "none"}>
+                <Show when={homebaseMode() === 'none'}>
                   <svg
                     width="12"
                     height="12"
@@ -878,7 +878,7 @@ export function CommunityCreateForm(props: CommunityFormProps) {
                   </For>
                 </div>
                 <span class="text-fs-1 text-col-fg-weak">
-                  {slug() || "your-community"} · 0 members
+                  {slug() || 'your-community'} · 0 members
                 </span>
               </div>
             </div>

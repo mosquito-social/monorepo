@@ -1,5 +1,5 @@
 import './app.css';
-import { Router, type RouteSectionProps } from '@solidjs/router';
+import { type RouteSectionProps, Router } from '@solidjs/router';
 import { FileRoutes } from '@solidjs/start/router';
 import { Suspense } from 'solid-js';
 import { Header } from './components/header';

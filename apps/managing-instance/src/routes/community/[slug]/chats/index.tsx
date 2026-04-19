@@ -1,4 +1,4 @@
-import { Navigate, useParams } from "@solidjs/router";
+import { Navigate, useParams } from '@solidjs/router';
 
 export default function CommunityChatsIndex() {
   const params = useParams<{ slug: string }>();

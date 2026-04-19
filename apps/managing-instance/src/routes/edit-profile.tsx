@@ -1,6 +1,6 @@
 import { useNavigate } from '@solidjs/router';
-import { createMemo, createSignal } from 'solid-js';
 import { Avatar } from 'mosquito-design-system';
+import { createMemo, createSignal } from 'solid-js';
 import { MOCK_USERS } from '../mocks/users';
 
 const CURRENT_USER = MOCK_USERS[0];
@@ -31,11 +31,11 @@ export default function EditProfilePage() {
   const [handleTouched, setHandleTouched] = createSignal(false);
 
   const autoHandle = createMemo(() =>
-    slugifyHandle(`${firstName()} ${lastName()}`)
+    slugifyHandle(`${firstName()} ${lastName()}`),
   );
 
   const effectiveHandle = createMemo(() =>
-    handleTouched() ? handle() : autoHandle()
+    handleTouched() ? handle() : autoHandle(),
   );
 
   const handleError = createMemo(() => {
@@ -47,7 +47,8 @@ export default function EditProfilePage() {
   });
 
   const previewUser = createMemo(() => ({
-    displayName: displayName() || `${firstName()} ${lastName()}`.trim() || 'Your Name',
+    displayName:
+      displayName() || `${firstName()} ${lastName()}`.trim() || 'Your Name',
     avatarUrl: CURRENT_USER.avatarUrl,
   }));
 
@@ -83,7 +84,13 @@ export default function EditProfilePage() {
         onClick={() => navigate(`/profile/${CURRENT_USER.id}`)}
         class="inline-flex items-center gap-2 text-fs-2 text-col-fg-soft hover:text-col-fg no-underline transition-colors mb-8"
       >
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="flex-shrink-0">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          class="flex-shrink-0"
+        >
           <path
             d="M10 12L6 8L10 4"
             stroke="currentColor"
@@ -128,7 +135,7 @@ export default function EditProfilePage() {
               <input
                 type="text"
                 value={firstName()}
-                onInput={e => onFirstNameInput(e.currentTarget.value)}
+                onInput={(e) => onFirstNameInput(e.currentTarget.value)}
                 class={inputClass}
                 placeholder="Alice"
               />
@@ -138,7 +145,7 @@ export default function EditProfilePage() {
               <input
                 type="text"
                 value={lastName()}
-                onInput={e => onLastNameInput(e.currentTarget.value)}
+                onInput={(e) => onLastNameInput(e.currentTarget.value)}
                 class={inputClass}
                 placeholder="Chen"
               />
@@ -151,9 +158,11 @@ export default function EditProfilePage() {
             <input
               type="text"
               value={displayName()}
-              onInput={e => onDisplayNameInput(e.currentTarget.value)}
+              onInput={(e) => onDisplayNameInput(e.currentTarget.value)}
               class={inputClass}
-              placeholder={`${firstName()} ${lastName()}`.trim() || 'Your display name'}
+              placeholder={
+                `${firstName()} ${lastName()}`.trim() || 'Your display name'
+              }
             />
             <p class="mt-1.5 text-fs-1 text-col-fg-weak">
               This is how your name appears across mosquito.social.
@@ -170,7 +179,7 @@ export default function EditProfilePage() {
               <input
                 type="text"
                 value={effectiveHandle()}
-                onInput={e => onHandleInput(e.currentTarget.value)}
+                onInput={(e) => onHandleInput(e.currentTarget.value)}
                 class={`${inputClass} pl-8`}
                 placeholder="alice-chen"
               />
@@ -186,10 +195,12 @@ export default function EditProfilePage() {
 
           {/* Bio */}
           <div>
-            <label class={labelClass}>Bio <span class="font-normal text-col-fg-weak">(optional)</span></label>
+            <label class={labelClass}>
+              Bio <span class="font-normal text-col-fg-weak">(optional)</span>
+            </label>
             <textarea
               value={bio()}
-              onInput={e => setBio(e.currentTarget.value)}
+              onInput={(e) => setBio(e.currentTarget.value)}
               rows={3}
               class={inputClass}
               placeholder="Tell the community a bit about yourself…"
@@ -224,7 +235,9 @@ export default function EditProfilePage() {
               <Avatar user={previewUser()} size="lg" class="flex-shrink-0" />
               <div class="flex-1 min-w-0">
                 <h2 class="text-fs-5 font-fam-msq font-black text-col-fg-strong leading-tight truncate">
-                  {displayName() || `${firstName()} ${lastName()}`.trim() || 'Your Name'}
+                  {displayName() ||
+                    `${firstName()} ${lastName()}`.trim() ||
+                    'Your Name'}
                 </h2>
                 <p class="text-fs-2 text-col-fg-weak mt-0.5">
                   @{effectiveHandle() || '…'}

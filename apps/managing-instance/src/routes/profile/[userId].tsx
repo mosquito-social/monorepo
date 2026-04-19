@@ -1,16 +1,16 @@
-import { useParams } from "@solidjs/router";
-import { For, Show, createMemo } from "solid-js";
-import { Avatar, Button } from "mosquito-design-system";
-import { MOCK_COMMUNITIES } from "../../mocks/communities";
-import { MOCK_USERS } from "../../mocks/users";
+import { useParams } from '@solidjs/router';
+import { Avatar, Button } from 'mosquito-design-system';
+import { For, Show, createMemo } from 'solid-js';
+import { MOCK_COMMUNITIES } from '../../mocks/communities';
+import { MOCK_USERS } from '../../mocks/users';
 
 const CURRENT_USER = MOCK_USERS[0];
 
 function formatJoinDate(date: Date) {
-  return new Intl.DateTimeFormat("en-US", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
+  return new Intl.DateTimeFormat('en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
   }).format(date);
 }
 
@@ -21,9 +21,7 @@ export default function UserProfilePage() {
     () => MOCK_USERS.find((u) => u.id === params.userId) ?? null,
   );
 
-  const isCurrentUser = createMemo(
-    () => user()?.id === CURRENT_USER.id,
-  );
+  const isCurrentUser = createMemo(() => user()?.id === CURRENT_USER.id);
 
   const memberships = createMemo(() => {
     const u = user();
@@ -113,7 +111,7 @@ export default function UserProfilePage() {
                               </p>
                             </Show>
                           </div>
-                          <Show when={member.role === "admin"}>
+                          <Show when={member.role === 'admin'}>
                             <span class="flex-shrink-0 px-2.5 py-0.5 rounded-full text-fs-1 font-bold font-fam-msq bg-col-accent/10 text-col-accent">
                               Organizer
                             </span>

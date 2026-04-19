@@ -1,26 +1,26 @@
-import { A, useParams } from "@solidjs/router";
-import { For, Show, createMemo } from "solid-js";
-import { Button } from "mosquito-design-system";
-import { MOCK_COMMUNITIES } from "../../../mocks/communities";
-import { MOCK_EVENTS } from "../../../mocks/events";
-import { MOCK_USERS } from "../../../mocks/users";
-import { CommunitySidebar } from "../../../components/community-sidebar";
+import { A, useParams } from '@solidjs/router';
+import { Button } from 'mosquito-design-system';
+import { For, Show, createMemo } from 'solid-js';
+import { CommunitySidebar } from '../../../components/community-sidebar';
+import { MOCK_COMMUNITIES } from '../../../mocks/communities';
+import { MOCK_EVENTS } from '../../../mocks/events';
+import { MOCK_USERS } from '../../../mocks/users';
 
 const CURRENT_USER = MOCK_USERS[0];
 
 function formatEventDate(date: Date) {
-  return new Intl.DateTimeFormat("en-US", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "2-digit",
+  return new Intl.DateTimeFormat('en-US', {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
   }).format(date);
 }
 
 function CalendarLeaf(props: { date: Date }) {
   const month = () =>
-    new Intl.DateTimeFormat("en-US", { month: "short" })
+    new Intl.DateTimeFormat('en-US', { month: 'short' })
       .format(props.date)
       .toUpperCase();
   const day = () => props.date.getDate();
@@ -52,8 +52,8 @@ function EventCard(props: {
       <article
         class={`rounded-2xl border p-4 flex gap-4 transition-colors hover:border-col-accent/40 ${
           props.upcoming
-            ? "bg-col-bg border-col-line"
-            : "bg-col-bg-weak border-col-line opacity-60"
+            ? 'bg-col-bg border-col-line'
+            : 'bg-col-bg-weak border-col-line opacity-60'
         }`}
       >
         <Show when={props.upcoming}>
@@ -62,7 +62,7 @@ function EventCard(props: {
         <Show when={!props.upcoming}>
           <div class="flex-shrink-0 w-12 h-14 rounded-xl border border-col-line flex flex-col items-center bg-col-surface">
             <div class="w-full bg-col-fg-weak/20 text-col-fg-weak text-center text-fs-1 font-bold font-fam-msq py-0.5 leading-tight">
-              {new Intl.DateTimeFormat("en-US", { month: "short" })
+              {new Intl.DateTimeFormat('en-US', { month: 'short' })
                 .format(event().date)
                 .toUpperCase()}
             </div>
@@ -75,7 +75,7 @@ function EventCard(props: {
         <div class="flex-1 min-w-0">
           <p
             class={`text-fs-3 font-bold font-fam-msq leading-tight group-hover:text-col-accent transition-colors ${
-              props.upcoming ? "text-col-fg-strong" : "text-col-fg-soft"
+              props.upcoming ? 'text-col-fg-strong' : 'text-col-fg-soft'
             }`}
           >
             {event().title}
@@ -109,13 +109,13 @@ export default function CommunityEventsPage() {
     return c.members.find((m) => m.user.id === CURRENT_USER.id) ?? null;
   });
 
-  const isAdmin = () => membership()?.role === "admin";
+  const isAdmin = () => membership()?.role === 'admin';
 
   const upcomingEvents = createMemo(() => {
     const c = community();
     if (!c) return [];
     return MOCK_EVENTS.filter(
-      (e) => e.communityId === c.id && e.status === "upcoming",
+      (e) => e.communityId === c.id && e.status === 'upcoming',
     );
   });
 
@@ -123,7 +123,7 @@ export default function CommunityEventsPage() {
     const c = community();
     if (!c) return [];
     return MOCK_EVENTS.filter(
-      (e) => e.communityId === c.id && e.status === "past",
+      (e) => e.communityId === c.id && e.status === 'past',
     );
   });
 
@@ -184,7 +184,7 @@ export default function CommunityEventsPage() {
                         No upcoming events
                       </p>
                       <p class="text-fs-2 text-col-fg-weak mt-1">
-                        Check back later or{" "}
+                        Check back later or{' '}
                         <Show
                           when={isAdmin()}
                           fallback={

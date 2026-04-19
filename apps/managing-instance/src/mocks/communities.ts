@@ -8,7 +8,8 @@ export const MOCK_COMMUNITIES: Community[] = [
     id: 'frankfurt-js',
     slug: 'frankfurt-js',
     name: 'Frankfurt JS',
-    bgImageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200',
+    bgImageUrl:
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200',
     logoUrl: '/logos/frankfurt-js.svg',
     description:
       'The JavaScript community in Frankfurt — meetups, workshops, and job boards for frontend and fullstack developers.',
@@ -30,7 +31,8 @@ export const MOCK_COMMUNITIES: Community[] = [
     id: 'urban-gardeners-hamburg',
     slug: 'urban-gardeners-hamburg',
     name: 'Urban Gardeners Hamburg',
-    bgImageUrl: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200',
+    bgImageUrl:
+      'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200',
     logoUrl: '/logos/urban-gardeners-hamburg.svg',
     description:
       'Growing food and community in Hamburg. We share plots, seeds, and knowledge across the city.',
@@ -51,7 +53,8 @@ export const MOCK_COMMUNITIES: Community[] = [
     id: 'climate-action-now',
     slug: 'climate-action-now',
     name: 'Climate Action Now',
-    bgImageUrl: 'https://images.unsplash.com/photo-1611270629569-8b357cb88da9?w=1200',
+    bgImageUrl:
+      'https://images.unsplash.com/photo-1611270629569-8b357cb88da9?w=1200',
     logoUrl: '/logos/climate-action-now.svg',
     description:
       'Organizing citizens, researchers, and policy folks around concrete climate action. Local chapters across DACH.',

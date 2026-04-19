@@ -1,11 +1,11 @@
-import { A, useParams } from "@solidjs/router";
-import { For, Show, createMemo } from "solid-js";
-import { Avatar, Button, Tag } from "mosquito-design-system";
-import type { Member } from "../../../../types";
-import { MOCK_COMMUNITIES } from "../../../../mocks/communities";
-import { MOCK_EVENTS } from "../../../../mocks/events";
-import { MOCK_USERS } from "../../../../mocks/users";
-import { CommunitySidebar } from "../../../../components/community-sidebar";
+import { A, useParams } from '@solidjs/router';
+import { Avatar, Button, Tag } from 'mosquito-design-system';
+import { For, Show, createMemo } from 'solid-js';
+import { CommunitySidebar } from '../../../../components/community-sidebar';
+import { MOCK_COMMUNITIES } from '../../../../mocks/communities';
+import { MOCK_EVENTS } from '../../../../mocks/events';
+import { MOCK_USERS } from '../../../../mocks/users';
+import type { Member } from '../../../../types';
 
 const CURRENT_USER = MOCK_USERS[0];
 
@@ -27,117 +27,117 @@ interface Thread {
 
 const MOCK_THREADS: Thread[] = [
   {
-    id: "t1",
-    headline: "Welcome to #all-members 👋",
+    id: 't1',
+    headline: 'Welcome to #all-members 👋',
     author: MOCK_USERS[0],
     content:
-      "Welcome everyone to our community channel! This is the main space for community-wide announcements, questions, and general chat. Feel free to introduce yourself or share anything JavaScript-related.",
-    createdAt: new Date("2026-04-15T09:00:00Z"),
+      'Welcome everyone to our community channel! This is the main space for community-wide announcements, questions, and general chat. Feel free to introduce yourself or share anything JavaScript-related.',
+    createdAt: new Date('2026-04-15T09:00:00Z'),
     replies: [
       {
-        id: "t1-r1",
+        id: 't1-r1',
         author: MOCK_USERS[1],
         content:
           "Hey everyone! Just joined last week – super excited to be here. I'm a frontend dev working mostly with React and TypeScript.",
-        createdAt: new Date("2026-04-15T09:14:00Z"),
+        createdAt: new Date('2026-04-15T09:14:00Z'),
       },
       {
-        id: "t1-r2",
+        id: 't1-r2',
         author: MOCK_USERS[3],
         content:
-          "Great to have you, Bob! The March meetup was fantastic – looking forward to the next one already.",
-        createdAt: new Date("2026-04-15T09:31:00Z"),
+          'Great to have you, Bob! The March meetup was fantastic – looking forward to the next one already.',
+        createdAt: new Date('2026-04-15T09:31:00Z'),
       },
       {
-        id: "t1-r3",
+        id: 't1-r3',
         author: MOCK_USERS[2],
         content:
-          "Hi! Clara here. Been lurking for months, finally decided to show my face 😄 Mostly working on backend stuff but trying to get more into the browser side.",
-        createdAt: new Date("2026-04-15T10:02:00Z"),
+          'Hi! Clara here. Been lurking for months, finally decided to show my face 😄 Mostly working on backend stuff but trying to get more into the browser side.',
+        createdAt: new Date('2026-04-15T10:02:00Z'),
       },
     ],
   },
   {
-    id: "t2",
+    id: 't2',
     author: MOCK_USERS[2],
     content:
       "Anyone experimenting with React 19's server actions in production? I've been building a small app with the new form handling and `useFormState` – the mental model is a bit different from what I expected.",
-    createdAt: new Date("2026-04-16T14:22:00Z"),
+    createdAt: new Date('2026-04-16T14:22:00Z'),
     replies: [
       {
-        id: "t2-r1",
+        id: 't2-r1',
         author: MOCK_USERS[1],
         content:
-          "Yeah, `useFormState` got renamed to `useActionState` in the final release, tripped me up for a good hour. Worth reading the migration guide carefully.",
-        createdAt: new Date("2026-04-16T14:45:00Z"),
+          'Yeah, `useFormState` got renamed to `useActionState` in the final release, tripped me up for a good hour. Worth reading the migration guide carefully.',
+        createdAt: new Date('2026-04-16T14:45:00Z'),
       },
       {
-        id: "t2-r2",
+        id: 't2-r2',
         author: MOCK_USERS[0],
         content:
-          "This would make a great talk! If you put together a short demo Clara, we could slot you into the May meetup. Want me to add you to the CFP list?",
-        createdAt: new Date("2026-04-16T15:10:00Z"),
+          'This would make a great talk! If you put together a short demo Clara, we could slot you into the May meetup. Want me to add you to the CFP list?',
+        createdAt: new Date('2026-04-16T15:10:00Z'),
       },
       {
-        id: "t2-r3",
+        id: 't2-r3',
         author: MOCK_USERS[2],
         content:
           "Oh I'd love that! Yes please – I'll put something together over the next two weeks.",
-        createdAt: new Date("2026-04-18T15:28:00Z"),
+        createdAt: new Date('2026-04-18T15:28:00Z'),
       },
     ],
   },
   {
-    id: "t3",
-    headline: "April Meetup – April 24th",
+    id: 't3',
+    headline: 'April Meetup – April 24th',
     author: MOCK_USERS[0],
     content:
-      "Just a heads-up that our April meetup is confirmed for April 24th at Design Offices Frankfurt Westend. Doors open at 18:30. Two talks lined up: React Server Components in practice + Building CLI tools with Node.js. See the Events section for the full agenda.",
-    createdAt: new Date("2026-04-17T10:00:00Z"),
+      'Just a heads-up that our April meetup is confirmed for April 24th at Design Offices Frankfurt Westend. Doors open at 18:30. Two talks lined up: React Server Components in practice + Building CLI tools with Node.js. See the Events section for the full agenda.',
+    createdAt: new Date('2026-04-17T10:00:00Z'),
     replies: [
       {
-        id: "t3-r1",
+        id: 't3-r1',
         author: MOCK_USERS[3],
         content:
           "Will there be recordings this time? I couldn't make the March one and didn't want to miss it again.",
-        createdAt: new Date("2026-04-17T10:35:00Z"),
+        createdAt: new Date('2026-04-17T10:35:00Z'),
       },
       {
-        id: "t3-r2",
+        id: 't3-r2',
         author: MOCK_USERS[0],
         content:
           "Planning to record both talks, yes! We'll post them to the community within a week of the event.",
-        createdAt: new Date("2026-04-17T11:00:00Z"),
+        createdAt: new Date('2026-04-17T11:00:00Z'),
       },
     ],
   },
   {
-    id: "t4",
+    id: 't4',
     author: MOCK_USERS[3],
     content:
       "Anyone tried deploying a SolidStart app to Cloudflare Workers? Running into some edge runtime issues – it seems like certain Node.js APIs aren't available and I'm not sure how to polyfill them.",
-    createdAt: new Date("2026-04-18T08:15:00Z"),
+    createdAt: new Date('2026-04-18T08:15:00Z'),
     replies: [
       {
-        id: "t4-r1",
+        id: 't4-r1',
         author: MOCK_USERS[1],
         content:
-          "The Miniflare local emulator is really solid for catching these early. Check if you have any `fs` or `path` usage – those are the usual culprits on edge runtimes.",
-        createdAt: new Date("2026-04-18T08:40:00Z"),
+          'The Miniflare local emulator is really solid for catching these early. Check if you have any `fs` or `path` usage – those are the usual culprits on edge runtimes.',
+        createdAt: new Date('2026-04-18T08:40:00Z'),
       },
       {
-        id: "t4-r2",
+        id: 't4-r2',
         author: MOCK_USERS[0],
         content:
           "We should do a short workshop on edge deployments – the DX has improved massively in the last year. Happy to co-host one if there's interest.",
-        createdAt: new Date("2026-04-18T09:05:00Z"),
+        createdAt: new Date('2026-04-18T09:05:00Z'),
       },
       {
-        id: "t4-r3",
+        id: 't4-r3',
         author: MOCK_USERS[3],
         content:
           "That would be awesome! And yes, pairing would help a lot – I'll ping you on DM Bob, thanks.",
-        createdAt: new Date("2026-04-18T09:22:00Z"),
+        createdAt: new Date('2026-04-18T09:22:00Z'),
       },
     ],
   },
@@ -150,13 +150,13 @@ function formatTimestamp(date: Date) {
   const diffHours = Math.floor(diffMins / 60);
   const diffDays = Math.floor(diffHours / 24);
 
-  if (diffMins < 1) return "just now";
+  if (diffMins < 1) return 'just now';
   if (diffMins < 60) return `${diffMins}m ago`;
   if (diffHours < 24) return `${diffHours}h ago`;
-  if (diffDays === 1) return "Yesterday";
-  return new Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "numeric",
+  if (diffDays === 1) return 'Yesterday';
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
   }).format(date);
 }
 
@@ -206,7 +206,7 @@ function ChatChannelSidebar(props: ChatChannelSidebarProps) {
             >
               <span class="text-col-fg-weak">#</span>
               <span class="truncate">
-                {event.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
+                {event.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}
               </span>
             </A>
           )}
@@ -244,7 +244,7 @@ function ThreadItem(props: ThreadItemProps) {
   const isAuthorCurrentUser = (userId: string) => userId === CURRENT_USER.id;
   const isAuthorAdmin = (userId: string) =>
     props.communityMembers.some(
-      (m) => m.user.id === userId && m.role === "admin",
+      (m) => m.user.id === userId && m.role === 'admin',
     );
 
   return (
@@ -268,8 +268,8 @@ function ThreadItem(props: ThreadItemProps) {
             <span
               class={`text-fs-2 font-bold font-fam-msq ${
                 isAuthorCurrentUser(props.thread.author.id)
-                  ? "text-col-accent"
-                  : "text-col-fg-strong"
+                  ? 'text-col-accent'
+                  : 'text-col-fg-strong'
               }`}
             >
               {props.thread.author.displayName}
@@ -298,8 +298,8 @@ function ThreadItem(props: ThreadItemProps) {
                         <span
                           class={`text-fs-2 font-bold font-fam-msq ${
                             isAuthorCurrentUser(reply.author.id)
-                              ? "text-col-accent"
-                              : "text-col-fg-strong"
+                              ? 'text-col-accent'
+                              : 'text-col-fg-strong'
                           }`}
                         >
                           {reply.author.displayName}
@@ -331,8 +331,8 @@ function resolveChannelName(
   events: (typeof MOCK_EVENTS)[number][],
   members: (typeof MOCK_USERS)[number][],
 ): string {
-  if (chatid === "general") return "all-members";
-  if (chatid === "organizers") return "organizers";
+  if (chatid === 'general') return 'all-members';
+  if (chatid === 'organizers') return 'organizers';
   const event = events.find((e) => e.slug === chatid);
   if (event) return event.title;
   const member = members.find((m) => m.id === chatid);
@@ -353,7 +353,7 @@ export default function CommunitySubChannelPage() {
     return c.members.find((m) => m.user.id === CURRENT_USER.id) ?? null;
   });
 
-  const isAdmin = () => membership()?.role === "admin";
+  const isAdmin = () => membership()?.role === 'admin';
 
   const communityEvents = createMemo(() => {
     const c = community();
@@ -371,9 +371,7 @@ export default function CommunitySubChannelPage() {
     resolveChannelName(params.chatid, communityEvents(), members()),
   );
 
-  const isDM = createMemo(() =>
-    members().some((m) => m.id === params.chatid),
-  );
+  const isDM = createMemo(() => members().some((m) => m.id === params.chatid));
 
   const dmUser = createMemo(() =>
     members().find((m) => m.id === params.chatid),
@@ -411,14 +409,17 @@ export default function CommunitySubChannelPage() {
           <div class="flex-1 flex flex-col min-w-0 bg-col-bg">
             {/* Fixed header */}
             <div class="flex-shrink-0 px-6 py-3 border-b border-col-line flex items-center gap-2">
-              <Show when={isDM() && dmUser()} fallback={
-                <>
-                  <span class="text-col-fg-weak text-fs-3">#</span>
-                  <h2 class="text-fs-3 font-fam-msq font-bold text-col-fg-strong">
-                    {channelName()}
-                  </h2>
-                </>
-              }>
+              <Show
+                when={isDM() && dmUser()}
+                fallback={
+                  <>
+                    <span class="text-col-fg-weak text-fs-3">#</span>
+                    <h2 class="text-fs-3 font-fam-msq font-bold text-col-fg-strong">
+                      {channelName()}
+                    </h2>
+                  </>
+                }
+              >
                 {(user) => (
                   <>
                     <Avatar user={user()} size="xs" />

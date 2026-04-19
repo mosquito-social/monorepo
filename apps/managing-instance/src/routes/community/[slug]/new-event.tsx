@@ -1,5 +1,6 @@
-import "leaflet/dist/leaflet.css";
-import { A, useParams } from "@solidjs/router";
+import 'leaflet/dist/leaflet.css';
+import { A, useParams } from '@solidjs/router';
+import { Button } from 'mosquito-design-system';
 import {
   Show,
   createEffect,
@@ -7,20 +8,19 @@ import {
   createSignal,
   onCleanup,
   onMount,
-} from "solid-js";
-import { MOCK_COMMUNITIES } from "../../../mocks/communities";
-import { MOCK_USERS } from "../../../mocks/users";
-import { CommunitySidebar } from "../../../components/community-sidebar";
-import { Button } from "mosquito-design-system";
+} from 'solid-js';
+import { CommunitySidebar } from '../../../components/community-sidebar';
+import { MOCK_COMMUNITIES } from '../../../mocks/communities';
+import { MOCK_USERS } from '../../../mocks/users';
 
 const CURRENT_USER = MOCK_USERS[0];
 
 const inputClass =
-  "w-full rounded-xl border border-col-line bg-col-bg px-4 py-3 text-fs-3 text-col-fg placeholder:text-col-fg-weak focus:outline-none focus:border-col-accent transition-colors";
+  'w-full rounded-xl border border-col-line bg-col-bg px-4 py-3 text-fs-3 text-col-fg placeholder:text-col-fg-weak focus:outline-none focus:border-col-accent transition-colors';
 
-const labelClass = "block text-fs-2 font-semibold text-col-fg-soft mb-1.5";
+const labelClass = 'block text-fs-2 font-semibold text-col-fg-soft mb-1.5';
 
-type LocationMode = "remote" | "place";
+type LocationMode = 'remote' | 'place';
 
 async function reverseGeocodeAddress(
   lat: number,
@@ -29,14 +29,14 @@ async function reverseGeocodeAddress(
   try {
     const res = await fetch(
       `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`,
-      { headers: { "Accept-Language": "en" } },
+      { headers: { 'Accept-Language': 'en' } },
     );
     const data = await res.json();
     const addr = data.address ?? {};
 
-    const road = addr.road ?? addr.pedestrian ?? addr.footway ?? "";
-    const houseNumber = addr.house_number ?? "";
-    const postcode = addr.postcode ?? "";
+    const road = addr.road ?? addr.pedestrian ?? addr.footway ?? '';
+    const houseNumber = addr.house_number ?? '';
+    const postcode = addr.postcode ?? '';
     const city =
       addr.city ??
       addr.town ??
@@ -44,11 +44,11 @@ async function reverseGeocodeAddress(
       addr.hamlet ??
       addr.municipality ??
       addr.county ??
-      "";
+      '';
 
-    const streetPart = [road, houseNumber].filter(Boolean).join(" ");
-    const localePart = [postcode, city].filter(Boolean).join(" ");
-    const fullAddress = [streetPart, localePart].filter(Boolean).join(", ");
+    const streetPart = [road, houseNumber].filter(Boolean).join(' ');
+    const localePart = [postcode, city].filter(Boolean).join(' ');
+    const fullAddress = [streetPart, localePart].filter(Boolean).join(', ');
 
     const label =
       addr.amenity ??
@@ -78,30 +78,30 @@ export default function NewEventPage() {
     return c.members.find((m) => m.user.id === CURRENT_USER.id) ?? null;
   });
 
-  const [title, setTitle] = createSignal("");
-  const [description, setDescription] = createSignal("");
-  const [eventDate, setEventDate] = createSignal("");
-  const [duration, setDuration] = createSignal("");
-  const [locationMode, setLocationMode] = createSignal<LocationMode>("place");
-  const [remoteDescription, setRemoteDescription] = createSignal("");
-  const [locationLabel, setLocationLabel] = createSignal("");
-  const [locationAddress, setLocationAddress] = createSignal("");
+  const [title, setTitle] = createSignal('');
+  const [description, setDescription] = createSignal('');
+  const [eventDate, setEventDate] = createSignal('');
+  const [duration, setDuration] = createSignal('');
+  const [locationMode, setLocationMode] = createSignal<LocationMode>('place');
+  const [remoteDescription, setRemoteDescription] = createSignal('');
+  const [locationLabel, setLocationLabel] = createSignal('');
+  const [locationAddress, setLocationAddress] = createSignal('');
   const [locationLoading, setLocationLoading] = createSignal(false);
-  const [agenda, setAgenda] = createSignal("");
+  const [agenda, setAgenda] = createSignal('');
 
   let mapEl: HTMLDivElement | undefined;
 
   onMount(async () => {
-    const L = (await import("leaflet")).default;
+    const L = (await import('leaflet')).default;
 
     // @ts-ignore
     delete L.Icon.Default.prototype._getIconUrl;
     L.Icon.Default.mergeOptions({
-      iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+      iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
       iconRetinaUrl:
-        "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+        'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
       shadowUrl:
-        "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+        'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
     });
 
     let map: ReturnType<typeof L.map> | null = null;
@@ -110,7 +110,7 @@ export default function NewEventPage() {
 
     const pinIcon = () =>
       L.divIcon({
-        className: "",
+        className: '',
         html: `<div style="
           width:18px;height:18px;border-radius:50%;
           background:oklch(0.6 0.26 220);
@@ -122,7 +122,7 @@ export default function NewEventPage() {
       });
 
     createEffect(() => {
-      if (locationMode() !== "place") return;
+      if (locationMode() !== 'place') return;
 
       if (mapReady) {
         setTimeout(() => map?.invalidateSize(), 0);
@@ -135,13 +135,13 @@ export default function NewEventPage() {
 
         map = L.map(mapEl, { zoomControl: true }).setView([51.1, 10.4], 5);
 
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution:
             '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
           maxZoom: 19,
         }).addTo(map);
 
-        map.on("click", async (e: { latlng: { lat: number; lng: number } }) => {
+        map.on('click', async (e: { latlng: { lat: number; lng: number } }) => {
           const { lat, lng } = e.latlng;
           const icon = pinIcon();
 
@@ -153,8 +153,8 @@ export default function NewEventPage() {
           }
 
           setLocationLoading(true);
-          setLocationLabel("");
-          setLocationAddress("");
+          setLocationLabel('');
+          setLocationAddress('');
           const result = await reverseGeocodeAddress(lat, lng);
           if (result) {
             setLocationLabel(result.label);
@@ -278,11 +278,11 @@ export default function NewEventPage() {
                   <div class="flex gap-2 mb-4">
                     <button
                       type="button"
-                      onClick={() => setLocationMode("remote")}
+                      onClick={() => setLocationMode('remote')}
                       class={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-fs-2 font-semibold border transition-colors ${
-                        locationMode() === "remote"
-                          ? "bg-col-accent text-col-bg border-col-accent"
-                          : "border-col-line text-col-fg-soft hover:border-col-accent hover:text-col-fg"
+                        locationMode() === 'remote'
+                          ? 'bg-col-accent text-col-bg border-col-accent'
+                          : 'border-col-line text-col-fg-soft hover:border-col-accent hover:text-col-fg'
                       }`}
                     >
                       <svg
@@ -308,11 +308,11 @@ export default function NewEventPage() {
                     </button>
                     <button
                       type="button"
-                      onClick={() => setLocationMode("place")}
+                      onClick={() => setLocationMode('place')}
                       class={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-fs-2 font-semibold border transition-colors ${
-                        locationMode() === "place"
-                          ? "bg-col-accent text-col-bg border-col-accent"
-                          : "border-col-line text-col-fg-soft hover:border-col-accent hover:text-col-fg"
+                        locationMode() === 'place'
+                          ? 'bg-col-accent text-col-bg border-col-accent'
+                          : 'border-col-line text-col-fg-soft hover:border-col-accent hover:text-col-fg'
                       }`}
                     >
                       <svg
@@ -339,7 +339,7 @@ export default function NewEventPage() {
                     </button>
                   </div>
 
-                  <Show when={locationMode() === "remote"}>
+                  <Show when={locationMode() === 'remote'}>
                     <textarea
                       value={remoteDescription()}
                       onInput={(e) =>
@@ -351,7 +351,7 @@ export default function NewEventPage() {
                     />
                   </Show>
 
-                  <Show when={locationMode() === "place"}>
+                  <Show when={locationMode() === 'place'}>
                     <div
                       ref={mapEl}
                       class="h-56 rounded-xl overflow-hidden border border-col-line mb-3"
@@ -400,7 +400,7 @@ export default function NewEventPage() {
                         when={
                           !locationLoading() &&
                           !locationAddress() &&
-                          locationMode() === "place"
+                          locationMode() === 'place'
                         }
                       >
                         <span class="text-fs-1 text-col-fg-weak">

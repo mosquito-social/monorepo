@@ -1,16 +1,16 @@
-import { A, useParams } from "@solidjs/router";
-import { Show, createMemo } from "solid-js";
-import { Button } from "mosquito-design-system";
-import { MOCK_COMMUNITIES } from "../../../../mocks/communities";
-import { MOCK_EVENTS } from "../../../../mocks/events";
-import { MOCK_USERS } from "../../../../mocks/users";
-import { CommunitySidebar } from "../../../../components/community-sidebar";
+import { A, useParams } from '@solidjs/router';
+import { Button } from 'mosquito-design-system';
+import { Show, createMemo } from 'solid-js';
+import { CommunitySidebar } from '../../../../components/community-sidebar';
+import { MOCK_COMMUNITIES } from '../../../../mocks/communities';
+import { MOCK_EVENTS } from '../../../../mocks/events';
+import { MOCK_USERS } from '../../../../mocks/users';
 
 const CURRENT_USER = MOCK_USERS[0];
 
 function CalendarCard(props: { date: Date }) {
   const month = () =>
-    new Intl.DateTimeFormat("en-US", { month: "short" })
+    new Intl.DateTimeFormat('en-US', { month: 'short' })
       .format(props.date)
       .toUpperCase();
   const day = () => props.date.getDate();
@@ -28,9 +28,9 @@ function CalendarCard(props: { date: Date }) {
 }
 
 function formatTime(date: Date) {
-  return new Intl.DateTimeFormat("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
+  return new Intl.DateTimeFormat('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
     hour12: true,
   }).format(date);
 }
@@ -44,18 +44,18 @@ function formatDuration(minutes: number) {
 }
 
 function formatFullDate(date: Date) {
-  return new Intl.DateTimeFormat("en-US", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+  return new Intl.DateTimeFormat('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
   }).format(date);
 }
 
 function AgendaLine(props: { index: number; text: string }) {
-  const parts = props.text.split(" – ");
+  const parts = props.text.split(' – ');
   const time = parts.length > 1 ? parts[0] : null;
-  const item = parts.length > 1 ? parts.slice(1).join(" – ") : props.text;
+  const item = parts.length > 1 ? parts.slice(1).join(' – ') : props.text;
 
   return (
     <div class="flex gap-4 py-3 border-b border-col-line last:border-0">
@@ -102,7 +102,7 @@ export default function EventDetailPage() {
   const agendaLines = createMemo(() => {
     const e = event();
     if (!e) return [];
-    return e.agenda.split("\n").filter((l) => l.trim().length > 0);
+    return e.agenda.split('\n').filter((l) => l.trim().length > 0);
   });
 
   const hasCoords = createMemo(() => {
@@ -210,7 +210,7 @@ export default function EventDetailPage() {
                       {/* CTA / Status */}
                       <div class="bg-col-bg rounded-2xl border border-col-line p-4">
                         <Show
-                          when={ev().status === "upcoming"}
+                          when={ev().status === 'upcoming'}
                           fallback={
                             <p class="text-fs-2 font-bold text-col-fg-weak text-center py-1">
                               Past event

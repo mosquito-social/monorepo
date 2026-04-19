@@ -54,7 +54,7 @@ const createEmptyResults = (): Results => ({
 
 const useCases: UseCase[] = [
   {
-    name: "family",
+    name: 'family',
     perPerson: 2,
     size: 7, // seven people in a family is moderate
     needForATool: 0.7, // 70% use a tool like whatsapppp or signal and other exchange tools like google photos
@@ -71,7 +71,7 @@ const useCases: UseCase[] = [
     ...createEmptyResults(),
   },
   {
-    name: "neighbourhood",
+    name: 'neighbourhood',
     perPerson: 1,
     size: 14, // some flats are significantly bigger, 7 couples is realistic
     needForATool: 0.4, // many find other ways to align
@@ -88,7 +88,7 @@ const useCases: UseCase[] = [
     ...createEmptyResults(),
   },
   {
-    name: "friends",
+    name: 'friends',
     perPerson: 2, // usualay there's one from eac side of a couple
     size: 6,
     needForATool: 0.9, // i guess that's the home of instant messaging
@@ -105,7 +105,7 @@ const useCases: UseCase[] = [
     ...createEmptyResults(),
   },
   {
-    name: "hobby",
+    name: 'hobby',
     perPerson: 2, // two is realistic (sports clubs and fan bases are separate)
     size: 20, // range is wide could be a schafkopf group of four or a choir of 40
     needForATool: 0.3, // low number but some of them with extensive use cases
@@ -122,7 +122,7 @@ const useCases: UseCase[] = [
     ...createEmptyResults(),
   },
   {
-    name: "club",
+    name: 'club',
     perPerson: 0.5,
     size: 200, // thinking of footbal clubs, gardeners clubs etc.
     needForATool: 0.4, // there's a lot of classic communication
@@ -139,7 +139,7 @@ const useCases: UseCase[] = [
     ...createEmptyResults(),
   },
   {
-    name: "fan communities",
+    name: 'fan communities',
     perPerson: 10, // your favourite bands, teams, film franchises, etc.
     size: 1000, //
     needForATool: 0.8, // there's a lot of classic communication
@@ -156,7 +156,7 @@ const useCases: UseCase[] = [
     ...createEmptyResults(),
   },
   {
-    name: "workplace", // non work related
+    name: 'workplace', // non work related
     perPerson: 0.7, // only the current. alumni groups will follow. Not every employee fosters private exchange
     size: 80,
     needForATool: 0.9, // there's a lot of classic communication
@@ -174,7 +174,7 @@ const useCases: UseCase[] = [
   },
 
   {
-    name: "professional", // skill related user groups
+    name: 'professional', // skill related user groups
     perPerson: 0.5, // not everyone has one
     size: 80,
     needForATool: 1,
@@ -191,7 +191,7 @@ const useCases: UseCase[] = [
     ...createEmptyResults(),
   },
   {
-    name: "alumni", // school, uni or work
+    name: 'alumni', // school, uni or work
     perPerson: 3,
     size: 60, // not everyone might be active in an alumni group
     needForATool: 0.9, // often there's mail and chats, some have linkedin groups
@@ -325,26 +325,26 @@ const pickSum = (result: keyof Results): Counts => {
 };
 
 const sums = {
-  communities: pickSum("communityCount"),
-  "communities on our Servers": pickSum("communityCountHostedServers"),
-  "storage in GB": pickSum("storageCount"),
-  "storage per community in GB": pickSum("storagePerCommunity"),
-  "posts per month": pickSum("postsCount"),
-  "egress in GB per month": pickSum("egressCount"),
-  "events held per month": pickSum("eventCount"),
-  "paid events per month": pickSum("paidEventCount"),
-  "cash flow. through paid events": pickSum("moneyFlowThroughPaidEvents"),
-  costs: pickSum("costs"),
-  "revenue from big groups": pickSum("revenueBigGroups"),
-  "revenue from big storage": pickSum("revenueBigStorage"),
-  "revenue from paid event": pickSum("revenueEventTransactions"),
-  "revenue from premium": pickSum("revenuePremium"),
+  communities: pickSum('communityCount'),
+  'communities on our Servers': pickSum('communityCountHostedServers'),
+  'storage in GB': pickSum('storageCount'),
+  'storage per community in GB': pickSum('storagePerCommunity'),
+  'posts per month': pickSum('postsCount'),
+  'egress in GB per month': pickSum('egressCount'),
+  'events held per month': pickSum('eventCount'),
+  'paid events per month': pickSum('paidEventCount'),
+  'cash flow. through paid events': pickSum('moneyFlowThroughPaidEvents'),
+  costs: pickSum('costs'),
+  'revenue from big groups': pickSum('revenueBigGroups'),
+  'revenue from big storage': pickSum('revenueBigStorage'),
+  'revenue from paid event': pickSum('revenueEventTransactions'),
+  'revenue from premium': pickSum('revenuePremium'),
 };
 
 console.table(sums, [0, 1, 2, 5, 11, 23, 35, 47]);
 
 [11, 23, 35, 47].map((n) => {
-  console.log("month", n + 1);
+  console.log('month', n + 1);
   console.table(
     useCases.map((useCase) => ({
       name: useCase.name,
@@ -360,8 +360,8 @@ console.table(sums, [0, 1, 2, 5, 11, 23, 35, 47]);
 });
 
 console.log(
-  "market size",
+  'market size',
   (
     START_MARKET_SIZE * Math.pow(MONTHLY_MARKET_SIZE_INCREASE, 35)
-  ).toLocaleString("de"),
+  ).toLocaleString('de'),
 );

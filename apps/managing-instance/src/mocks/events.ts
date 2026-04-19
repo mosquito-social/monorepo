@@ -55,7 +55,7 @@ export const MOCK_EVENTS: Event[] = [
       lng: 8.713,
     },
     agenda:
-      '18:30 – Doors open\n19:00 – Talk 1: What\'s new in TypeScript 5.5\n19:40 – Talk 2: Realtime apps with Bun\n20:20 – Open discussions\n22:00 – End',
+      "18:30 – Doors open\n19:00 – Talk 1: What's new in TypeScript 5.5\n19:40 – Talk 2: Realtime apps with Bun\n20:20 – Open discussions\n22:00 – End",
     date: new Date('2026-03-27T18:30:00+01:00'),
     durationInMinutes: 210,
     status: 'past',

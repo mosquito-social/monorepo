@@ -1,6 +1,6 @@
-import { For } from "solid-js";
-import { Button, Heading, SectionWrapper } from "mosquito-design-system";
-import { MOCK_COMMUNITIES } from "../mocks";
+import { Button, Heading, SectionWrapper } from 'mosquito-design-system';
+import { For } from 'solid-js';
+import { MOCK_COMMUNITIES } from '../mocks';
 
 function CommunityCard(props: {
   community: (typeof MOCK_COMMUNITIES)[number];
@@ -33,7 +33,7 @@ function CommunityCard(props: {
           {c.description}
         </p>
         <p class="text-fs-1 text-col-fg-weak mt-2 font-medium">
-          {c.members.length} {c.members.length === 1 ? "member" : "members"}
+          {c.members.length} {c.members.length === 1 ? 'member' : 'members'}
         </p>
       </div>
     </a>

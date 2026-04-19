@@ -1,5 +1,5 @@
-import { Navigate } from "@solidjs/router";
-import { MOCK_USERS } from "../../mocks/users";
+import { Navigate } from '@solidjs/router';
+import { MOCK_USERS } from '../../mocks/users';
 
 const CURRENT_USER = MOCK_USERS[0];
 

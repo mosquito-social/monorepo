@@ -1,22 +1,22 @@
-import { useParams } from "@solidjs/router";
-import { For, Show, createMemo } from "solid-js";
-import { Button } from "mosquito-design-system";
-import { MOCK_COMMUNITIES } from "../../../mocks/communities";
-import { MOCK_USERS } from "../../../mocks/users";
-import { CommunitySidebar } from "../../../components/community-sidebar";
-import type { Member } from "../../../types";
+import { useParams } from '@solidjs/router';
+import { Button } from 'mosquito-design-system';
+import { For, Show, createMemo } from 'solid-js';
+import { CommunitySidebar } from '../../../components/community-sidebar';
+import { MOCK_COMMUNITIES } from '../../../mocks/communities';
+import { MOCK_USERS } from '../../../mocks/users';
+import type { Member } from '../../../types';
 
 const CURRENT_USER = MOCK_USERS[0];
 
 function formatJoinDate(date: Date) {
-  return new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    year: "numeric",
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    year: 'numeric',
   }).format(date);
 }
 
 function MemberRow(props: { member: Member }) {
-  const isAdmin = () => props.member.role === "admin";
+  const isAdmin = () => props.member.role === 'admin';
 
   return (
     <div class="flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-col-surface transition-colors">
@@ -74,8 +74,8 @@ export default function CommunityMembersPage() {
     const c = community();
     if (!c) return [];
     return [...c.members].sort((a, b) => {
-      if (a.role === "admin" && b.role !== "admin") return -1;
-      if (a.role !== "admin" && b.role === "admin") return 1;
+      if (a.role === 'admin' && b.role !== 'admin') return -1;
+      if (a.role !== 'admin' && b.role === 'admin') return 1;
       return 0;
     });
   });
@@ -108,8 +108,8 @@ export default function CommunityMembersPage() {
                   Members
                 </h1>
                 <p class="text-fs-2 text-col-fg-soft mt-1">
-                  {c().members.length}{" "}
-                  {c().members.length === 1 ? "member" : "members"}
+                  {c().members.length}{' '}
+                  {c().members.length === 1 ? 'member' : 'members'}
                 </p>
               </div>
 
