@@ -1,10 +1,17 @@
 import { useParams } from '@solidjs/router';
 import { Button } from 'mosquito-design-system';
-import { For, Show, createMemo } from 'solid-js';
+import {
+  For,
+  Show,
+  createEffect,
+  createMemo,
+  createSignal,
+  onCleanup,
+} from 'solid-js';
 import { CommunitySidebar } from '../../../components/community-sidebar';
 import { MOCK_COMMUNITIES } from '../../../mocks/communities';
 import { MOCK_USERS } from '../../../mocks/users';
-import type { Member } from '../../../types';
+import type { Member, MemberRole } from '../../../types';
 
 const CURRENT_USER = MOCK_USERS[0];
 
@@ -57,6 +64,63 @@ function MemberRow(props: { member: Member }) {
   );
 }
 
+type RoleFilter = 'all' | MemberRole;
+
+interface FilterBarProps {
+  nameQuery: string;
+  onNameChange: (v: string) => void;
+  roleFilter: RoleFilter;
+  onRoleChange: (v: RoleFilter) => void;
+  dateFrom: string;
+  onDateFromChange: (v: string) => void;
+  dateTo: string;
+  onDateToChange: (v: string) => void;
+}
+
+function MemberFilterBar(props: FilterBarProps) {
+  return (
+    <div class="flex flex-wrap gap-3 mb-6 p-4 rounded-2xl border border-col-line bg-col-bg">
+      <div class="flex-1 min-w-40">
+        <input
+          type="text"
+          placeholder="Search by name…"
+          value={props.nameQuery}
+          onInput={(e) => props.onNameChange(e.currentTarget.value)}
+          class="w-full px-3 py-2 rounded-xl border border-col-line bg-col-bg-weak text-fs-2 text-col-fg-strong placeholder:text-col-fg-weak focus:outline-none focus:ring-2 focus:ring-col-accent/40"
+        />
+      </div>
+
+      <select
+        value={props.roleFilter}
+        onChange={(e) =>
+          props.onRoleChange(e.currentTarget.value as RoleFilter)
+        }
+        class="px-3 py-2 rounded-xl border border-col-line bg-col-bg-weak text-fs-2 text-col-fg-strong focus:outline-none focus:ring-2 focus:ring-col-accent/40"
+      >
+        <option value="all">All roles</option>
+        <option value="admin">Organizer</option>
+        <option value="member">Member</option>
+      </select>
+
+      <div class="flex items-center gap-2">
+        <input
+          type="date"
+          value={props.dateFrom}
+          onInput={(e) => props.onDateFromChange(e.currentTarget.value)}
+          class="px-3 py-2 rounded-xl border border-col-line bg-col-bg-weak text-fs-2 text-col-fg-strong focus:outline-none focus:ring-2 focus:ring-col-accent/40"
+        />
+        <span class="text-fs-1 text-col-fg-weak">to</span>
+        <input
+          type="date"
+          value={props.dateTo}
+          onInput={(e) => props.onDateToChange(e.currentTarget.value)}
+          class="px-3 py-2 rounded-xl border border-col-line bg-col-bg-weak text-fs-2 text-col-fg-strong focus:outline-none focus:ring-2 focus:ring-col-accent/40"
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function CommunityMembersPage() {
   const params = useParams<{ slug: string }>();
 
@@ -70,14 +134,46 @@ export default function CommunityMembersPage() {
     return c.members.find((m) => m.user.id === CURRENT_USER.id) ?? null;
   });
 
-  const sortedMembers = createMemo(() => {
+  const [rawNameQuery, setRawNameQuery] = createSignal('');
+  const [nameQuery, setNameQuery] = createSignal('');
+  const [roleFilter, setRoleFilter] = createSignal<RoleFilter>('all');
+  const [dateFrom, setDateFrom] = createSignal('');
+  const [dateTo, setDateTo] = createSignal('');
+
+  createEffect(() => {
+    const raw = rawNameQuery();
+    const timer = setTimeout(() => setNameQuery(raw), 300);
+    onCleanup(() => clearTimeout(timer));
+  });
+
+  const filteredMembers = createMemo(() => {
     const c = community();
     if (!c) return [];
-    return [...c.members].sort((a, b) => {
-      if (a.role === 'admin' && b.role !== 'admin') return -1;
-      if (a.role !== 'admin' && b.role === 'admin') return 1;
-      return 0;
-    });
+    const q = nameQuery().trim().toLowerCase();
+    const role = roleFilter();
+    const fromStr = dateFrom();
+    const toStr = dateTo();
+
+    return [...c.members]
+      .filter((m) => {
+        if (q) {
+          const searchable =
+            `${m.user.firstName} ${m.user.lastName} ${m.user.displayName}`.toLowerCase();
+          if (!searchable.includes(q)) return false;
+        }
+        if (role !== 'all' && m.role !== role) return false;
+        if (m.joinedAt) {
+          const joinedStr = m.joinedAt.toISOString().split('T')[0];
+          if (fromStr && joinedStr < fromStr) return false;
+          if (toStr && joinedStr > toStr) return false;
+        }
+        return true;
+      })
+      .sort((a, b) => {
+        if (a.role === 'admin' && b.role !== 'admin') return -1;
+        if (a.role !== 'admin' && b.role === 'admin') return 1;
+        return 0;
+      });
   });
 
   return (
@@ -108,23 +204,45 @@ export default function CommunityMembersPage() {
                   Members
                 </h1>
                 <p class="text-fs-2 text-col-fg-soft mt-1">
-                  {c().members.length}{' '}
-                  {c().members.length === 1 ? 'member' : 'members'}
+                  {filteredMembers().length}{' '}
+                  {filteredMembers().length === 1 ? 'member' : 'members'}
                 </p>
               </div>
 
-              <div class="rounded-2xl border border-col-line bg-col-bg overflow-hidden">
-                <For each={sortedMembers()}>
-                  {(member, index) => (
-                    <>
-                      <Show when={index() > 0}>
-                        <div class="h-px bg-col-line mx-4" />
-                      </Show>
-                      <MemberRow member={member} />
-                    </>
-                  )}
-                </For>
-              </div>
+              <MemberFilterBar
+                nameQuery={rawNameQuery()}
+                onNameChange={setRawNameQuery}
+                roleFilter={roleFilter()}
+                onRoleChange={setRoleFilter}
+                dateFrom={dateFrom()}
+                onDateFromChange={setDateFrom}
+                dateTo={dateTo()}
+                onDateToChange={setDateTo}
+              />
+
+              <Show
+                when={filteredMembers().length > 0}
+                fallback={
+                  <div class="flex flex-col items-center justify-center py-16 text-center">
+                    <p class="text-fs-3 text-col-fg-weak">
+                      No members match your filters
+                    </p>
+                  </div>
+                }
+              >
+                <div class="rounded-2xl border border-col-line bg-col-bg overflow-hidden">
+                  <For each={filteredMembers()}>
+                    {(member, index) => (
+                      <>
+                        <Show when={index() > 0}>
+                          <div class="h-px bg-col-line mx-4" />
+                        </Show>
+                        <MemberRow member={member} />
+                      </>
+                    )}
+                  </For>
+                </div>
+              </Show>
             </div>
           </main>
         </div>
