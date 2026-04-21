@@ -1,6 +1,7 @@
 import 'leaflet/dist/leaflet.css';
 import { A } from '@solidjs/router';
 import { Button } from 'mosquito-design-system';
+import { CommunityHeader } from './community-header';
 import {
   For,
   Show,
@@ -746,34 +747,21 @@ export function CommunityCreateForm(props: CommunityFormProps) {
             class="rounded-2xl overflow-hidden border border-col-line shadow-lg"
             style={`--msq-hue-primary: ${primaryHue()}`}
           >
-            {/* Header image */}
-            <div class="relative h-40 overflow-hidden">
-              <img src={DEFAULT_BG} alt="" class="w-full h-full object-cover" />
-              <div class="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
-              <img
-                src={DEFAULT_CREST}
-                alt=""
-                class="absolute bottom-3 left-4 w-10 h-[60px] rounded-lg bg-white/90 object-contain p-1.5 shadow-md"
-              />
-              <Show when={selectedType()}>
-                <span class="absolute top-3 right-3 rounded-full bg-col-accent/90 px-2.5 py-0.5 text-fs-1 font-semibold text-col-bg backdrop-blur-sm">
-                  {selectedType()?.name}
-                </span>
-              </Show>
-            </div>
+            <CommunityHeader
+              bgImageUrl={DEFAULT_BG}
+              logoUrl={DEFAULT_CREST}
+              name={name() || 'Community Name'}
+              description={description() || 'Your community description will appear here.'}
+              imageHeight="h-40"
+              badge={selectedType()?.name}
+              textStyle={`font-family: ${selectedFont().family}`}
+            />
 
             {/* Content */}
             <div
-              class="p-5 bg-col-bg"
+              class="px-5 pb-5 bg-col-bg"
               style={`font-family: ${selectedFont().family}`}
             >
-              <h2 class="text-fs-5 font-bold text-col-fg-strong leading-tight">
-                {name() || 'Community Name'}
-              </h2>
-              <p class="text-fs-2 text-col-fg-soft mt-1.5 leading-snug">
-                {description() ||
-                  'Your community description will appear here.'}
-              </p>
 
               {/* Homebase in preview */}
               <div class="flex items-center gap-1.5 mt-2">
