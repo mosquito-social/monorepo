@@ -55,6 +55,21 @@ export interface EventLocation {
   lng?: number;
 }
 
+export type TicketFormField = 'github' | 'company';
+
+export interface TicketType {
+  id: string;
+  name: string;
+  tagline: string;
+  price: number;
+  currency: string;
+  availability: number;
+  totalCapacity: number;
+  perks: string[];
+  formFields: TicketFormField[];
+  badge?: string;
+}
+
 export interface Event {
   id: string;
   slug: string;
@@ -66,4 +81,5 @@ export interface Event {
   date: Date;
   durationInMinutes: number;
   status: EventStatus;
+  ticketTypes?: TicketType[];
 }

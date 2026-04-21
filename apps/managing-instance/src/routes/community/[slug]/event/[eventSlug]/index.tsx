@@ -1,10 +1,10 @@
 import { A, useParams } from '@solidjs/router';
 import { Button } from 'mosquito-design-system';
 import { Show, createMemo } from 'solid-js';
-import { CommunitySidebar } from '../../../../components/community-sidebar';
-import { MOCK_COMMUNITIES } from '../../../../mocks/communities';
-import { MOCK_EVENTS } from '../../../../mocks/events';
-import { MOCK_USERS } from '../../../../mocks/users';
+import { CommunitySidebar } from '../../../../../components/community-sidebar';
+import { MOCK_COMMUNITIES } from '../../../../../mocks/communities';
+import { MOCK_EVENTS } from '../../../../../mocks/events';
+import { MOCK_USERS } from '../../../../../mocks/users';
 
 const CURRENT_USER = MOCK_USERS[0];
 
@@ -217,9 +217,24 @@ export default function EventDetailPage() {
                             </p>
                           }
                         >
-                          <Button variant="primary" size="sm" href="#">
-                            Ask to Join
-                          </Button>
+                          <Show
+                            when={
+                              ev().ticketTypes && ev().ticketTypes!.length > 0
+                            }
+                            fallback={
+                              <Button variant="primary" size="sm" href="#">
+                                Ask to Join
+                              </Button>
+                            }
+                          >
+                            <Button
+                              variant="primary"
+                              size="sm"
+                              href={`/community/${c().slug}/event/${ev().slug}/book`}
+                            >
+                              Get Tickets
+                            </Button>
+                          </Show>
                         </Show>
                       </div>
 
