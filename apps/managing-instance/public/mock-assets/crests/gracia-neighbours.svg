@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none">
+  <!-- Hexagon outer -->
+  <path stroke="currentColor" stroke-width="5" stroke-linejoin="round"
+    d="M80 8 L148 46 L148 114 L80 152 L12 114 L12 46 Z"/>
+  <!-- Hexagon inner (thin) -->
+  <path stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"
+    d="M80 20 L138 54 L138 106 L80 140 L22 106 L22 54 Z"/>
+  <!-- Sun circle -->
+  <circle cx="80" cy="80" r="22" fill="currentColor"/>
+  <!-- Sun rays -->
+  <line x1="80" y1="44" x2="80" y2="54" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  <line x1="80" y1="106" x2="80" y2="116" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  <line x1="44" y1="80" x2="54" y2="80" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  <line x1="106" y1="80" x2="116" y2="80" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  <line x1="54.4" y1="54.4" x2="61.5" y2="61.5" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  <line x1="98.5" y1="98.5" x2="105.6" y2="105.6" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  <line x1="105.6" y1="54.4" x2="98.5" y2="61.5" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  <line x1="61.5" y1="98.5" x2="54.4" y2="105.6" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  <!-- Sun inner circle cutout -->
+  <circle cx="80" cy="80" r="10" fill="none" stroke="white" stroke-width="2.5"/>
+</svg>

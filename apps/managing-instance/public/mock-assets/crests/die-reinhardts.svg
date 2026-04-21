@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none">
+  <!-- Outer decorative ring -->
+  <circle cx="80" cy="80" r="74" stroke="currentColor" stroke-width="4"/>
+  <!-- Inner ring -->
+  <circle cx="80" cy="80" r="64" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <!-- Ring notch marks -->
+  <line x1="80" y1="6" x2="80" y2="14" stroke="currentColor" stroke-width="4"/>
+  <line x1="80" y1="146" x2="80" y2="154" stroke="currentColor" stroke-width="4"/>
+  <line x1="6" y1="80" x2="14" y2="80" stroke="currentColor" stroke-width="4"/>
+  <line x1="146" y1="80" x2="154" y2="80" stroke="currentColor" stroke-width="4"/>
+  <!-- House shape -->
+  <path d="M80 36 L112 62 H100 V96 H60 V62 H48 Z" fill="currentColor"/>
+  <!-- Door -->
+  <rect x="70" y="76" width="20" height="20" rx="10" fill="none" stroke="white" stroke-width="2.5"/>
+  <!-- Two small figures below -->
+  <circle cx="62" cy="112" r="7" fill="currentColor"/>
+  <path d="M52 130 C52 122 72 122 72 130" fill="currentColor"/>
+  <circle cx="98" cy="112" r="7" fill="currentColor"/>
+  <path d="M88 130 C88 122 108 122 108 130" fill="currentColor"/>
+</svg>

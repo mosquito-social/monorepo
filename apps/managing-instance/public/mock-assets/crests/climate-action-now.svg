@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 180" fill="none">
+  <!-- Crest shield outline -->
+  <path stroke="currentColor" stroke-width="7" stroke-linejoin="round"
+    d="M13 17H107V102C107 143 86 164 60 172C34 164 13 143 13 102V17Z"/>
+  <!-- Earth globe -->
+  <circle cx="60" cy="63" r="29" fill="currentColor"/>
+  <!-- Left arm/hand: rotated rounded rectangle -->
+  <rect x="20" y="98" width="36" height="54" rx="14" fill="currentColor"
+    transform="rotate(-20 38 125)"/>
+  <!-- Right arm/hand: mirror -->
+  <rect x="64" y="98" width="36" height="54" rx="14" fill="currentColor"
+    transform="rotate(20 82 125)"/>
+</svg>

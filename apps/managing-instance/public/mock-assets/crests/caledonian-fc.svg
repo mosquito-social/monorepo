@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 170" fill="none">
+  <!-- Classic football badge: arched top, straight sides, pointed bottom -->
+  <path stroke="currentColor" stroke-width="6" stroke-linejoin="round"
+    d="M65 165 C65 165 10 138 10 95 V30 C10 20 18 12 28 12 H102 C112 12 120 20 120 30 V95 C120 138 65 165 65 165 Z"/>
+  <!-- Inner border -->
+  <path stroke="currentColor" stroke-width="2" stroke-linejoin="round"
+    d="M65 153 C65 153 22 130 22 94 V36 C22 30 27 25 33 25 H97 C103 25 108 30 108 36 V94 C108 130 65 153 65 153 Z"/>
+  <!-- Horizontal colour band across middle -->
+  <clipPath id="badge">
+    <path d="M65 153 C65 153 22 130 22 94 V36 C22 30 27 25 33 25 H97 C103 25 108 30 108 36 V94 C108 130 65 153 65 153 Z"/>
+  </clipPath>
+  <rect x="22" y="68" width="86" height="26" fill="currentColor" clip-path="url(#badge)"/>
+  <!-- Thistle top -->
+  <circle cx="65" cy="48" r="14" fill="currentColor"/>
+  <path d="M58 34 Q65 26 72 34" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <line x1="65" y1="26" x2="65" y2="34" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+  <!-- CFC lettering in the band -->
+  <text x="65" y="86" text-anchor="middle" dominant-baseline="middle"
+    font-family="system-ui,-apple-system,sans-serif"
+    font-weight="900" font-size="18" fill="white" letter-spacing="2">CFC</text>
+</svg>
