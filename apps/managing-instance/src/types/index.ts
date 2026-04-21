@@ -1,4 +1,4 @@
-export type MemberRole = "admin" | "member";
+export type MemberRole = "admin" | "member" | "sponsor" | "developer";
 
 export type EventStatus = "upcoming" | "past" | "cancelled";
 
@@ -27,8 +27,8 @@ export interface User {
   firstName: string;
   lastName: string;
   email: string;
-  avatarUrl?: string;
   bio?: string;
+  avatarUrl?: string;
   location?: string;
 }
 
