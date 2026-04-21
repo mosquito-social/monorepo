@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 180" fill="none">
+  <!-- Diamond shield – pointed top and bottom, wide sides -->
+  <path stroke="currentColor" stroke-width="5" stroke-linejoin="round"
+    d="M70 8 L132 60 L132 110 C132 148 104 168 70 176 C36 168 8 148 8 110 L8 60 Z"/>
+  <!-- Inner border line -->
+  <path stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"
+    d="M70 22 L120 66 L120 108 C120 138 98 156 70 163 C42 156 20 138 20 108 L20 66 Z"/>
+  <!-- Compass rose -->
+  <!-- N point -->
+  <path d="M70 42 L76 68 L70 62 L64 68 Z" fill="currentColor"/>
+  <!-- S point -->
+  <path d="M70 118 L76 92 L70 98 L64 92 Z" fill="currentColor"/>
+  <!-- E point -->
+  <path d="M100 80 L74 74 L80 80 L74 86 Z" fill="currentColor"/>
+  <!-- W point -->
+  <path d="M40 80 L66 74 L60 80 L66 86 Z" fill="currentColor"/>
+  <!-- Centre circle -->
+  <circle cx="70" cy="80" r="10" fill="currentColor"/>
+  <circle cx="70" cy="80" r="5" fill="none" stroke="white" stroke-width="2"/>
+</svg>

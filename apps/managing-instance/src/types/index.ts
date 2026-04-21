@@ -1,8 +1,8 @@
-export type MemberRole = 'admin' | 'member';
+export type MemberRole = "admin" | "member";
 
-export type EventStatus = 'upcoming' | 'past' | 'cancelled';
+export type EventStatus = "upcoming" | "past" | "cancelled";
 
-export type FontOption = 'inter' | 'geist' | 'lora' | 'space-grotesk';
+export type FontOption = "inter" | "geist" | "lora" | "space-grotesk";
 
 export interface ThemeBaseStyle {
   name: string;
@@ -28,6 +28,8 @@ export interface User {
   lastName: string;
   email: string;
   avatarUrl?: string;
+  bio?: string;
+  location?: string;
 }
 
 export interface Member {
@@ -48,6 +50,27 @@ export interface Community {
   members: Member[];
 }
 
+export interface ThreadReply {
+  id: string;
+  author: User;
+  content: string;
+  createdAt: Date;
+}
+
+export interface Thread {
+  id: string;
+  headline?: string;
+  author: User;
+  content: string;
+  createdAt: Date;
+  replies: ThreadReply[];
+}
+
+export interface Conversation {
+  threads: Thread[];
+  unreadCount: number;
+}
+
 export interface EventLocation {
   label: string;
   address?: string;
@@ -55,7 +78,7 @@ export interface EventLocation {
   lng?: number;
 }
 
-export type TicketFormField = 'github' | 'company';
+export type TicketFormField = "github" | "company";
 
 export interface TicketType {
   id: string;
@@ -81,5 +104,7 @@ export interface Event {
   date: Date;
   durationInMinutes: number;
   status: EventStatus;
+  attendees?: User[];
+  maxAttendees?: number;
   ticketTypes?: TicketType[];
 }
