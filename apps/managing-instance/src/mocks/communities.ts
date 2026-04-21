@@ -14,7 +14,7 @@ export const MOCK_COMMUNITIES: Community[] = [
     id: 'frankfurt-js',
     slug: 'frankfurt-js',
     name: 'Frankfurt JS',
-    bgImageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200',
+    bgImageUrl: '/mock-assets/covers/frankfurt-js.jpg',
     logoUrl: '/mock-assets/crests/frankfurt-js.svg',
     description:
       'The JavaScript community in Hamburg — meetups, workshops, and job boards for frontend and fullstack developers.',
@@ -37,7 +37,7 @@ export const MOCK_COMMUNITIES: Community[] = [
     id: 'urban-gardeners-hamburg',
     slug: 'urban-gardeners-hamburg',
     name: 'Urban Gardeners Hamburg',
-    bgImageUrl: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200',
+    bgImageUrl: '/mock-assets/covers/urban-gardeners-club.jpg',
     logoUrl: '/mock-assets/crests/urban-gardeners-hamburg.svg',
     description:
       'Growing food and community in Hamburg. We share plots, seeds, and knowledge across the city.',
@@ -61,7 +61,7 @@ export const MOCK_COMMUNITIES: Community[] = [
     id: 'die-reinhardts',
     slug: 'die-reinhardts',
     name: 'Die Reinhardts',
-    bgImageUrl: 'https://images.unsplash.com/photo-1511895426328-dc8714191011?w=1200',
+    bgImageUrl: '/mock-assets/covers/die-reinhardts.jpg',
     logoUrl: '/mock-assets/crests/die-reinhardts.svg',
     description:
       'Our family group — photos, plans, and everything in between. No group chat chaos.',
@@ -84,7 +84,7 @@ export const MOCK_COMMUNITIES: Community[] = [
     id: 'climate-action-now',
     slug: 'climate-action-now',
     name: 'Climate Action Now',
-    bgImageUrl: 'https://images.unsplash.com/photo-1611270629569-8b357cb88da9?w=1200',
+    bgImageUrl: '/mock-assets/covers/climate-action-now.jpg',
     logoUrl: '/mock-assets/crests/climate-action-now.svg',
     description:
       'Organising citizens, researchers, and policy folks around concrete climate action. Local chapters across DACH.',
@@ -107,7 +107,7 @@ export const MOCK_COMMUNITIES: Community[] = [
     id: 'gracia-neighbours',
     slug: 'gracia-neighbours',
     name: 'Gràcia Neighbours',
-    bgImageUrl: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200',
+    bgImageUrl: '/mock-assets/covers/gracia-neighbours.jpg',
     logoUrl: '/mock-assets/crests/gracia-neighbours.svg',
     description:
       'The residents\' assembly for the Gràcia neighbourhood in Barcelona — local issues, events, and mutual aid.',
@@ -131,7 +131,7 @@ export const MOCK_COMMUNITIES: Community[] = [
     id: 'barcelona-photo-collective',
     slug: 'barcelona-photo-collective',
     name: 'Barcelona Photo Collective',
-    bgImageUrl: 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1200',
+    bgImageUrl: '/mock-assets/covers/barcelona-photo-collective.jpg',
     logoUrl: '/mock-assets/crests/barcelona-photo-collective.svg',
     description:
       'Photographers in and around Barcelona sharing work, organising exhibitions, and running workshops.',
@@ -154,7 +154,7 @@ export const MOCK_COMMUNITIES: Community[] = [
     id: 'el-born-foodies',
     slug: 'el-born-foodies',
     name: 'El Born Foodies',
-    bgImageUrl: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200',
+    bgImageUrl: '/mock-assets/covers/el-born-foodies.jpg',
     logoUrl: '/mock-assets/crests/el-born-foodies.svg',
     description:
       'Food lovers based in and around El Born, Barcelona. Pop-up dinners, market trips, and recipe swaps.',
@@ -179,7 +179,7 @@ export const MOCK_COMMUNITIES: Community[] = [
     id: 'edinburgh-creative-guild',
     slug: 'edinburgh-creative-guild',
     name: 'Edinburgh Creative Guild',
-    bgImageUrl: 'https://images.unsplash.com/photo-1572025442646-866d16c84a54?w=1200',
+    bgImageUrl: '/mock-assets/covers/edinburgh-creative-guild.jpg',
     logoUrl: '/mock-assets/crests/edinburgh-creative-guild.svg',
     description:
       'Designers, illustrators, and art directors in Edinburgh. Portfolio crits, industry talks, and studio visits.',
@@ -203,7 +203,7 @@ export const MOCK_COMMUNITIES: Community[] = [
     id: 'caledonian-fc',
     slug: 'caledonian-fc',
     name: 'Caledonian FC',
-    bgImageUrl: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1200',
+    bgImageUrl: '/mock-assets/covers/caledonia-fc.jpg',
     logoUrl: '/mock-assets/crests/caledonian-fc.svg',
     description:
       'Edinburgh-based football club. Training twice a week, league games on Saturdays. All levels welcome.',

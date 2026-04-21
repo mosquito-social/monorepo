@@ -2,6 +2,7 @@ import { A } from '@solidjs/router';
 import { Button, Tag } from 'mosquito-design-system';
 import { Show } from 'solid-js';
 import type { Community, Member } from '../types';
+import { CommunityHeader } from './community-header';
 
 interface CommunitySidebarProps {
   community: Community;
@@ -21,32 +22,14 @@ export function CommunitySidebar(props: CommunitySidebarProps) {
 
   return (
     <aside class="w-80 flex-shrink-0 border-r border-col-line sticky top-0 h-screen overflow-y-auto flex flex-col">
-      {/* Community card header */}
-      <div class="relative h-36 flex-shrink-0 overflow-hidden">
-        <img
-          src={props.community.bgImageUrl}
-          alt=""
-          class="w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
-        <img
-          src={props.community.logoUrl}
-          alt={props.community.name}
-          class="absolute bottom-3 left-4 w-12 h-16 rounded-lg bg-white/90 object-contain p-1.5 shadow-sm"
-        />
-      </div>
+      <CommunityHeader
+        bgImageUrl={props.community.bgImageUrl}
+        logoUrl={props.community.logoUrl}
+        name={props.community.name}
+        description={props.community.description}
+      />
 
-      <div class="p-4 flex flex-col gap-4 flex-1">
-        {/* Title + description */}
-        <div>
-          <h1 class="text-fs-5 font-fam-msq font-black text-col-fg-strong leading-tight">
-            {props.community.name}
-          </h1>
-          <p class="text-fs-2 text-col-fg-soft mt-1 leading-relaxed">
-            {props.community.description}
-          </p>
-        </div>
-
+      <div class="px-4 pb-4 flex flex-col gap-4 flex-1">
         {/* Membership state */}
         <Show when={!props.membership}>
           <Button variant="primary" size="sm" href="#">

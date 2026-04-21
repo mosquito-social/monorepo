@@ -1,5 +1,6 @@
 import { Button, Heading, SectionWrapper } from 'mosquito-design-system';
 import { For } from 'solid-js';
+import { CommunityHeader } from '../components/community-header';
 import { MOCK_COMMUNITIES } from '../mocks';
 
 function CommunityCard(props: {
@@ -11,28 +12,15 @@ function CommunityCard(props: {
       href={`/community/${c.slug}`}
       class="group flex flex-col rounded-2xl overflow-hidden bg-col-bg border border-col-line hover:border-col-accent transition-colors no-underline"
     >
-      <div class="relative h-36 overflow-hidden">
-        <img
-          src={c.bgImageUrl}
-          alt=""
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-        <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-        <img
-          src={c.logoUrl}
-          alt={c.name}
-          class="absolute bottom-3 left-4 w-12 h-16 rounded-lg bg-white/90 object-contain p-1.5 shadow-sm"
-        />
-      </div>
-
-      <div class="flex flex-col gap-1 p-4 flex-1">
-        <h3 class="text-fs-4 font-fam-msq font-bold text-col-fg-strong leading-tight">
-          {c.name}
-        </h3>
-        <p class="text-fs-2 text-col-fg-soft line-clamp-2 flex-1">
-          {c.description}
-        </p>
-        <p class="text-fs-1 text-col-fg-weak mt-2 font-medium">
+      <CommunityHeader
+        bgImageUrl={c.bgImageUrl}
+        logoUrl={c.logoUrl}
+        name={c.name}
+        description={c.description}
+        descriptionClass="line-clamp-2"
+      />
+      <div class="px-4 pb-4">
+        <p class="text-fs-1 text-col-fg-weak font-medium">
           {c.members.length} {c.members.length === 1 ? 'member' : 'members'}
         </p>
       </div>
