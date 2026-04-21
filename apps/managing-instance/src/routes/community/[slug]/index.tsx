@@ -255,7 +255,7 @@ export default function CommunityDetailPage() {
                       <For each={upcomingEvents()}>
                         {(event) => (
                           <A
-                            href={`/events/${event.slug}`}
+                            href={`/community/${params.slug}/event/${event.slug}`}
                             class="flex gap-3 no-underline group"
                           >
                             <CalendarLeaf date={event.date} />
