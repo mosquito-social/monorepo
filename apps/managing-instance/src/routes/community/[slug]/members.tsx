@@ -1,6 +1,13 @@
 import { useParams } from '@solidjs/router';
 import { Button } from 'mosquito-design-system';
-import { For, Show, createEffect, createMemo, createSignal, onCleanup } from 'solid-js';
+import {
+  For,
+  Show,
+  createEffect,
+  createMemo,
+  createSignal,
+  onCleanup,
+} from 'solid-js';
 import { CommunitySidebar } from '../../../components/community-sidebar';
 import { MOCK_COMMUNITIES } from '../../../mocks/communities';
 import { MOCK_USERS } from '../../../mocks/users';
@@ -85,7 +92,9 @@ function MemberFilterBar(props: FilterBarProps) {
 
       <select
         value={props.roleFilter}
-        onChange={(e) => props.onRoleChange(e.currentTarget.value as RoleFilter)}
+        onChange={(e) =>
+          props.onRoleChange(e.currentTarget.value as RoleFilter)
+        }
         class="px-3 py-2 rounded-xl border border-col-line bg-col-bg-weak text-fs-2 text-col-fg-strong focus:outline-none focus:ring-2 focus:ring-col-accent/40"
       >
         <option value="all">All roles</option>
