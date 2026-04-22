@@ -85,7 +85,8 @@ export const MOCK_USERS: User[] = [
     firstName: 'Hanna',
     lastName: 'Bergström',
     email: 'hanna@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=hanna-bergstrom',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=hanna-bergstrom',
     bio: 'UX researcher at a Hamburg fintech. Swedish expat who found the city too good to leave.',
     location: 'Hamburg, Germany',
   },
@@ -272,7 +273,8 @@ export const MOCK_USERS: User[] = [
     firstName: 'Yasmin',
     lastName: 'Abubakar',
     email: 'yasmin@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=yasmin-abubakar',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=yasmin-abubakar',
     bio: 'Interaction designer at a civic tech NGO. Somali-Scottish. Passionate about accessible design.',
     location: 'Edinburgh, Scotland',
   },

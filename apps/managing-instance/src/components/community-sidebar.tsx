@@ -21,7 +21,7 @@ export function CommunitySidebar(props: CommunitySidebarProps) {
   ];
 
   return (
-    <aside class="w-80 flex-shrink-0 border-r border-col-line sticky top-0 h-screen overflow-y-auto flex flex-col">
+    <aside class="w-80 shrink-0 border-r border-col-line sticky top-0 h-screen overflow-y-auto flex flex-col">
       <CommunityHeader
         bgImageUrl={props.community.bgImageUrl}
         logoUrl={props.community.logoUrl}

@@ -13,16 +13,16 @@ export interface ButtonProps
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'bg-col-accent border-2 border-col-accent text-col-bg hover:bg-col-accent-strong hover:text-col-bg-strong',
-  secondary: 'border-2 border-col-border text-col-text hover:bg-col-surface',
+    'bg-col-accent border-2 border-col-accent text-col-text-strong hover:bg-col-accent-weak',
+  secondary: 'border-2 border-col-border text-col-text hover:bg-col-bg-soft',
   ghost:
     'text-col-fg-soft border-2 border-transparent hover:border-col-border hover:text-col-fg-strong',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'px-4 py-2 text-fs-2 font-fam-msq font-bold',
-  md: 'px-6 py-3 text-fs-3 font-fam-msq font-bold',
-  lg: 'px-8 py-4 text-fs-4 font-fam-msq font-black',
+  sm: 'px-4 py-1 text-fs-3 font-fam-msq font-bold',
+  md: 'px-6 py-2 text-fs-4 font-fam-msq font-bold',
+  lg: 'px-8 py-3 text-fs-5 font-fam-msq font-bold',
 };
 
 export function Button(props: ButtonProps) {

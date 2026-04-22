@@ -1,3 +1,6 @@
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource-variable/source-sans-3";
+@import "@fontsource-variable/source-code-pro";
 @import "tailwindcss";
 @import "mosquito-design-system/theme.css";
 

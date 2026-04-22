@@ -417,11 +417,11 @@ export function CommunitySettingsForm(props: CommunitySettingsFormProps) {
             <div class="flex gap-4 h-44">
               <div class="flex-[1] flex flex-col min-w-0">
                 <p class={labelClass}>Crest</p>
-                <div class="relative flex-1 rounded-xl overflow-hidden border border-col-line bg-col-bg">
+                <div class="relative flex-1 rounded-xl overflow-hidden border border-col-line bg-col-dark-1">
                   <img
                     src={crest()}
                     alt="Community crest"
-                    class="w-full h-full object-contain p-3"
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-4/5 w-auto object-contain opacity-40 brightness-0 invert"
                   />
                   <button
                     type="button"

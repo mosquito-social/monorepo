@@ -33,15 +33,26 @@ const POPULATED_EVENT_SLUGS = new Set([
   'cfc-vs-leith-athletic-may',
 ]);
 
-export function getDmMeta(otherUserId: string): { hasContent: boolean; unreadCount: number } {
-  if (EMPTY_DM_USERS.has(otherUserId)) return { hasContent: false, unreadCount: 0 };
-  return { hasContent: true, unreadCount: UNREAD_DM_USERS.has(otherUserId) ? 2 : 0 };
+export function getDmMeta(otherUserId: string): {
+  hasContent: boolean;
+  unreadCount: number;
+} {
+  if (EMPTY_DM_USERS.has(otherUserId))
+    return { hasContent: false, unreadCount: 0 };
+  return {
+    hasContent: true,
+    unreadCount: UNREAD_DM_USERS.has(otherUserId) ? 2 : 0,
+  };
 }
 
-export function getChannelMeta(channelId: string): { hasContent: boolean; unreadCount: number } {
+export function getChannelMeta(channelId: string): {
+  hasContent: boolean;
+  unreadCount: number;
+} {
   if (channelId === 'general') return { hasContent: true, unreadCount: 1 };
   if (channelId === 'organizers') return { hasContent: true, unreadCount: 0 };
-  if (POPULATED_EVENT_SLUGS.has(channelId)) return { hasContent: true, unreadCount: 0 };
+  if (POPULATED_EVENT_SLUGS.has(channelId))
+    return { hasContent: true, unreadCount: 0 };
   return { hasContent: false, unreadCount: 0 };
 }
 
@@ -56,7 +67,10 @@ function d(daysAgo: number, hour = 10, minute = 0): Date {
 
 // ── 1:1 DM factory ────────────────────────────────────────────────────────
 
-export function createDmConversation(currentUser: User, otherUser: User): Conversation {
+export function createDmConversation(
+  currentUser: User,
+  otherUser: User,
+): Conversation {
   const a = currentUser.firstName;
   const b = otherUser.firstName;
   const unreadCount = UNREAD_DM_USERS.has(otherUser.id) ? 2 : 0;
@@ -140,7 +154,13 @@ export function createGroupConversation(params: {
   communityName: string;
   channelType?: 'general' | 'organizers';
 }): Conversation {
-  const { organizer, currentUser, others, communityName, channelType = 'general' } = params;
+  const {
+    organizer,
+    currentUser,
+    others,
+    communityName,
+    channelType = 'general',
+  } = params;
   const o1 = others[0];
   const o2 = others[1];
 

@@ -2,6 +2,7 @@ import { A, useParams } from '@solidjs/router';
 import { Avatar, Button, Tag } from 'mosquito-design-system';
 import { For, Show, createMemo } from 'solid-js';
 import { CommunitySidebar } from '../../../../components/community-sidebar';
+import { MOCK_COMMUNITIES } from '../../../../mocks/communities';
 import {
   createDmConversation,
   createEventChannelConversation,
@@ -9,7 +10,6 @@ import {
   getChannelMeta,
   getDmMeta,
 } from '../../../../mocks/conversations';
-import { MOCK_COMMUNITIES } from '../../../../mocks/communities';
 import { MOCK_EVENTS } from '../../../../mocks/events';
 import { MOCK_USERS } from '../../../../mocks/users';
 import type { Conversation, Member, Thread } from '../../../../types';
@@ -27,7 +27,10 @@ function formatTimestamp(date: Date) {
   if (diffMins < 60) return `${diffMins}m ago`;
   if (diffHours < 24) return `${diffHours}h ago`;
   if (diffDays === 1) return 'Yesterday';
-  return new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' }).format(date);
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+  }).format(date);
 }
 
 interface ChannelMeta {
@@ -91,7 +94,10 @@ function ChatChannelSidebar(props: ChatChannelSidebarProps) {
         </p>
         {/* #all-members */}
         {(() => {
-          const meta = props.channelMeta['general'] ?? { hasContent: true, unreadCount: 0 };
+          const meta = props.channelMeta['general'] ?? {
+            hasContent: true,
+            unreadCount: 0,
+          };
           return (
             <A
               href={`${base()}/general`}
@@ -108,7 +114,10 @@ function ChatChannelSidebar(props: ChatChannelSidebarProps) {
         {/* #organizers (admin only) */}
         <Show when={props.isAdmin}>
           {(() => {
-            const meta = props.channelMeta['organizers'] ?? { hasContent: true, unreadCount: 0 };
+            const meta = props.channelMeta['organizers'] ?? {
+              hasContent: true,
+              unreadCount: 0,
+            };
             return (
               <A
                 href={`${base()}/organizers`}
@@ -126,7 +135,10 @@ function ChatChannelSidebar(props: ChatChannelSidebarProps) {
         {/* Event channels */}
         <For each={sortedEvents()}>
           {(event) => {
-            const meta = props.channelMeta[event.slug] ?? { hasContent: false, unreadCount: 0 };
+            const meta = props.channelMeta[event.slug] ?? {
+              hasContent: false,
+              unreadCount: 0,
+            };
             return (
               <A
                 href={`${base()}/${event.slug}`}
@@ -151,7 +163,10 @@ function ChatChannelSidebar(props: ChatChannelSidebarProps) {
         </p>
         <For each={sortedMembers()}>
           {(member) => {
-            const meta = props.channelMeta[member.id] ?? { hasContent: true, unreadCount: 0 };
+            const meta = props.channelMeta[member.id] ?? {
+              hasContent: true,
+              unreadCount: 0,
+            };
             return (
               <A
                 href={`${base()}/${member.id}`}
@@ -179,7 +194,9 @@ interface ThreadItemProps {
 function ThreadItem(props: ThreadItemProps) {
   const isCurrentUser = (userId: string) => userId === CURRENT_USER.id;
   const isAdmin = (userId: string) =>
-    props.communityMembers.some((m) => m.user.id === userId && m.role === 'admin');
+    props.communityMembers.some(
+      (m) => m.user.id === userId && m.role === 'admin',
+    );
 
   return (
     <article class="flex flex-col gap-3">
@@ -201,7 +218,9 @@ function ThreadItem(props: ThreadItemProps) {
           <div class="flex items-center gap-2 mb-1">
             <span
               class={`text-fs-2 font-bold font-fam-msq ${
-                isCurrentUser(props.thread.author.id) ? 'text-col-accent' : 'text-col-fg-strong'
+                isCurrentUser(props.thread.author.id)
+                  ? 'text-col-accent'
+                  : 'text-col-fg-strong'
               }`}
             >
               {props.thread.author.displayName}
@@ -213,7 +232,9 @@ function ThreadItem(props: ThreadItemProps) {
               {formatTimestamp(props.thread.createdAt)}
             </span>
           </div>
-          <p class="text-fs-2 text-col-fg leading-relaxed">{props.thread.content}</p>
+          <p class="text-fs-2 text-col-fg leading-relaxed">
+            {props.thread.content}
+          </p>
 
           <Show when={props.thread.replies.length > 0}>
             <div class="mt-3 pl-3 border-l-2 border-col-line flex flex-col gap-3">
@@ -241,7 +262,9 @@ function ThreadItem(props: ThreadItemProps) {
                           {formatTimestamp(reply.createdAt)}
                         </span>
                       </div>
-                      <p class="text-fs-2 text-col-fg leading-relaxed">{reply.content}</p>
+                      <p class="text-fs-2 text-col-fg leading-relaxed">
+                        {reply.content}
+                      </p>
                     </div>
                   </div>
                 )}
@@ -262,7 +285,9 @@ function EmptyChannelState(props: { channelName: string; isDM: boolean }) {
       </div>
       <div>
         <h3 class="text-fs-4 font-fam-msq font-bold text-col-fg-strong mb-1">
-          {props.isDM ? `Start a conversation with ${props.channelName}` : `Nothing here yet`}
+          {props.isDM
+            ? `Start a conversation with ${props.channelName}`
+            : `Nothing here yet`}
         </h3>
         <p class="text-fs-2 text-col-fg-soft max-w-xs">
           {props.isDM
@@ -349,7 +374,9 @@ export default function CommunitySubChannelPage() {
     if (chatid === 'organizers') {
       const organizer = c.members.find((m) => m.role === 'admin')?.user;
       if (!organizer) return null;
-      const others = c.members.map((m) => m.user).filter((u) => u.id !== organizer.id);
+      const others = c.members
+        .map((m) => m.user)
+        .filter((u) => u.id !== organizer.id);
       return createGroupConversation({
         organizer,
         currentUser: CURRENT_USER,
@@ -384,13 +411,15 @@ export default function CommunitySubChannelPage() {
       const others = (event.attendees ?? []).filter(
         (u) => u.id !== organizer.id && u.id !== CURRENT_USER.id,
       );
-      return createEventChannelConversation({
-        eventTitle: event.title,
-        eventSlug: event.slug,
-        organizer,
-        currentUser: CURRENT_USER,
-        others,
-      }) ?? { threads: [], unreadCount: 0 };
+      return (
+        createEventChannelConversation({
+          eventTitle: event.title,
+          eventSlug: event.slug,
+          organizer,
+          currentUser: CURRENT_USER,
+          others,
+        }) ?? { threads: [], unreadCount: 0 }
+      );
     }
 
     return null;
@@ -403,15 +432,21 @@ export default function CommunitySubChannelPage() {
   );
 
   const isDM = createMemo(() => members().some((m) => m.id === params.chatid));
-  const dmUser = createMemo(() => members().find((m) => m.id === params.chatid));
+  const dmUser = createMemo(() =>
+    members().find((m) => m.id === params.chatid),
+  );
 
   return (
     <Show
       when={community()}
       fallback={
         <div class="min-h-[60vh] flex flex-col items-center justify-center gap-6 text-center px-4">
-          <div class="text-5xl font-black font-fam-msq text-col-fg-weak">404</div>
-          <h1 class="text-fs-6 font-fam-msq font-bold text-col-fg-strong">Community not found</h1>
+          <div class="text-5xl font-black font-fam-msq text-col-fg-weak">
+            404
+          </div>
+          <h1 class="text-fs-6 font-fam-msq font-bold text-col-fg-strong">
+            Community not found
+          </h1>
           <Button href="/" variant="secondary">
             Back to Homepage
           </Button>
@@ -451,7 +486,9 @@ export default function CommunitySubChannelPage() {
                     <h2 class="text-fs-3 font-fam-msq font-bold text-col-fg-strong">
                       {user().displayName}
                     </h2>
-                    <span class="text-fs-2 text-col-fg-soft ml-2">Direct message</span>
+                    <span class="text-fs-2 text-col-fg-soft ml-2">
+                      Direct message
+                    </span>
                   </>
                 )}
               </Show>
@@ -462,7 +499,11 @@ export default function CommunitySubChannelPage() {
               when={threads().length > 0}
               fallback={
                 <EmptyChannelState
-                  channelName={isDM() ? (dmUser()?.displayName ?? channelName()) : channelName()}
+                  channelName={
+                    isDM()
+                      ? (dmUser()?.displayName ?? channelName())
+                      : channelName()
+                  }
                   isDM={isDM()}
                 />
               }
@@ -471,7 +512,10 @@ export default function CommunitySubChannelPage() {
                 <div class="max-w-3xl w-full mx-auto flex flex-col gap-8">
                   <For each={threads()}>
                     {(thread) => (
-                      <ThreadItem thread={thread} communityMembers={c().members} />
+                      <ThreadItem
+                        thread={thread}
+                        communityMembers={c().members}
+                      />
                     )}
                   </For>
                 </div>

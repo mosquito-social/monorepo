@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 180" fill="none">
-  <!-- Crest shield outline -->
-  <path stroke="currentColor" stroke-width="7" stroke-linejoin="round"
-    d="M13 17H107V102C107 143 86 164 60 172C34 164 13 143 13 102V17Z"/>
-  <!-- JS lettering -->
-  <text x="60" y="83" text-anchor="middle" dominant-baseline="middle"
-    font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif"
-    font-weight="900" font-size="62" fill="currentColor">JS</text>
-</svg>

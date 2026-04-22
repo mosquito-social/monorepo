@@ -1,8 +1,6 @@
-export type MemberRole = "admin" | "member" | "sponsor" | "developer";
+export type MemberRole = 'admin' | 'member' | 'sponsor' | 'developer';
 
-export type EventStatus = "upcoming" | "past" | "cancelled";
-
-export type FontOption = "inter" | "geist" | "lora" | "space-grotesk";
+export type EventStatus = 'upcoming' | 'past' | 'cancelled';
 
 export interface ThemeBaseStyle {
   name: string;
@@ -12,8 +10,9 @@ export interface ThemeBaseStyle {
 export interface CommunityTheme {
   style: string;
   primaryHue: number;
-  font: FontOption;
+  font: string;
   spacing: number;
+  sizeScale: number;
 }
 
 export interface CommunityType {
@@ -78,7 +77,7 @@ export interface EventLocation {
   lng?: number;
 }
 
-export type TicketFormField = "github" | "company";
+export type TicketFormField = 'github' | 'company';
 
 export interface TicketType {
   id: string;

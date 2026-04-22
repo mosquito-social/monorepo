@@ -88,7 +88,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Maximilian',
     lastName: 'Zimmermann',
     email: 'maximilian.zimmermann@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=maximilian-zimmermann',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=maximilian-zimmermann',
     bio: 'Full-stack developer building internal tooling for a Frankfurt insurance group.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -108,7 +109,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Niklas',
     lastName: 'Hartmann',
     email: 'niklas.hartmann@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=niklas-hartmann',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=niklas-hartmann',
     bio: 'Backend developer with a love for event-driven architectures and Hessian Äppelwoi.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -128,7 +130,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Philipp',
     lastName: 'Schäfer',
     email: 'philipp.schaefer@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=philipp-schaefer',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=philipp-schaefer',
     bio: 'Solution architect at a consulting firm in Westend. Runs the FFM.js Slack in his spare time.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -148,7 +151,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Christian',
     lastName: 'Becker',
     email: 'christian.becker@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=christian-becker',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=christian-becker',
     bio: 'Application security engineer at a Frankfurt bank. Finds XSS everywhere.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -168,7 +172,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Florian',
     lastName: 'Müller',
     email: 'florian.mueller@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=florian-mueller',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=florian-mueller',
     bio: 'Embedded systems developer dabbling in WebAssembly. Lives in Rödelheim near the Nidda.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -384,7 +389,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Charlotte',
     lastName: 'Davies',
     email: 'charlotte.davies@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=charlotte-davies',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=charlotte-davies',
     bio: 'Engineering director at a Frankfurt fintech. Welsh, organised, and slightly addicted to Apfelschorle.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -416,7 +422,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Nikos',
     lastName: 'Papadopoulos',
     email: 'nikos.papadopoulos@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=nikos-papadopoulos',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=nikos-papadopoulos',
     bio: 'Backend developer at a Frankfurt shipping logistics platform. Moved from Athens five years ago.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -480,7 +487,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Marta',
     lastName: 'Wiśniewska',
     email: 'marta.wisniewska@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=marta-wisniewska',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=marta-wisniewska',
     bio: 'Frontend developer and conference speaker. From Warsaw, now living in Sachsenhausen.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -492,7 +500,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Alexandru',
     lastName: 'Ionescu',
     email: 'alexandru.ionescu@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=alexandru-ionescu',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=alexandru-ionescu',
     bio: 'Full-stack developer at a Frankfurt HR tech company. From Cluj-Napoca, football fan.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -514,7 +523,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Carlos',
     lastName: 'Rodrigues',
     email: 'carlos.rodrigues@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=carlos-rodrigues',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=carlos-rodrigues',
     bio: 'Backend developer at a Frankfurt payments startup. From Lisbon, still converts prices to escudos in his head.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -566,7 +576,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Deepa',
     lastName: 'Krishnamurthy',
     email: 'deepa.krishnamurthy@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=deepa-krishnamurthy',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=deepa-krishnamurthy',
     bio: 'Senior engineer at a Frankfurt SAP consultancy. Organises the local Women in Tech meetup.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -696,7 +707,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Patrick',
     lastName: 'Bergmann',
     email: 'patrick.bergmann@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=patrick-bergmann',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=patrick-bergmann',
     bio: 'DevOps engineer at a Frankfurt cloud provider. Lives in Bad Vilbel, takes the RegioTram in daily.',
     location: 'Bad Vilbel, Germany',
   },
@@ -736,7 +748,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Markus',
     lastName: 'Schumacher',
     email: 'markus.schumacher@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=markus-schumacher',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=markus-schumacher',
     bio: 'Software developer at a Hanau automotive parts supplier with a large JS codebase.',
     location: 'Hanau, Germany',
   },
@@ -796,7 +809,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Jürgen',
     lastName: 'Schwarz',
     email: 'juergen.schwarz@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=juergen-schwarz',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=juergen-schwarz',
     bio: 'Solution architect at a Frankfurt enterprise software company. Still knows his way around Perl.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -816,7 +830,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Wolfgang',
     lastName: 'Seifert',
     email: 'wolfgang.seifert@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=wolfgang-seifert',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=wolfgang-seifert',
     bio: 'Cloud engineer at a private bank in Bad Homburg. Drives in, refuses to get the train.',
     location: 'Bad Homburg vor der Höhe, Germany',
   },
@@ -826,7 +841,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Brigitte',
     lastName: 'Keller',
     email: 'brigitte.keller@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=brigitte-keller',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=brigitte-keller',
     bio: 'Software consultant and trainer. Teaches JavaScript workshops at coding bootcamps across Frankfurt.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -866,7 +882,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Ralf',
     lastName: 'Zimmermann',
     email: 'ralf.zimmermann@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=ralf-zimmermann',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=ralf-zimmermann',
     bio: 'Solution architect at a Frankfurt telecoms firm. Runs marathons, also writes slow monoliths.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -896,7 +913,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Hannelore',
     lastName: 'Steiner',
     email: 'hannelore.steiner@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=hannelore-steiner',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=hannelore-steiner',
     bio: 'Software developer at a Frankfurt trade finance company. Picked up JavaScript at 45 and never stopped.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -936,7 +954,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Waltraud',
     lastName: 'Dietrich',
     email: 'waltraud.dietrich@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=waltraud-dietrich',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=waltraud-dietrich',
     bio: 'Tech lead at a Frankfurt cultural foundation digitising their archive with modern web tech.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -990,7 +1009,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Oleksiy',
     lastName: 'Kovalenko',
     email: 'oleksiy.kovalenko@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=oleksiy-kovalenko',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=oleksiy-kovalenko',
     bio: 'Platform engineer at a Frankfurt cloud company. Originally from Kyiv, arrived 2022.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -1024,7 +1044,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Baptiste',
     lastName: 'Lambert',
     email: 'baptiste.lambert@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=baptiste-lambert',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=baptiste-lambert',
     bio: 'Frontend developer at a Frankfurt luxury brand digital studio. From Lyon, perpetually craving baguettes.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -1034,7 +1055,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Amélie',
     lastName: 'Fontaine',
     email: 'amelie.fontaine@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=amelie-fontaine',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=amelie-fontaine',
     bio: 'Full-stack developer at a Frankfurt EU-affairs consulting firm. From Paris, thrives in the Westend.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -1044,7 +1066,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Sander',
     lastName: 'de Vries',
     email: 'sander.devries@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=sander-de-vries',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=sander-de-vries',
     bio: 'Platform engineer at a Frankfurt logistics tech company. From Amsterdam, cycles everywhere.',
     location: 'Frankfurt am Main, Germany',
   },
@@ -1076,7 +1099,8 @@ export const FRANKFURT_USERS: User[] = [
     firstName: 'Mohammed',
     lastName: 'Al-Rashid',
     email: 'mohammed.al-rashid@example.com',
-    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=mohammed-al-rashid',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=mohammed-al-rashid',
     bio: 'Backend developer at a Frankfurt Islamic finance startup. From Riyadh, studies at Goethe-Uni part-time.',
     location: 'Frankfurt am Main, Germany',
   },

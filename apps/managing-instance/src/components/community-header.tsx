@@ -8,14 +8,13 @@ interface CommunityHeaderProps {
   imageHeight?: string;
   badge?: string;
   descriptionClass?: string;
-  textStyle?: string;
 }
 
 export function CommunityHeader(props: CommunityHeaderProps) {
   return (
     <div>
       <div
-        class={`group/img relative ${props.imageHeight ?? 'h-36'} overflow-hidden flex-shrink-0`}
+        class={`group/img relative ${props.imageHeight ?? 'h-36'} overflow-hidden shrink-0`}
       >
         <img
           src={props.bgImageUrl}
@@ -34,7 +33,7 @@ export function CommunityHeader(props: CommunityHeaderProps) {
           </span>
         </Show>
       </div>
-      <div class="p-4 bg-col-bg" style={props.textStyle}>
+      <div class="p-4">
         <p class="text-fs-4 font-fam-msq font-bold text-col-fg-strong leading-tight">
           {props.name}
         </p>
