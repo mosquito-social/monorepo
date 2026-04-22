@@ -1,130 +1,129 @@
 @layer theme {
   :root {
     /* === font families === */
-    --msq-font: "Bricolage Grotesque", sans-serif;
-    --msq-font-main: "Source Sans 3", sans-serif;
-    --msq-font-mono: Menlo, monospace;
+    --dsp-font-signature: "Bricolage Grotesque Variable", sans-serif;
+    --dsp-font-main: "Source Sans 3", sans-serif;
+    --dsp-font-mono: Menlo, monospace;
 
     /* === font sizes === */
-    --msq-font-base-size: 1.125rem;
-    --msq-font-size-ratio: 1.618;
+    --dsp-font-base-size: 1.125rem;
+    --dsp-font-base-size-mono: 1.125rem;
+    --dsp-font-size-ratio: 1.618;
+
+    --dsp-scale: 1;
 
     /* === core variables === */
-    --msq-hue-primary: 192;
-    --msq-hue-adjacent-1: calc(var(--msq-hue-primary) + 10);
-    --msq-hue-adjacent-2: calc(var(--msq-hue-primary) - 10);
+    --dsp-hue-primary: 192;
+    --dsp-hue-adjacent-1: calc(var(--dsp-hue-primary) + 10);
+    --dsp-hue-adjacent-2: calc(var(--dsp-hue-primary) - 10);
 
     /* === derived color palette === */ /* primary */
-    --msq-col-primary-dimmed: oklch(0.4 0.3 var(--msq-hue-primary));
-    --msq-col-primary: oklch(0.6 0.26 var(--msq-hue-primary));
-    --msq-col-primary-lightened: oklch(0.8 0.12 var(--msq-hue-primary));
+    --dsp-col-primary-dimmed: oklch(0.4 0.3 var(--dsp-hue-primary));
+    --dsp-col-primary: oklch(0.6 0.26 var(--dsp-hue-primary));
+    --dsp-col-primary-lightened: oklch(0.8 0.12 var(--dsp-hue-primary));
 
     /* adjacent */
-    --msq-col-adjacent-1: oklch(0.6 0.26 var(--msq-hue-adjacent-1));
-    --msq-col-adjacent-2: oklch(0.6 0.26 var(--msq-hue-adjacent-2));
+    --dsp-col-adjacent-1: oklch(0.6 0.26 var(--dsp-hue-adjacent-1));
+    --dsp-col-adjacent-2: oklch(0.6 0.26 var(--dsp-hue-adjacent-2));
 
     /* shades of white */
-    --msq-col-bright-4: oklch(0.65 0.02 var(--msq-hue-primary));
-    --msq-col-bright-3: oklch(0.82 0.02 var(--msq-hue-primary));
-    --msq-col-bright-2: oklch(0.9 0.02 var(--msq-hue-primary));
-    --msq-col-bright-1: oklch(0.96 0.015 var(--msq-hue-primary));
-    --msq-col-bright-0: oklch(0.98 0.01 var(--msq-hue-primary));
+    --dsp-col-bright-4: oklch(0.65 0.02 var(--dsp-hue-primary));
+    --dsp-col-bright-3: oklch(0.82 0.02 var(--dsp-hue-primary));
+    --dsp-col-bright-2: oklch(0.9 0.02 var(--dsp-hue-primary));
+    --dsp-col-bright-1: oklch(0.96 0.015 var(--dsp-hue-primary));
+    --dsp-col-bright-0: oklch(0.98 0.01 var(--dsp-hue-primary));
 
     /* shades of black */
-    --msq-col-dark-0: oklch(0.15 0.02 var(--msq-hue-primary));
-    --msq-col-dark-1: oklch(0.18 0.011 var(--msq-hue-primary));
-    --msq-col-dark-2: oklch(0.23 0.009 var(--msq-hue-primary));
-    --msq-col-dark-3: oklch(0.28 0.009 var(--msq-hue-primary));
-    --msq-col-dark-4: oklch(0.4 0.009 var(--msq-hue-primary));
+    --dsp-col-dark-0: oklch(0.15 0.02 var(--dsp-hue-primary));
+    --dsp-col-dark-1: oklch(0.18 0.011 var(--dsp-hue-primary));
+    --dsp-col-dark-2: oklch(0.23 0.009 var(--dsp-hue-primary));
+    --dsp-col-dark-3: oklch(0.28 0.009 var(--dsp-hue-primary));
+    --dsp-col-dark-4: oklch(0.4 0.009 var(--dsp-hue-primary));
   }
 }
 
-@theme {
+@theme inline {
   /* THEME V 0.2 - after decision, without design review */
-  /* === semantic tailwind font variables === */
-  --font-fam-msq: var(--msq-font);
-  --font-fam-main: var(--msq-font-main);
-  --font-sans: var(--msq-font-main);
-  --font-fam-mono: var(--msq-font-mono);
-  --font-mono: var(--msq-font-mono);
+
+  /* === semantic tailwind font variables (inline keeps var() refs live for runtime overrides) === */
+  --font-fam-msq: var(--dsp-font-signature);
+  --font-fam-main: var(--dsp-font-main);
+  --font-sans: var(--dsp-font-main);
+  --font-fam-mono: var(--dsp-font-mono);
+  --font-mono: var(--dsp-font-mono);
+  --spacing: calc(0.25rem * var(--dsp-scale));
 
   /* === semantic tailwind font sizes === */
   --text-fs-1: calc(
-    var(--msq-font-base-size) *
-    pow(var(--msq-font-size-ratio), -1)
+    var(--dsp-font-base-size) * pow(var(--dsp-font-size-ratio), -1)
   );
   --text-fs-2: calc(
-    var(--msq-font-base-size) *
-    pow(var(--msq-font-size-ratio), -0.5)
+    var(--dsp-font-base-size) * pow(var(--dsp-font-size-ratio), -0.5)
   );
-  --text-fs-3: var(--msq-font-base-size);
+  --text-fs-3: var(--dsp-font-base-size);
   --text-fs-4: calc(
-    var(--msq-font-base-size) *
-    pow(var(--msq-font-size-ratio), 0.5)
+    var(--dsp-font-base-size) * pow(var(--dsp-font-size-ratio), 0.5)
   );
   --text-fs-5: calc(
-    var(--msq-font-base-size) *
-    pow(var(--msq-font-size-ratio), 1)
+    var(--dsp-font-base-size) * pow(var(--dsp-font-size-ratio), 1)
   );
   --text-fs-6: calc(
-    var(--msq-font-base-size) *
-    pow(var(--msq-font-size-ratio), 2)
+    var(--dsp-font-base-size) * pow(var(--dsp-font-size-ratio), 2)
   );
   --text-fs-7: calc(
-    var(--msq-font-base-size) *
-    pow(var(--msq-font-size-ratio), 3)
+    var(--dsp-font-base-size) * pow(var(--dsp-font-size-ratio), 3)
   );
   --text-base: var(--text-fs-3);
 
   /* === semantic tailwind colors === */
-  --color-col-bg: light-dark(var(--msq-col-bright-1), var(--msq-col-dark-1));
+  --color-col-bg: light-dark(var(--dsp-col-bright-1), var(--dsp-col-dark-1));
   --color-col-bg-soft: light-dark(
-    var(--msq-col-bright-2),
-    var(--msq-col-dark-2)
+    var(--dsp-col-bright-2),
+    var(--dsp-col-dark-2)
   );
   --color-col-bg-weak: light-dark(
-    var(--msq-col-bright-3),
-    var(--msq-col-dark-3)
+    var(--dsp-col-bright-3),
+    var(--dsp-col-dark-3)
   );
-  --color-col-fg: light-dark(var(--msq-col-dark-1), var(--msq-col-bright-1));
+  --color-col-fg: light-dark(var(--dsp-col-dark-1), var(--dsp-col-bright-1));
   --color-col-fg-strong: light-dark(
-    var(--msq-col-dark-0),
-    var(--msq-col-bright-0)
+    var(--dsp-col-dark-0),
+    var(--dsp-col-bright-0)
   );
   --color-col-fg-soft: light-dark(
-    var(--msq-col-dark-2),
-    var(--msq-col-bright-2)
+    var(--dsp-col-dark-2),
+    var(--dsp-col-bright-2)
   );
   --color-col-fg-weak: light-dark(
-    var(--msq-col-dark-3),
-    var(--msq-col-bright-3)
+    var(--dsp-col-dark-3),
+    var(--dsp-col-bright-3)
   );
 
   --color-col-line-strongest: light-dark(
-    var(--msq-col-bright-3) var(--msq-col-dark-3)
+    var(--dsp-col-bright-3) var(--dsp-col-dark-3)
   );
   --color-col-line-strong: light-dark(
-    var(--msq-col-dark-4),
-    var(--msq-col-bright-4)
+    var(--dsp-col-dark-4),
+    var(--dsp-col-bright-4)
   );
-  --color-col-line: light-dark(var(--msq-col-bright-4), var(--msq-col-dark-4));
+  --color-col-line: light-dark(var(--dsp-col-bright-4), var(--dsp-col-dark-4));
   --color-col-line-soft: light-dark(
-    var(--msq-col-bright-3),
-    var(--msq-col-dark-3)
+    var(--dsp-col-bright-3),
+    var(--dsp-col-dark-3)
   );
 
   --color-col-accent-weak: light-dark(
-    var(--msq-col-primary-lightened),
-    var(--msq-col-primary-dimmed)
+    var(--dsp-col-primary-lightened),
+    var(--dsp-col-primary-dimmed)
   );
-  --color-col-accent: var(--msq-col-primary);
+  --color-col-accent: var(--dsp-col-primary);
   --color-col-accent-strong: light-dark(
-    var(--msq-col-primary-dimmed),
-    var(--msq-col-primary-lightened)
+    var(--dsp-col-primary-dimmed),
+    var(--dsp-col-primary-lightened)
   );
 
-  --color-col-adjacent-1: var(--msq-col-adjacent-1);
-  --color-col-adjacent-2: var(--msq-col-adjacent-2);
+  --color-col-adjacent-1: var(--dsp-col-adjacent-1);
+  --color-col-adjacent-2: var(--dsp-col-adjacent-2);
 }
 
 @layer base {

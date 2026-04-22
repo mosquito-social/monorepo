@@ -1,8 +1,8 @@
-import { A } from '@solidjs/router';
-import { Button, Tag } from 'mosquito-design-system';
-import { Show } from 'solid-js';
-import type { Community, Member } from '../types';
-import { CommunityHeader } from './community-header';
+import { A } from "@solidjs/router";
+import { Button, Tag } from "mosquito-design-system";
+import { Show } from "solid-js";
+import type { Community, Member } from "../types";
+import { CommunityHeader } from "./community-header";
 
 interface CommunitySidebarProps {
   community: Community;
@@ -11,17 +11,17 @@ interface CommunitySidebarProps {
 
 export function CommunitySidebar(props: CommunitySidebarProps) {
   const slug = () => props.community.slug;
-  const isAdmin = () => props.membership?.role === 'admin';
+  const isAdmin = () => props.membership?.role === "admin";
 
   const navItems = () => [
-    { label: 'Home', href: `/community/${slug()}`, end: true },
-    { label: 'Events', href: `/community/${slug()}/events`, end: false },
-    { label: 'Members', href: `/community/${slug()}/members`, end: false },
-    { label: 'Chat', href: `/community/${slug()}/chats`, end: false },
+    { label: "Home", href: `/community/${slug()}`, end: true },
+    { label: "Events", href: `/community/${slug()}/events`, end: false },
+    { label: "Members", href: `/community/${slug()}/members`, end: false },
+    { label: "Chat", href: `/community/${slug()}/chats`, end: false },
   ];
 
   return (
-    <aside class="w-80 flex-shrink-0 border-r border-col-line sticky top-0 h-screen overflow-y-auto flex flex-col">
+    <aside class="w-80 shrink-0 border-r border-col-line sticky top-0 h-screen overflow-y-auto flex flex-col">
       <CommunityHeader
         bgImageUrl={props.community.bgImageUrl}
         logoUrl={props.community.logoUrl}

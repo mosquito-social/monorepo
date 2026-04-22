@@ -2,8 +2,6 @@ export type MemberRole = "admin" | "member" | "sponsor" | "developer";
 
 export type EventStatus = "upcoming" | "past" | "cancelled";
 
-export type FontOption = "inter" | "geist" | "lora" | "space-grotesk";
-
 export interface ThemeBaseStyle {
   name: string;
   description: string;
@@ -12,8 +10,9 @@ export interface ThemeBaseStyle {
 export interface CommunityTheme {
   style: string;
   primaryHue: number;
-  font: FontOption;
+  font: string;
   spacing: number;
+  sizeScale: number;
 }
 
 export interface CommunityType {

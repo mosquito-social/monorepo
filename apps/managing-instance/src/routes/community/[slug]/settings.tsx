@@ -1,7 +1,7 @@
 import { useParams } from '@solidjs/router';
 import { Button } from 'mosquito-design-system';
 import { Show, createMemo } from 'solid-js';
-import { CommunityCreateForm } from '../../../components/community-create-form';
+import { CommunitySettingsForm } from '../../../components/community-settings-form';
 import { MOCK_COMMUNITIES } from '../../../mocks/communities';
 
 export default function CommunitySettingsPage() {
@@ -33,16 +33,8 @@ export default function CommunitySettingsPage() {
     >
       {(c) => (
         <main>
-          <CommunityCreateForm
-            initialData={{
-              name: c().name,
-              description: c().description,
-              communityType: c().type,
-              themeStyle: c().theme.style,
-              primaryHue: c().theme.primaryHue,
-              font: c().theme.font,
-              density: c().theme.spacing,
-            }}
+          <CommunitySettingsForm
+            community={c()}
             heading="Community Settings"
             subheading="Update your community details and appearance."
             submitLabel="Save Settings"

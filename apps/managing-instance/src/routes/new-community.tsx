@@ -1,9 +1,9 @@
-import { CommunityCreateForm } from '../components/community-create-form';
+import { CommunitySettingsForm } from '../components/community-settings-form';
 
 export default function NewCommunityPage() {
   return (
     <main>
-      <CommunityCreateForm />
+      <CommunitySettingsForm />
     </main>
   );
 }
